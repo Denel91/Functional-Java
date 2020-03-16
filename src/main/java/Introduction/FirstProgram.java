@@ -1,3 +1,5 @@
+package Introduction;
+
 public class FirstProgram {
     public static void main(String[] args) {
         // write your code here
@@ -24,6 +26,11 @@ public class FirstProgram {
     public static String pluraleSm(String s) {
 
        return (s.substring(0, s.length()-1) + "i");
+    }
+
+    public static int multiplyByTwo(int i) {
+        int var = 2;
+        return i * var;
     }
 }
 
