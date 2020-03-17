@@ -2,10 +2,26 @@ package Introduction;
 
 public class FirstProgram {
     public static void main(String[] args) {
-        // write your code here
-        System.out.println(supToCil(2.6,3.4));
 
-        System.out.println(pluraleSm("Albero"));
+        System.out.println(supToCil(2.6, 3.4));
+
+        System.out.println(pluraleSM("albero"));
+
+        System.out.println(pluraleSF("primula"));
+
+        System.out.println(femminile("primula"));
+
+        System.out.println(plurale("primula"));
+
+        System.out.println(plurale("torre"));
+
+        System.out.println(b(5));
+
+        System.out.println(b(0));
+
+        System.out.println(btrVal("++"));
+
+        System.out.println(btrVal("+."));
     }
 
     /**
@@ -19,18 +35,117 @@ public class FirstProgram {
     }
 
     /**
-     *
      * @param s: a string value
-     * @return the plural name of a string
+     * @return the plural name of a male string
      */
-    public static String pluraleSm(String s) {
+    public static String pluraleSM(String s) {
 
-       return (s.substring(0, s.length()-1) + "i");
+        return (s.substring(0, s.length() - 1) + "i");
     }
 
+    /**
+     * @param i an integer number. REQUIRE not null
+     * @return the integer number * 2
+     */
     public static int multiplyByTwo(int i) {
         int var = 2;
         return i * var;
+    }
+
+    /**
+     * @param s a String value
+     * @return the plural name of a female string
+     */
+    public static String pluraleSF(String s) {
+
+        return (s.substring(0, s.length() - 1) + "e");
+    }
+
+    /**
+     * @param s a String value
+     * @return true if s is female, false otherwise
+     */
+    public static boolean femminile(String s) {
+
+        return s.charAt(s.length() - 1) == 'a';
+    }
+
+    /**
+     *
+     * @param s a String value
+     * @return pluraleSF(s) if s is female, pluraleSM(s) otherwise
+     */
+    public static String plurale(String s) {
+
+        if (femminile(s)) {
+
+            return pluraleSF(s);
+
+        } else {
+
+            return pluraleSM(s);
+        }
+
+        // return (femminile(s) ? pluraleSF(s) : pluraleSM(s));
+    }
+
+    // COSTANTI
+    private static final double b0 = (100 * Math.pow(2, +0.25));
+    private static final double b1 = (100 * Math.pow(2, -0.25));
+
+    public static double b(int k) {
+        if (k == 0) {
+
+            return b0;
+
+        } else if (k == 1) {
+
+            return b1;
+
+        } else {
+
+            return (b(k - 2) / 2);
+        }
+    }
+
+    /**
+     * Rappresentazione Ternaria Bilanciata
+     * @param num stringa di -/./+
+     * @return il valore di btr
+     */
+    public static int btrVal(String num) {
+        int k = num.length() - 1;
+        String pre = num.substring(0, k);
+        char lsb = num.charAt(k);
+
+        if (k == 0) {
+
+            return btdVal(lsb);
+
+        } else {
+
+            return (3 * btrVal(pre) + btdVal(lsb));
+        }
+    }
+
+    /**
+     *
+     * @param btd il carattere da codificare -/./+
+     * @return il valore associato a ciascun carattere
+     */
+    public static int btdVal(char btd) {
+        if (btd == '-') {
+
+            return -1;
+
+        } else if (btd == '.') {
+
+            return 0;
+
+        } else {
+
+            return +1;
+        }
     }
 }
 
