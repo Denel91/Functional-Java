@@ -112,6 +112,7 @@ public class FirstProgram {
      * @param num stringa di -/./+
      * @return il valore di btr
      */
+
     /**
     public static int btrVal(String num) {
         int k = num.length() - 1;
@@ -176,15 +177,15 @@ public class FirstProgram {
         int[] u = new int[n + 1];
         u[1] = 1;
 
-        for (int x = 2; x <= n; x++ ) {
+        for (int x = 2; x <= n; x++) {
 
-            if ( x % 2 == 0) { // pari
+            if (x % 2 == 0) { // pari
 
-                u[x] = (2 * u[x/2] -1);
+                u[x] = (2 * u[x / 2] - 1);
 
             } else { // dispari
 
-                u[x] = (2 * u[x/2] +1);
+                u[x] = (2 * u[x / 2] + 1);
 
             }
         }
