@@ -22,6 +22,12 @@ public class FirstProgram {
         System.out.println(btrVal("++"));
 
         System.out.println(btrVal("+."));
+
+        System.out.println(btrVal("-"));
+
+        System.out.println(btrVal("."));
+
+        System.out.println(btrVal("+"));
     }
 
     /**
@@ -44,15 +50,6 @@ public class FirstProgram {
     }
 
     /**
-     * @param i an integer number. REQUIRE not null
-     * @return the integer number * 2
-     */
-    public static int multiplyByTwo(int i) {
-        int var = 2;
-        return i * var;
-    }
-
-    /**
      * @param s a String value
      * @return the plural name of a female string
      */
@@ -71,7 +68,6 @@ public class FirstProgram {
     }
 
     /**
-     *
      * @param s a String value
      * @return pluraleSF(s) if s is female, pluraleSM(s) otherwise
      */
@@ -110,9 +106,11 @@ public class FirstProgram {
 
     /**
      * Rappresentazione Ternaria Bilanciata
+     *
      * @param num stringa di -/./+
      * @return il valore di btr
      */
+    /**
     public static int btrVal(String num) {
         int k = num.length() - 1;
         String pre = num.substring(0, k);
@@ -127,9 +125,9 @@ public class FirstProgram {
             return (3 * btrVal(pre) + btdVal(lsb));
         }
     }
+     */
 
     /**
-     *
      * @param btd il carattere da codificare -/./+
      * @return il valore associato a ciascun carattere
      */
@@ -146,6 +144,50 @@ public class FirstProgram {
 
             return +1;
         }
+    }
+
+    /**
+     * Rappresentazione Ternaria Bilanciata
+     *
+     * @param num una stringa
+     * @return il valore di btr
+     */
+    public static int btrVal(String num) {
+
+        int n = num.length();
+        int v = 0;
+
+        for (int i = 0; i < n; i++) {
+
+            v = 3 * v + btdVal(num.charAt(i));
+        }
+
+        return v;
+    }
+
+    /**
+     * @param n an integer value. REQUIRE not null
+     * @return an integer value.
+     */
+    public static int ufo(int n) { // X > 0
+
+        int[] u = new int[n + 1];
+        u[1] = 1;
+
+        for (int x = 2; x <= n; x++ ) {
+
+            if ( x % 2 == 0) { // pari
+
+                u[x] = (2 * u[x/2] -1);
+
+            } else { // dispari
+
+                u[x] = (2 * u[x/2] +1);
+
+            }
+        }
+
+        return u[n];
     }
 }
 
