@@ -28,6 +28,8 @@ public class FirstProgram {
         System.out.println(btrVal("."));
 
         System.out.println(btrVal("+"));
+
+        System.out.println("Ufo: " + ufo(2));
     }
 
     /**
@@ -169,7 +171,7 @@ public class FirstProgram {
      * @param n an integer value. REQUIRE not null
      * @return an integer value.
      */
-    public static int ufo(int n) { // X > 0
+    public static int ufo(int n) { // n > 0
 
         int[] u = new int[n + 1];
         u[1] = 1;
