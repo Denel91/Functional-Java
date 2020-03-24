@@ -23,6 +23,14 @@ public class ListTest {
 
     public static void main(String[] args) {
 
+        IntSList intSList = new IntSList();
+        intSList = new IntSList(4, intSList);
+        intSList = intSList.cons(7);
+        intSList = intSList.cons(8);
+        intSList = intSList.cons(3);
+
+        System.out.println(intSList.toString());
+
         System.out.println(ListTest.test());
     }
 }
