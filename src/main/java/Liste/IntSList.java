@@ -107,4 +107,29 @@ public class IntSList {
     public IntSList cons(int n) {
         return new IntSList(n, this);
     }
+
+    @Override
+    public String toString() {
+        if (this.empty) {
+
+            return "(---)";
+
+        } else if (rest.isNull()) {
+
+            return "(" + this.first + ")";
+
+        } else {
+
+            String elements = "(" + this.first;
+            IntSList restElements = this.rest;
+
+            while (!restElements.isNull()) {
+
+                elements = elements + ", " + restElements.car();
+                restElements = restElements.cdr();
+            }
+
+            return elements + ")";
+        }
+    }
 } // class IntSList
