@@ -125,7 +125,7 @@ public class IntSList {
 
             while (!restElements.isNull()) {
 
-                elements = elements + ", " + restElements.car();
+                elements += ", " + restElements.car();
                 restElements = restElements.cdr();
             }
 
