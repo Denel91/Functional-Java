@@ -2,6 +2,13 @@ package Java_Util_Function;
 
 import java.util.function.*;
 
+/**
+ * ATTENZIONE: Questa classe non fa parte delle lezioni.
+ */
+
+/**
+ * Classe di prova per le interfacce funzionali general purpose
+ */
 public class Snippet {
     public static void main(String[] args) {
 
