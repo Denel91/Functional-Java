@@ -1,7 +1,11 @@
 package Liste;
 
 /**
- * La classe rappresenta una lista di interi
+ * Definizione di una classe per realizzare oggetti
+ * assimilabili alle liste in Scheme, limitatamente al caso
+ * di liste di interi.
+ *
+ * Le liste create sono "immutabili".
  *
  * IntSList il = new IntSList(): Oggetto lista vuota    // null
  * il.isNull() : boolean                                // null?
@@ -36,6 +40,7 @@ package Liste;
 
 public class IntSList {
 
+    // Rappresentazione interna di una lista
     // variabili di istanza private
     private boolean empty;
     private int first;
@@ -43,6 +48,8 @@ public class IntSList {
 
     /**
      * Costruttore di istanza
+     *
+     * Creazione di una lista vuota
      */
     public IntSList() {
         this.empty = true;
@@ -52,6 +59,8 @@ public class IntSList {
 
     /**
      * Costruttore di istanza
+     *
+     * Creazione di una lista non vuota
      *
      * @param f the first element of the IntSList
      * @param r the rest of the IntSList
@@ -63,6 +72,8 @@ public class IntSList {
     }
 
     /**
+     * Verifica se una lista è vuota
+     *
      * @return true if IntSList is empty, false otherwise
      */
     public boolean isNull() {
@@ -70,6 +81,8 @@ public class IntSList {
     }
 
     /**
+     * Ritorna il primo elemento della lista
+     *
      * @return the first element of the IntSList
      */
     public int car() {
@@ -77,6 +90,8 @@ public class IntSList {
     }
 
     /**
+     * Ritorna la lista tranne il primo elemento
+     *
      * @return the IntSList without the first element
      */
     public IntSList cdr() {
@@ -84,6 +99,8 @@ public class IntSList {
     }
 
     /**
+     * Costruisce una lista a partire dall'elemento n in prima posizione
+     *
      * @param n an Integer value. REQUIRE not null
      * @return an IntSList starting from n in the first position
      */
