@@ -108,6 +108,23 @@ public class IntSList {
         return new IntSList(n, this);
     }
 
+    /**
+     * Calcola la lunghezza di IntSList
+     *
+     * @return the length of the List
+     */
+    public int length() {
+
+        if (this.isNull()) {
+
+            return 0;
+
+        } else {
+
+            return this.cdr().length() + 1;
+        }
+    }
+
     @Override
     public String toString() {
         if (this.empty) {
