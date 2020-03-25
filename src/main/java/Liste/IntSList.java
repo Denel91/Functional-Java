@@ -128,6 +128,12 @@ public class IntSList implements Iterable<Integer> {
         }
     }
 
+    /**
+     * Restituisce l'i-esimo elemento della lista
+     *
+     * @param index l'indice dell'elemento all'interno della lista
+     * @return l'elemento cercato se l'indice è compreso tra 0 e la lunghezza della lista
+     */
     public int listRef(int index) {
         if (index == 0) {
             return car();
@@ -136,6 +142,11 @@ public class IntSList implements Iterable<Integer> {
         }
     }
 
+    /**
+     * Visualizza la lista di Integer
+     *
+     * @return the IntSList in String format
+     */
     @Override
     public String toString() {
         if (this.empty) {
@@ -180,6 +191,11 @@ public class IntSList implements Iterable<Integer> {
         System.out.print(t);
     }
 
+    /**
+     * Iteratore
+     *
+     * @return the IntSList with the iterator() method
+     */
     @Override
     public Iterator<Integer> iterator() {
 
