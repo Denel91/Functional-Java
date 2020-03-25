@@ -1,5 +1,8 @@
 package Liste;
 
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
 /**
  * Definizione di una classe per realizzare oggetti
  * assimilabili alle liste in Scheme, limitatamente al caso
@@ -38,7 +41,7 @@ package Liste;
  * @version 24/03/2020
  */
 
-public class IntSList {
+public class IntSList implements Iterable<Integer> {
 
     // Rappresentazione interna di una lista
     // variabili di istanza private
@@ -125,6 +128,14 @@ public class IntSList {
         }
     }
 
+    public int listRef(int index) {
+        if (index == 0) {
+            return car();
+        } else {
+            return cdr().listRef(index - 1);
+        }
+    }
+
     @Override
     public String toString() {
         if (this.empty) {
@@ -148,5 +159,57 @@ public class IntSList {
 
             return elements + ")";
         }
+    }
+
+    /**
+     * Visualizza la lista di interi
+     *
+     * @param sList la lista di interi da visualizzare
+     */
+    public void display(IntSList sList) {
+        String s = "(";
+        String t = ")";
+
+        System.out.print(s);
+
+        for (Integer el : sList) {
+
+            System.out.printf(" %s ", el);
+        }
+
+        System.out.print(t);
+    }
+
+    @Override
+    public Iterator<Integer> iterator() {
+
+        return new Iterator<Integer>() {
+            private int current = 0;
+
+            @Override
+            public boolean hasNext() {
+                return (this.current < length());
+            }
+
+            @Override
+            public Integer next() {
+
+                if (this.current < length()) {
+                    int res = listRef(current);
+                    this.current++;
+                    return res;
+
+                } else {
+
+                    throw new NoSuchElementException();
+
+                }
+            }
+
+            @Override
+            public void remove() {
+                throw new UnsupportedOperationException();
+            }
+        };
     }
 } // class IntSList
