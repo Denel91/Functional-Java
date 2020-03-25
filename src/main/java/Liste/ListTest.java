@@ -29,7 +29,9 @@ public class ListTest {
         intSList = intSList.cons(8);
         intSList = intSList.cons(3);
 
-        System.out.println(intSList.toString());
+        System.out.println("List -> " + intSList.toString());
+
+        System.out.println("Legth -> " + intSList.length());
 
         System.out.println(ListTest.test());
     }
