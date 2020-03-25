@@ -185,7 +185,14 @@ public class IntSList implements Iterable<Integer> {
 
         for (Integer el : sList) {
 
-            System.out.printf(" %s ", el);
+            if (el != listRef(length() - 1)) {
+
+                System.out.print(el + ", ");
+
+            } else {
+
+                System.out.print(el);
+            }
         }
 
         System.out.print(t);
