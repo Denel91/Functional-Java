@@ -31,6 +31,8 @@ public class ListTest {
 
         intSList.display(intSList);
 
+        //System.out.println(intSList.listRef(3));
+
         //System.out.println("List -> " + intSList.toString());
 
         //System.out.println("Legth -> " + intSList.length());
