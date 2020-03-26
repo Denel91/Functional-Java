@@ -6,6 +6,7 @@ package Liste;
  * test() : int
  * range(int m, int n) : IntSList
  * rangeIterativo(int m, int n) : void
+ * iterationRange(int m, int n) : void
  * test2(int m, int n) : void
  *
  * @version 26/03/2020
