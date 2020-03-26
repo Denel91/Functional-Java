@@ -67,9 +67,36 @@ public class ListTest {
     }
 
     /**
+     * Rappresenta un intervallo di interi consecutivi
+     *
+     * @param m the first element of the IntSList. REQUIRE m < n
+     * @param n the last element of the IntSList. REQUIRE n > m
+     */
+    public static void iterationRange(int m, int n) {
+        String s = "(";
+        String t = ")";
+
+        System.out.print(s);
+
+        for (int i = n; i >= m; i--) {
+
+            if (i > m) {
+
+                System.out.print(((i - m) + 1) + ", ");
+
+            } else {
+
+                System.out.print(((i - m) + 1));
+            }
+        }
+
+        System.out.print(t);
+    }
+
+    /**
      * Verifica se un numero è presente in un intervallo tra minValueInclusive e maxValueInclusive
      *
-     * @param i the number to verify
+     * @param i                 the number to verify
      * @param minValueInclusive the first number of the interval
      * @param maxValueInclusive the last number of the interval
      * @return true if i is between minValueInclusive and maxValueInclusive
@@ -107,7 +134,7 @@ public class ListTest {
         intSList = intSList.cons(8);
         intSList = intSList.cons(3);
 
-        //intSList.display(intSList);
+        intSList.display(intSList);
 
         //System.out.println(intSList.listRef(3));
 
@@ -118,6 +145,7 @@ public class ListTest {
         test();
         test2(1, 5);
         rangeIterativo(1, 8);
+        iterationRange(1, 6);
         System.out.println("\n" + between(4, 2, 8));
     }
 }
