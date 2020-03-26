@@ -293,13 +293,13 @@ public class IntSList implements Iterable<Integer> {
 
             @Override
             public Integer next() {
+
                 if (this.current < length()) {
                     int res = listRef(current);
                     this.current++;
                     return res;
 
                 } else {
-
                     throw new NoSuchElementException();
                 }
             }
