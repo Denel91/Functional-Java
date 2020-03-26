@@ -15,6 +15,11 @@ import java.util.NoSuchElementException;
  * il.car() : int                                       // car
  * il.cdr() : IntSList                                  // cdr
  * il.cons(n) : IntSList                                // cons
+ * il.length() : int                                    // length
+ * il.listRef(i) : int                                  // list-ref
+ * il.equals(cl) : boolean                              // equal?
+ * il.append(ql) : IntSList                             // append
+ * il.reverse() : IntSList                              // reverse
  *
  * null:    Rappresenta la lista vuota
  * null?:   Verifica se la lista è vuota
@@ -38,16 +43,18 @@ import java.util.NoSuchElementException;
  * il = il.cons(4);
  * il --> (4 5)
  *
- * @version 24/03/2020
+ * @version 26/03/2020
  */
 
 public class IntSList implements Iterable<Integer> {
 
     // Rappresentazione interna di una lista
-    // variabili di istanza private
-    private boolean empty;
-    private int first;
-    private IntSList rest;
+    // variabili di istanza private immutabili
+    private final boolean empty;
+    private final int first;
+    private final IntSList rest;
+    // costante globale di classe
+    public static final IntSList NULL_INTLIST = new IntSList();
 
     /**
      * Costruttore di istanza
@@ -131,14 +138,85 @@ public class IntSList implements Iterable<Integer> {
     /**
      * Restituisce l'i-esimo elemento della lista
      *
-     * @param index l'indice dell'elemento all'interno della lista
-     * @return l'elemento cercato se l'indice è compreso tra 0 e la lunghezza della lista
+     * @param index the index of the element within the list
+     * @return the element searched if the index is between 0 and the length of the list
      */
     public int listRef(int index) {
         if (index == 0) {
+
             return car();
+
         } else {
+
             return cdr().listRef(index - 1);
+        }
+    }
+
+    /**
+     * Confronta se due liste sono uguali
+     *
+     * @param cl the list to compare
+     * @return true if this and cl are equals, false otherwise
+     */
+    public boolean equals(IntSList cl) {
+        if (this.isNull()) {
+
+            return cl.isNull();
+
+        } else if (cl.isNull()) {
+
+            return false;
+
+        } else if (car() == cl.car()) {
+
+            return cdr().equals(cl.cdr());
+
+        } else {
+
+            return false;
+        }
+    }
+
+    /**
+     * Aggiunge in coda una nuova lista
+     *
+     * @param ql the list to add at the end of this
+     * @return the complete list this with ql
+     */
+    public IntSList append(IntSList ql) {
+        if (this.isNull()) {
+
+            return ql;
+
+        } else {
+
+            return this.cdr().append(ql).cons(car());
+        }
+    }
+
+    /**
+     * Restituisce la lista con gli elementi invertiti
+     *
+     * @return the list with inverted elements
+     */
+    public IntSList reverse() {
+        return reverseRec(NULL_INTLIST);
+    }
+
+    /**
+     * Metodo di supporto privato che inverte gli elementi della lista rl
+     *
+     * @param rl the list to reverse
+     * @return the list with inverted elements
+     */
+    private IntSList reverseRec(IntSList rl) {
+        if (this.isNull()) {
+
+            return rl;
+
+        } else {
+
+            return cdr().reverseRec(rl.cons(car()));
         }
     }
 
@@ -199,13 +277,12 @@ public class IntSList implements Iterable<Integer> {
     }
 
     /**
-     * Iteratore
+     * Iteratore: Permette di iterare sugli elementi della lista.
      *
      * @return the IntSList with the iterator() method
      */
     @Override
     public Iterator<Integer> iterator() {
-
         return new Iterator<Integer>() {
             private int current = 0;
 
