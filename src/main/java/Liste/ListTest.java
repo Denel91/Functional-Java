@@ -67,6 +67,18 @@ public class ListTest {
     }
 
     /**
+     * Verifica se un numero è presente in un intervallo tra minValueInclusive e maxValueInclusive
+     *
+     * @param i the number to verify
+     * @param minValueInclusive the first number of the interval
+     * @param maxValueInclusive the last number of the interval
+     * @return true if i is between minValueInclusive and maxValueInclusive
+     */
+    public static boolean between(int i, int minValueInclusive, int maxValueInclusive) {
+        return i >= minValueInclusive && i <= maxValueInclusive;
+    }
+
+    /**
      * Metodo di test
      *
      * @param m the first element of the IntSList
@@ -106,5 +118,6 @@ public class ListTest {
         test();
         test2(1, 5);
         rangeIterativo(1, 8);
+        System.out.println("\n" + between(4, 2, 8));
     }
 }
