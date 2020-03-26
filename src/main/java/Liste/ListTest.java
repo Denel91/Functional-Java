@@ -4,21 +4,61 @@ package Liste;
  * Classe di test per gli oggetti di tipo IntSList
  *
  * test() : int
+ * range(int m, int n) : IntSList
+ * test2(int m, int n) : void
  *
- * @version 24/03/2020
+ * @version 26/03/2020
  */
 public class ListTest {
 
     /**
-     * @return an Integer value; the first element of IntSList
+     * Metodo di test
+     *
+     * @return the IntSList -> (4, 5)
      */
-    public static int test() {
+    public static void test() {
         IntSList il = new IntSList();
         il = new IntSList(5, il);
         il = il.cons(4);
 
-        System.out.println("Stato corrente della lista: " + il.isNull());
-        return il.cdr().car();
+        System.out.println(il.isNull() ? "Empty" : "Not Empty");
+        System.out.println(il.toString());
+    }
+
+    /**
+     * Crea una lista di interi a partire da m fino ad n
+     *
+     * @param m the first element of the IntSList
+     * @param n the last element of the IntSList
+     * @return the IntSList from m to n
+     */
+    public static IntSList range(int m, int n) { //n-m+1
+        if (m > n) {
+            return IntSList.NULL_INTLIST;
+        } else {
+            return range(m + 1, n).cons(m);
+        }
+    }
+
+    /**
+     * Metodo di test
+     *
+     * @param m the first element of the IntSList
+     * @param n the last element of the IntSList
+     */
+    public static void test2(int m, int n) {
+        IntSList il = range(m, n);
+        IntSList al = il.reverse();
+
+        System.out.println("il -> " + il.toString());
+        System.out.println("al -> " + al.toString());
+
+        // Test dei metodi
+        System.out.println(il.append(al));
+        System.out.println(il.equals(al));
+        System.out.println(il.reverse());
+        System.out.println(il.listRef(3));
+        System.out.println(il.length());
     }
 
     public static void main(String[] args) {
@@ -29,7 +69,7 @@ public class ListTest {
         intSList = intSList.cons(8);
         intSList = intSList.cons(3);
 
-        intSList.display(intSList);
+        //intSList.display(intSList);
 
         //System.out.println(intSList.listRef(3));
 
@@ -37,6 +77,8 @@ public class ListTest {
 
         //System.out.println("Legth -> " + intSList.length());
 
-        //System.out.println(ListTest.test());
+        //test();
+
+        test2(1, 5);
     }
 }
