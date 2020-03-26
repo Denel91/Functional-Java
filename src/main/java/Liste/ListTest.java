@@ -5,8 +5,8 @@ package Liste;
  *
  * test() : int
  * range(int m, int n) : IntSList
- * rangeIterativo(int m, int n) : void
- * iterationRange(int m, int n) : void
+ * iterativeRange(int m, int n) : IntSList
+ * between(int i, int minValueInclusive, int maxValueInclusive) : boolean
  * test2(int m, int n) : void
  *
  * @version 26/03/2020
@@ -41,57 +41,22 @@ public class ListTest {
     }
 
     /**
-     * Rappresenta un intervallo di interi consecutivi
+     * Crea una lista di interi a partire da m fino ad n
+     * (Iterative mode)
      *
      * @param m the first element of the IntSList. REQUIRE m < n
      * @param n the last element of the IntSList. REQUIRE n > m
+     * @return the IntSList from m to n
      */
-    public static void rangeIterativo(int m, int n) {
-        String s = "(";
-        String t = ")";
-
-        System.out.print(s);
-
-        for (int i = m; i <= n; i++) {
-
-            if (i < n) {
-
-                System.out.print(i + ", ");
-
-            } else {
-
-                System.out.print(i);
-            }
-        }
-
-        System.out.print(t);
-    }
-
-    /**
-     * Rappresenta un intervallo di interi consecutivi
-     *
-     * @param m the first element of the IntSList. REQUIRE m < n
-     * @param n the last element of the IntSList. REQUIRE n > m
-     */
-    public static void iterationRange(int m, int n) {
-        String s = "(";
-        String t = ")";
-
-        System.out.print(s);
+    public static IntSList iterativeRange(int m, int n) {
+        IntSList list = new IntSList();
 
         for (int i = n; i >= m; i--) {
 
-            if (i > m) {
-
-                System.out.print(((i - m) + 1) + ", ");
-
-            } else {
-
-                System.out.print(((i - m) + 1));
-            }
+            list = list.cons(i);
         }
 
-        System.out.print(t);
+        return list;
     }
 
     /**
@@ -113,18 +78,20 @@ public class ListTest {
      * @param n the last element of the IntSList
      */
     public static void test2(int m, int n) {
-        IntSList il = range(m, n);
+        IntSList sList = range(m, n);
+        IntSList il = iterativeRange(m, n);
         IntSList al = il.reverse();
 
+        System.out.println("sList -> " + sList.toString());
         System.out.println("il -> " + il.toString());
         System.out.println("al -> " + al.toString());
 
         // Test dei metodi
-        System.out.println(il.append(al));
-        System.out.println(il.equals(al));
-        System.out.println(il.reverse());
-        System.out.println(il.listRef(3));
-        System.out.println(il.length());
+        // System.out.println(il.append(al));
+        // System.out.println(il.equals(al));
+        // System.out.println(il.reverse());
+        // System.out.println(il.listRef(3));
+        // System.out.println(il.length());
     }
 
     public static void main(String[] args) {
@@ -143,10 +110,10 @@ public class ListTest {
 
         //System.out.println("Legth -> " + intSList.length());
 
-        test();
-        test2(1, 5);
-        rangeIterativo(1, 8);
-        iterationRange(1, 6);
-        System.out.println("\n" + between(4, 2, 8));
+        //test();
+
+        //test2(1, 8);
+
+        //System.out.println("\n" + between(4, 2, 8));
     }
 }
