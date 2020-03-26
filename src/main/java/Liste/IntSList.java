@@ -283,25 +283,21 @@ public class IntSList implements Iterable<Integer> {
      */
     @Override
     public Iterator<Integer> iterator() {
+        IntSList c = this;
+
         return new Iterator<Integer>() {
-            private int current = 0;
+            private IntSList current = c;
 
             @Override
             public boolean hasNext() {
-                return (this.current < length());
+                return current != null && !current.isNull();
             }
 
             @Override
             public Integer next() {
-
-                if (this.current < length()) {
-                    int res = listRef(current);
-                    this.current++;
-                    return res;
-
-                } else {
-                    throw new NoSuchElementException();
-                }
+                Integer i = current.first;
+                current = current.rest;
+                return i;
             }
 
             @Override
