@@ -293,7 +293,6 @@ public class IntSList implements Iterable<Integer> {
 
             @Override
             public Integer next() {
-
                 if (this.current < length()) {
                     int res = listRef(current);
                     this.current++;
@@ -302,7 +301,6 @@ public class IntSList implements Iterable<Integer> {
                 } else {
 
                     throw new NoSuchElementException();
-
                 }
             }
 
