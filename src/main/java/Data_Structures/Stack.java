@@ -15,7 +15,7 @@ import java.util.List;
  * pop() : Object
  * push(Object e) : void
  * contains​(Object o): boolean
- * search​(Object o)
+ * search​(Object o) : int
  * clear() : void
  * clone() : Object
  * equals(Stack s) : boolean
