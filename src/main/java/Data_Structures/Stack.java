@@ -101,7 +101,7 @@ public class Stack<E> {
      * Insert the item on top of the stack
      *
      * @param item the object to insert on top of the stack
-     * PRE-CONDITION top < capacity
+     * PRE-CONDITION size < capacity
      */
     public void push(E item) {
         if (size() == capacity)
