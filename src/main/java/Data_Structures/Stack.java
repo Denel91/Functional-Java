@@ -26,6 +26,7 @@ import java.util.Objects;
 
 public class Stack<E> {
     // variabili di istanza
+    private int capacity; // specifies the maximum capacity of the stack
     private int top;  // the index of the item at the top of the stack
     private List<E> elements; // the items of the stack
     private static final int DEFAULT_SIZE = 10; // default stack size
@@ -43,7 +44,7 @@ public class Stack<E> {
      * @param capacity the size of the stack. REQUIRE >= 0
      */
     public Stack(int capacity) {
-        capacity = capacity == 0 ? DEFAULT_SIZE : capacity;
+        this.capacity = capacity == 0 ? DEFAULT_SIZE : capacity;
         this.top = -1; // Stack inizialmente vuoto
         this.elements = new ArrayList<>(capacity); // Constructs an empty list with the specified initial capacity.
     }
@@ -53,6 +54,10 @@ public class Stack<E> {
      */
     public int size() {
         return this.elements.size();
+    }
+
+    private int getCapacity() {
+        return this.capacity;
     }
 
     /**
@@ -65,6 +70,7 @@ public class Stack<E> {
     /**
      * @return the object on top of the stack without taking it out
      * @throws EmptyStackException if isEmpty() is true
+     * PRE-CONDITION top >= 0
      */
     public E peek() throws EmptyStackException {
         if (isEmpty())
@@ -78,6 +84,7 @@ public class Stack<E> {
      *
      * @return the item at the top of the stack
      * @throws EmptyStackException if isEmpty() is true
+     * PRE-CONDITION top >= 0
      */
     public E pop() throws EmptyStackException {
         Objects.requireNonNull(this.elements);
@@ -94,8 +101,11 @@ public class Stack<E> {
      * Insert the item on top of the stack
      *
      * @param item the object to insert on top of the stack
+     * PRE-CONDITION top < capacity
      */
     public void push(E item) {
+        if (size() == capacity)
+            throw new IllegalStateException("Stack is full");
         Objects.requireNonNull(this.elements);
         elements.add(++top, item);
         assert (top == elements.size() - 1);
@@ -103,7 +113,7 @@ public class Stack<E> {
 
     public static void main(String[] args) {
 
-        Stack<Integer> myStack = new Stack<>(5);
+        Stack<Integer> myStack = new Stack<>(8);
 
         System.out.println(myStack.isEmpty()); // true
         System.out.println(myStack.size()); // 0
@@ -113,6 +123,7 @@ public class Stack<E> {
         myStack.push(2);
         myStack.push(4);
         myStack.push(3);
+        System.out.println(myStack.getCapacity()); // 8
         System.out.println(myStack.size()); // 6
         System.out.println(myStack.pop()); // 3
         System.out.println(myStack.size()); // 5
