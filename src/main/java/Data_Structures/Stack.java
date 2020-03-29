@@ -64,7 +64,7 @@ public class Stack<E> {
      * @return true if this stack contains no elements.
      */
     public boolean isEmpty() {
-        return top < 0;
+        return this.size() == 0;
     }
 
     /**
@@ -115,17 +115,20 @@ public class Stack<E> {
 
         Stack<Integer> myStack = new Stack<>(8);
 
-        System.out.println(myStack.isEmpty()); // true
-        System.out.println(myStack.size()); // 0
+        System.out.println("Stack is empty?: " + myStack.isEmpty()); // true
+        System.out.println("Size of myStack: " + myStack.size()); // 0
+
         myStack.push(5);
         myStack.push(6);
         myStack.push(8);
         myStack.push(2);
         myStack.push(4);
         myStack.push(3);
-        System.out.println(myStack.getCapacity()); // 8
-        System.out.println(myStack.size()); // 6
-        System.out.println(myStack.pop()); // 3
-        System.out.println(myStack.size()); // 5
+
+        System.out.println("Size after push(): " + myStack.size()); // 6
+        System.out.println("Capacity: " + myStack.getCapacity()); // 8
+        System.out.println("First element: " + myStack.peek()); // 3
+        System.out.println("Item removed: " + myStack.pop()); // 3
+        System.out.println("Size after pop(): " + myStack.size()); // 5
     }
 }
