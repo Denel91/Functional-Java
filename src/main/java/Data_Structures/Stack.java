@@ -45,7 +45,7 @@ public class Stack<E> {
     public Stack(int capacity) {
         capacity = capacity == 0 ? DEFAULT_SIZE : capacity;
         this.top = -1; // Stack inizialmente vuoto
-        this.elements = new ArrayList<>(capacity);
+        this.elements = new ArrayList<>(capacity); // Constructs an empty list with the specified initial capacity.
     }
 
     /**
