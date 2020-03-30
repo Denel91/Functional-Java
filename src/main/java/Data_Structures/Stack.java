@@ -19,7 +19,7 @@ import java.util.Objects;
  * contains​(Object o): boolean
  * search​(Object o) : int
  * clear() : void
- * clone() : Object
+ * cloneStack() : Object
  * equals(Stack s) : boolean
  * toString() : String
  */
@@ -50,17 +50,47 @@ public class Stack<E> {
     }
 
     /**
+     * Calculate the stack size
+     *
      * @return the size of the stack
      */
     public int size() {
         return this.elements.size();
     }
 
-    private int getCapacity() {
+    /**
+     * @return the default size of the stack
+     */
+    public static int getDefaultSize() {
+        return DEFAULT_SIZE;
+    }
+
+    /**
+     * @return the current capacity of the stack
+     */
+    public int getCapacity() {
         return this.capacity;
     }
 
     /**
+     * Set a new capacity for the stack
+     *
+     * @param capacity the new capacity
+     */
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
+    }
+
+    /**
+     * @return the elements of the stack
+     */
+    public List<E> getElements() {
+        return elements;
+    }
+
+    /**
+     * Verify if the stack is empty
+     *
      * @return true if this stack contains no elements.
      */
     public boolean isEmpty() {
@@ -68,9 +98,14 @@ public class Stack<E> {
     }
 
     /**
+     * Fetch the first element of the Stack or the element
+     * present at the top of the Stack.
+     * The element retrieved does not get deleted or removed from
+     * the Stack.
+     *
      * @return the object on top of the stack without taking it out
      * @throws EmptyStackException if isEmpty() is true
-     * PRE-CONDITION top >= 0
+     *                             PRE-CONDITION top >= 0
      */
     public E peek() throws EmptyStackException {
         if (isEmpty())
@@ -84,7 +119,7 @@ public class Stack<E> {
      *
      * @return the item at the top of the stack
      * @throws EmptyStackException if isEmpty() is true
-     * PRE-CONDITION top >= 0
+     *                             PRE-CONDITION top >= 0
      */
     public E pop() throws EmptyStackException {
         Objects.requireNonNull(this.elements);
@@ -101,7 +136,7 @@ public class Stack<E> {
      * Insert the item on top of the stack
      *
      * @param item the object to insert on top of the stack
-     * PRE-CONDITION size < capacity
+     *             PRE-CONDITION size < capacity
      */
     public void push(E item) {
         if (size() == capacity)
@@ -111,24 +146,118 @@ public class Stack<E> {
         assert (top == elements.size() - 1);
     }
 
+    /**
+     * Check if an element is present in the stack
+     *
+     * @param item the element to verify
+     * @return true if this list contains the specified element.
+     */
+    public boolean contains​(E item) {
+        return this.elements.contains(item);
+    }
+
+    /**
+     * Search the item inside the stack
+     *
+     * @param item the element to search in the stack
+     * @return the index of the first occurrence of the specified element in this list, or -1 if this list does not
+     * contain the element.
+     */
+    public int search​(E item) {
+        return this.elements.indexOf(item);
+    }
+
+    /**
+     * Removes all of the elements from this list
+     */
+    public void clear() {
+        this.elements.clear();
+    }
+
+    /**
+     * Clone all elements of the stack
+     *
+     * @return a copy of the stack
+     */
+    public List<E> cloneStack() {
+        List<E> clone = new ArrayList<>(this.capacity);
+        clone.addAll(this.elements);
+        return clone;
+    }
+
+    /**
+     * Verify if two stacks are equals
+     *
+     * @param eStack the stack to compare
+     * @return true if the stacks are equals, false otherwise
+     */
+    public boolean equals(Stack<E> eStack) {
+        if (this.isEmpty()) {
+
+            return eStack.isEmpty();
+
+        } else if (eStack.isEmpty()) {
+
+            return false;
+
+        } else if (this.capacity == eStack.capacity && this.top == eStack.top && this.elements.equals(eStack.elements)) {
+
+            return true;
+
+        } else {
+
+            return false;
+
+        }
+    }
+
+    @Override
+    public String toString() {
+        if (isEmpty()) {
+
+            return "[---]";
+
+        } else {
+
+            return "Stack {" +
+                    "capacity = " + this.capacity +
+                    ", top = " + this.peek() +
+                    ", elements = " + this.elements + '}';
+        }
+    }
+
     public static void main(String[] args) {
 
         Stack<Integer> myStack = new Stack<>(8);
+        Stack<Integer> integerStack = new Stack<>(8);
+        Stack<Integer> stack = new Stack<>(6);
 
         System.out.println("Stack is empty?: " + myStack.isEmpty()); // true
         System.out.println("Size of myStack: " + myStack.size()); // 0
 
-        myStack.push(5);
+        myStack.push(1);
         myStack.push(6);
         myStack.push(8);
         myStack.push(2);
         myStack.push(4);
         myStack.push(3);
 
+        integerStack.push(1);
+        integerStack.push(6);
+        integerStack.push(8);
+        integerStack.push(2);
+        integerStack.push(4);
+        integerStack.push(3);
+
+        System.out.println(stack.toString()); // [---]
+        System.out.println(myStack.toString()); // Stack {capacity = 8, top = 3, elements = [1, 6, 8, 2, 4, 3]}
+        System.out.println("Equals?: " + myStack.equals(integerStack)); // true
         System.out.println("Size after push(): " + myStack.size()); // 6
         System.out.println("Capacity: " + myStack.getCapacity()); // 8
         System.out.println("First element: " + myStack.peek()); // 3
         System.out.println("Item removed: " + myStack.pop()); // 3
         System.out.println("Size after pop(): " + myStack.size()); // 5
+        System.out.println("Contains?: " + myStack.contains​(8)); // true
+        System.out.println("Search: " + myStack.search​(2)); // 3
     }
 }
