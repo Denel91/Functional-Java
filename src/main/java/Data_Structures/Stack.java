@@ -239,6 +239,8 @@ public class Stack<E> {
         myStack.push(4);
         myStack.push(3);
 
+        /***************************************/
+
         integerStack.push(1);
         integerStack.push(6);
         integerStack.push(8);
@@ -246,6 +248,9 @@ public class Stack<E> {
         integerStack.push(4);
         integerStack.push(3);
 
+        stack.setCapacity(10);
+
+        System.out.println("New Capacity: " + stack.getCapacity()); // 10
         System.out.println(stack.toString()); // [---]
         System.out.println(myStack.toString()); // [1, 6, 8, 2, 4, 3]
         System.out.println("Equals?: " + myStack.equals(integerStack)); // true
