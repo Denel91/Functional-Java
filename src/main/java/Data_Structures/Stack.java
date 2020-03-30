@@ -219,10 +219,7 @@ public class Stack<E> {
 
         } else {
 
-            return "Stack {" +
-                    "capacity = " + this.capacity +
-                    ", top = " + this.peek() +
-                    ", elements = " + this.elements + '}';
+            return elements.toString();
         }
     }
 
@@ -250,7 +247,7 @@ public class Stack<E> {
         integerStack.push(3);
 
         System.out.println(stack.toString()); // [---]
-        System.out.println(myStack.toString()); // Stack {capacity = 8, top = 3, elements = [1, 6, 8, 2, 4, 3]}
+        System.out.println(myStack.toString()); // [1, 6, 8, 2, 4, 3]
         System.out.println("Equals?: " + myStack.equals(integerStack)); // true
         System.out.println("Size after push(): " + myStack.size()); // 6
         System.out.println("Capacity: " + myStack.getCapacity()); // 8
