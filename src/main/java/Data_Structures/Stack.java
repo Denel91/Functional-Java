@@ -200,15 +200,9 @@ public class Stack<E> {
 
             return false;
 
-        } else if (this.capacity == eStack.capacity && this.top == eStack.top && this.elements.equals(eStack.elements)) {
+        } else
 
-            return true;
-
-        } else {
-
-            return false;
-
-        }
+            return this.capacity == eStack.capacity && this.top == eStack.top && this.elements.equals(eStack.elements);
     }
 
     @Override
