@@ -12,10 +12,14 @@ import java.util.Objects;
  *
  * Class overview:
  * size(): int
+ * getDefaultSize() : int
+ * getCapacity() : int
+ * setCapacity(int capacity) : void
+ * getElements() : List<E>
  * isEmpty(): boolean
  * peek():  Object
  * pop() : Object
- * push(Object e) : void
+ * push(Object o) : void
  * contains​(Object o): boolean
  * search​(Object o) : int
  * clear() : void
@@ -61,7 +65,7 @@ public class Stack<E> {
     /**
      * @return the default size of the stack
      */
-    public static int getDefaultSize() {
+    public int getDefaultSize() {
         return DEFAULT_SIZE;
     }
 
@@ -255,5 +259,7 @@ public class Stack<E> {
         System.out.println("Size after pop(): " + myStack.size()); // 5
         System.out.println("Contains?: " + myStack.contains​(8)); // true
         System.out.println("Search: " + myStack.search​(2)); // 3
+        System.out.println(myStack.getElements()); // [1, 6, 8, 2, 4]
+        System.out.println(myStack.getDefaultSize()); // 10
     }
 }
