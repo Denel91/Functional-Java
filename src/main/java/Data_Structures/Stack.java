@@ -10,6 +10,8 @@ import java.util.Objects;
  * vengono inseriti e prelevati secondo una modalità detta LIFO (Last In First out):
  * ogni elemento che viene inserito va in cima alla pila e l'ultimo inserito è anche il primo a uscirne.
  *
+ * Stack<E> is mutable, bounded.
+ *
  * Class overview:
  * size(): int
  * getDefaultSize() : int
@@ -114,7 +116,6 @@ public class Stack<E> {
     public E peek() throws EmptyStackException {
         if (isEmpty())
             throw new EmptyStackException();
-
         return elements.get(top);
     }
 
@@ -130,7 +131,6 @@ public class Stack<E> {
         E item;
         if (isEmpty())
             throw new EmptyStackException();
-
         item = elements.remove(top);
         assert (top == elements.size() - 1);
         return item;
@@ -183,10 +183,10 @@ public class Stack<E> {
      *
      * @return a copy of the stack
      */
-    public List<E> cloneStack() {
-        List<E> clone = new ArrayList<>(this.capacity);
-        clone.addAll(this.elements);
-        return clone;
+    public Object clone() {
+        Stack<E>  s = new Stack<>();
+        s.elements = new ArrayList<>(this.elements);
+        return s;
     }
 
     /**
@@ -197,26 +197,18 @@ public class Stack<E> {
      */
     public boolean equals(Stack<E> eStack) {
         if (this.isEmpty()) {
-
             return eStack.isEmpty();
-
         } else if (eStack.isEmpty()) {
-
             return false;
-
         } else
-
             return this.capacity == eStack.capacity && this.top == eStack.top && this.elements.equals(eStack.elements);
     }
 
     @Override
     public String toString() {
         if (isEmpty()) {
-
             return "[---]";
-
         } else {
-
             return elements.toString();
         }
     }
@@ -226,6 +218,7 @@ public class Stack<E> {
         Stack<Integer> myStack = new Stack<>(8);
         Stack<Integer> integerStack = new Stack<>(8);
         Stack<Integer> stack = new Stack<>(6);
+        Stack<Integer> els = (Stack<Integer>) myStack.clone();
 
         System.out.println("Stack is empty?: " + myStack.isEmpty()); // true
         System.out.println("Size of myStack: " + myStack.size()); // 0
