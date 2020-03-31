@@ -1,7 +1,6 @@
 package Liste;
 
 import java.util.Iterator;
-import java.util.NoSuchElementException;
 
 /**
  * Definizione di una classe per realizzare oggetti
