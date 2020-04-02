@@ -87,7 +87,7 @@ public class ListTest {
         System.out.println("al -> " + al.toString());
 
         // Test dei metodi
-        // System.out.println(il.append(al));
+        System.out.println(il.append(al));
         // System.out.println(il.equals(al));
         // System.out.println(il.reverse());
         // System.out.println(il.listRef(3));
@@ -112,7 +112,7 @@ public class ListTest {
 
         //test();
 
-        //test2(1, 8);
+        test2(1, 4);
 
         //System.out.println("\n" + between(4, 2, 8));
     }
