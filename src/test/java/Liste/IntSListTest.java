@@ -28,7 +28,7 @@ class IntSListTest {
     }
 
     @Test
-    void  cdr() {
+    void cdr() {
         list = new IntSList(7, list);
         list = list.cons(4);
         list = list.cons(6);
@@ -40,6 +40,7 @@ class IntSListTest {
     public int cInput;
     @Parameter(7)
     public int cExpected;
+
     @Test
     void cons() {
         list = new IntSList(cInput, list);
@@ -57,6 +58,7 @@ class IntSListTest {
 
     @Parameter(2)
     public int index;
+
     @Test
     void listRef() {
         list = new IntSList(7, list);
