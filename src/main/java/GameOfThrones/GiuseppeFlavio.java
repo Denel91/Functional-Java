@@ -27,4 +27,10 @@ public class GiuseppeFlavio {
 
         return j;
     }
+
+    public static void main(String[] args) {
+
+        GiuseppeFlavio gv = new GiuseppeFlavio();
+        System.out.println( gv.test(1000, 1));
+    }
 } // GiuseppeFlavio

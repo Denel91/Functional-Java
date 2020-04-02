@@ -41,10 +41,10 @@ public class TavolaRotonda {
     }
 
     public TavolaRotonda dopoUscitaCav() {
-        int n = cavalieri.length;
+        int n = cavalieri.length - 1;
         int[] cav = new int[n];
 
-        for (int i = 1; i < n - 1; i++) {
+        for (int i = 0; i < n - 1; i++) {
             cav[i] = cavalieri[i + 2];
         }
 
