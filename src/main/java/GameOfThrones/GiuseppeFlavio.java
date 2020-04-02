@@ -12,4 +12,19 @@ public class GiuseppeFlavio {
 
         return tr.cavConLaBrocca();
     }
+
+    public int test(int n, int repeats) {
+        int j = 0;
+        long t0 = System.currentTimeMillis(); // start cronometro
+
+        for (int i = 0; i < repeats; i++) {
+            j = ultimo(n);
+        }
+
+        long t = System.currentTimeMillis(); // stop cronometro
+
+        System.out.println(t - t0);
+
+        return j;
+    }
 } // GiuseppeFlavio

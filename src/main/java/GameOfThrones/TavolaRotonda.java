@@ -4,16 +4,16 @@ import Liste.IntSList;
 
 /**
  * Costruttori per creare "nuove" situazioni:
- * <p>
+ *
  * TavolaRotonda tr = new Tavola(n); // n > 0
- * <p>
+ *
  * Metodi per acquisire informazioni sulla situazione modellata:
- * <p>
+ *
  * tr.numerodiCavalieri() : int
  * tr.cavConLaBrocca() : int [etichetta, posizione]
- * <p>
+ *
  * Metodi per generare una nuova situazione a partire da una situazione data:
- * <p>
+ *
  * tr.dopoUscitaCav() : TavolaRotonda
  */
 
@@ -44,7 +44,7 @@ public class TavolaRotonda {
         int n = cavalieri.length;
         int[] cav = new int[n];
 
-        for (int i = 1; i <= n; i++) {
+        for (int i = 1; i < n - 1; i++) {
             cav[i] = cavalieri[i + 2];
         }
 
