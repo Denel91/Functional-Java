@@ -11,6 +11,7 @@ class IntSListTest {
 
     private IntSList sList = new IntSList();
     private IntSList list = new IntSList();
+    private IntSList intList = new IntSList();
 
     @Test
     void isNull() {
@@ -76,6 +77,27 @@ class IntSListTest {
 
     @Test
     void testEquals() {
+        list = new IntSList(7, list);
+        list = list.cons(4);
+        list = list.cons(6);
+        list = list.cons(9);
+        list = list.cons(5);
+
+        sList = new IntSList(7, sList);
+        sList = sList.cons(4);
+        sList = sList.cons(6);
+        sList = sList.cons(9);
+        sList = sList.cons(5);
+
+        intList = new IntSList(3, intList);
+        intList = intList.cons(5);
+        intList = intList.cons(2);
+        intList = intList.cons(9);
+        intList = intList.cons(6);
+
+        assertTrue(list.equals(sList), "Equals");
+
+        assertFalse(list.equals(intList), "Not Equals");
     }
 
     @Test
