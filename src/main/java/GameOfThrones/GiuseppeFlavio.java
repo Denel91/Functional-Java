@@ -2,8 +2,21 @@ package GameOfThrones;
 
 public class GiuseppeFlavio {
 
+    /*
     public int ultimo(int n) {
         TavolaRotonda tr = new TavolaRotonda(n);
+
+        while (tr.numeroDiCavalieri() > 1) {
+
+            tr = tr.dopoUscitaCav();
+        }
+
+        return tr.cavConLaBrocca();
+    }
+    */
+
+    public int ultimo2(int n) {
+        TavolaRotonda2 tr = new TavolaRotonda2(n);
 
         while (tr.numeroDiCavalieri() > 1) {
 
@@ -18,7 +31,7 @@ public class GiuseppeFlavio {
         long t0 = System.currentTimeMillis(); // start cronometro
 
         for (int i = 0; i < repeats; i++) {
-            j = ultimo(n);
+            j = ultimo2(n);
         }
 
         long t = System.currentTimeMillis(); // stop cronometro
@@ -31,6 +44,7 @@ public class GiuseppeFlavio {
     public static void main(String[] args) {
 
         GiuseppeFlavio gv = new GiuseppeFlavio();
-        System.out.println( gv.test(1000, 1));
+        //System.out.println(gv.test(1000, 1));
+        System.out.println(gv.test(2000, 1000));
     }
 } // GiuseppeFlavio
