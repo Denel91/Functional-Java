@@ -16,8 +16,8 @@ class IntSListTest {
     void isNull() {
         sList = new IntSList(5, sList);
         list = new IntSList();
-        assertFalse(false, "IntSList is not empty");
-        assertTrue(true, "IntSList is empty");
+        assertFalse(sList.isNull(), "Not Empty");
+        assertTrue(list.isNull(), "Empty");
     }
 
     @Test
