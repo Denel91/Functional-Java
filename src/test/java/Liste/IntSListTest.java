@@ -13,6 +13,10 @@ class IntSListTest {
     private IntSList sList = new IntSList();
     private IntSList list = new IntSList();
     private IntSList intList = new IntSList();
+    private IntSList isl = new IntSList();
+    private IntSList singly = new IntSList();
+    private IntSList il;
+    private IntSList t;
 
     @Test
     @DisplayName("isNull")
@@ -111,7 +115,7 @@ class IntSListTest {
     @Test
     @DisplayName("append")
     void append() {
-        IntSList singly = new IntSList();
+        singly = new IntSList();
         assertTrue(singly.isNull());
         assertEquals(0, singly.length());
 
@@ -127,7 +131,7 @@ class IntSListTest {
         assertFalse(singly.isNull());
         assertEquals(3, singly.length());
 
-        IntSList t = singly.append(list);
+        t = singly.append(list);
         assertEquals(8, t.length());
     }
 
@@ -140,7 +144,7 @@ class IntSListTest {
         list = list.cons(2);
         list = list.cons(1);
 
-        IntSList il = list.reverse();
+        il = list.reverse();
         assertEquals(5, il.car());
         assertEquals(list.cdr(), list.cdr());
     }
@@ -148,7 +152,7 @@ class IntSListTest {
     @Test
     @DisplayName("ToString")
     void testToString() {
-        IntSList isl = new IntSList();
+        isl = new IntSList();
         String message = isl.toString();
         assertEquals("(---)", message);
 
