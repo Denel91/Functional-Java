@@ -50,14 +50,14 @@ public class IntSList implements Iterable<Integer> {
     // Rappresentazione interna di una lista
     // variabili di istanza private immutabili
     private final boolean empty;
-    private final int first;
-    private final IntSList rest;
+    private final int first; // Referenzia il primo elemento della lista
+    private final IntSList rest; // Contiene il resto della lista senza il primo elemento
     // costante globale di classe
     public static final IntSList NULL_INTLIST = new IntSList();
 
     /**
      * Costruttore di istanza
-     *
+     * <p>
      * Creazione di una lista vuota
      */
     public IntSList() {
