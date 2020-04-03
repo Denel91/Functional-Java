@@ -228,6 +228,12 @@ public class StringSList implements Iterable<String> {
         System.out.print(t);
     }
 
+    /**
+     * Crea una StringSList da un array di Stringhe
+     *
+     * @param l the array of strings
+     * @return a StringSList with the element of the array
+     */
     public static StringSList fromArray(String[] l) {
         StringSList list = new StringSList();
 
