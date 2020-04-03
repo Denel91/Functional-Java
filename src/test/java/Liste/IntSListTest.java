@@ -1,5 +1,6 @@
 package Liste;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.runners.Parameterized.Parameter;
 import static org.junit.jupiter.api.Assertions.*;
@@ -14,6 +15,7 @@ class IntSListTest {
     private IntSList intList = new IntSList();
 
     @Test
+    @DisplayName("isNull")
     void isNull() {
         sList = new IntSList(5, sList);
         list = new IntSList();
@@ -22,6 +24,7 @@ class IntSListTest {
     }
 
     @Test
+    @DisplayName("car")
     void car() {
         sList = new IntSList(5, sList);
         sList = sList.cons(3);
@@ -29,6 +32,7 @@ class IntSListTest {
     }
 
     @Test
+    @DisplayName("cdr")
     void cdr() {
         list = new IntSList(7, list);
         list = list.cons(4);
@@ -43,12 +47,14 @@ class IntSListTest {
     public int cExpected;
 
     @Test
+    @DisplayName("cons")
     void cons() {
         list = new IntSList(cInput, list);
         assertEquals(cExpected, list.car());
     }
 
     @Test
+    @DisplayName("length")
     void length() {
         list = new IntSList(7, list);
         list = list.cons(4);
@@ -61,6 +67,7 @@ class IntSListTest {
     public int index;
 
     @Test
+    @DisplayName("listRef")
     void listRef() {
         list = new IntSList(7, list);
         list = list.cons(4);
@@ -76,6 +83,7 @@ class IntSListTest {
     }
 
     @Test
+    @DisplayName("Equals")
     void testEquals() {
         list = new IntSList(7, list);
         list = list.cons(4);
@@ -101,14 +109,60 @@ class IntSListTest {
     }
 
     @Test
+    @DisplayName("append")
     void append() {
+        IntSList singly = new IntSList();
+        assertTrue(singly.isNull());
+        assertEquals(0, singly.length());
+
+        list = new IntSList(7, list);
+        list = list.cons(4);
+        list = list.cons(6);
+        list = list.cons(9);
+        list = list.cons(5);
+
+        singly = new IntSList(2, singly);
+        singly = singly.cons(6);
+        singly = singly.cons(7);
+        assertFalse(singly.isNull());
+        assertEquals(3, singly.length());
+
+        IntSList t = singly.append(list);
+        assertEquals(8, t.length());
     }
 
     @Test
+    @DisplayName("reverse")
     void reverse() {
+        list = new IntSList(5, list);
+        list = list.cons(4);
+        list = list.cons(3);
+        list = list.cons(2);
+        list = list.cons(1);
+
+        IntSList il = list.reverse();
+        assertEquals(5, il.car());
+        assertEquals(list.cdr(), list.cdr());
     }
 
     @Test
+    @DisplayName("ToString")
     void testToString() {
+        IntSList isl = new IntSList();
+        String message = isl.toString();
+        assertEquals("(---)", message);
+
+        sList = new IntSList(8, sList);
+        String message_2 = sList.toString();
+        assertEquals("(8)", message_2);
+
+        list = new IntSList(5, list);
+        list = list.cons(4);
+        list = list.cons(3);
+        list = list.cons(2);
+        list = list.cons(1);
+
+        String message_3 = list.toString();
+        assertEquals("(1, 2, 3, 4, 5)", message_3);
     }
 }
