@@ -6,9 +6,9 @@ import java.util.Iterator;
  * Definizione di una classe per realizzare oggetti
  * assimilabili alle liste in Scheme, limitatamente al caso
  * di liste di stringhe.
- * <p>
+ *
  * Le liste create sono "immutabili".
- * <p>
+ *
  * Class overview:
  * StringSList() : Default Constructor
  * StringSList(String s, StringSList sl) : Constructor
@@ -41,7 +41,7 @@ public class StringSList implements Iterable<String> {
 
     /**
      * Costruttore di istanza
-     * <p>
+     *
      * Creazione di una lista vuota
      */
     public StringSList() {
