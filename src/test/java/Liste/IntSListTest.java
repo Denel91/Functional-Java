@@ -7,6 +7,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Test class for IntSList
+ *
+ * @version 03/04/2020
  */
 class IntSListTest {
 
