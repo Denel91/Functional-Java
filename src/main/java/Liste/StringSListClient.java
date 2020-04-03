@@ -1,7 +1,7 @@
 package Liste;
 
 /**
- * Class Client to test method
+ * Class Client to test methods
  */
 public class StringSListClient {
     public static void main(String[] args) {
