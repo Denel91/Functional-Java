@@ -62,11 +62,17 @@ class IntSListTest {
     @Test
     @DisplayName("length")
     void length() {
+        singly = new IntSList();
+        assertEquals(0, singly.length());
+
+        singly = singly.cons(6);
+        assertEquals(1, singly.length());
+
         list = new IntSList(7, list);
         list = list.cons(4);
         list = list.cons(6);
         list = list.cons(9);
-        assertEquals(4, list.cdr().length() + 1);
+        assertEquals(4, list.length());
     }
 
     @Parameter(2)
@@ -117,24 +123,26 @@ class IntSListTest {
     @Test
     @DisplayName("append")
     void append() {
-        singly = new IntSList();
-        assertTrue(singly.isNull());
-        assertEquals(0, singly.length());
-
-        list = new IntSList(7, list);
+        list = new IntSList(5, list);
         list = list.cons(4);
-        list = list.cons(6);
-        list = list.cons(9);
-        list = list.cons(5);
+        list = list.cons(3);
+        list = list.cons(2);
+        list = list.cons(1);
 
-        singly = new IntSList(2, singly);
-        singly = singly.cons(6);
+        singly = new IntSList(10, singly);
+        singly = singly.cons(9);
+        singly = singly.cons(8);
         singly = singly.cons(7);
-        assertFalse(singly.isNull());
-        assertEquals(3, singly.length());
+        singly = singly.cons(6);
 
-        t = singly.append(list);
-        assertEquals(8, t.length());
+        assertFalse(list.isNull());
+        assertFalse(singly.isNull());
+
+        assertEquals(5, list.length());
+        assertEquals(5, singly.length());
+
+        t = list.append(singly);
+        assertEquals(10, t.length());
     }
 
     @Test
@@ -148,7 +156,7 @@ class IntSListTest {
 
         il = list.reverse();
         assertEquals(5, il.car());
-        assertEquals(list.cdr(), list.cdr());
+        assertEquals(il.cdr(), il.cdr());
     }
 
     @Test
@@ -167,7 +175,6 @@ class IntSListTest {
         list = list.cons(3);
         list = list.cons(2);
         list = list.cons(1);
-
         String message_3 = list.toString();
         assertEquals("(1, 2, 3, 4, 5)", message_3);
     }
