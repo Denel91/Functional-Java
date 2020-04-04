@@ -43,9 +43,9 @@ public class StringSListClient {
         System.out.println(li.equals(list)); // true
         System.out.println(list.equals(li)); // true
 
-        //System.out.println(li.append(list));
+        System.out.println(li.append(list));
         //System.out.println(li.reverse());
-        //System.out.println(li.toString());
+        System.out.println(li.toString());
 
         li.display(li); // (Hello, World, List)
         list_1.display(list_1); // (Yes, I am, Display)

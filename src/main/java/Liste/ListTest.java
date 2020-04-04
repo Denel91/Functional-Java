@@ -87,11 +87,30 @@ public class ListTest {
         System.out.println("al -> " + al.toString());
 
         // Test dei metodi
-        System.out.println(il.append(al));
+        //System.out.println(il.append(al));
         // System.out.println(il.equals(al));
         // System.out.println(il.reverse());
         // System.out.println(il.listRef(3));
         // System.out.println(il.length());
+    }
+
+    /**
+     * Metodo di test
+     *
+     * @param m the first element of il
+     * @param n the last element of il
+     * @param k the first element of al
+     * @param y the last element of al
+     */
+    public static void test3(int m, int n, int k, int y) {
+        IntSList il = iterativeRange(m, n);
+        IntSList al = iterativeRange(k, y);
+
+        System.out.println("il -> " + il.toString());
+        System.out.println("al -> " + al.toString());
+
+        // Test dei metodi
+        System.out.println(il.append(al));
     }
 
     public static void main(String[] args) {
@@ -102,7 +121,7 @@ public class ListTest {
         intSList = intSList.cons(8);
         intSList = intSList.cons(3);
 
-        intSList.display(intSList);
+        //intSList.display(intSList);
 
         //System.out.println(intSList.listRef(3));
 
@@ -112,7 +131,9 @@ public class ListTest {
 
         //test();
 
-        test2(1, 4);
+        //test2(1, 4);
+
+        test3(1, 4, 5, 8);
 
         //System.out.println("\n" + between(4, 2, 8));
     }
