@@ -25,8 +25,7 @@ import java.util.Iterator;
  * display(StringSList sList) : void
  * iterator() : Iterator<String>
  *
- * @version 03/04/2020
- * @implNote: Bisogna fixare i metodi append(), reverse() e toString() che al momento non vanno!!!!
+ * @version 05/04/2020
  */
 
 public class StringSList implements Iterable<String> {
@@ -198,8 +197,8 @@ public class StringSList implements Iterable<String> {
             StringSList restEl = this.restElements;
 
             while (!restEl.isEmpty()) {
-                elements += ", " + restElements.car();
-                restEl = restElements.cdr();
+                elements = elements + ", " + restEl.car();
+                restEl = restEl.cdr();
             }
 
             return elements + ")";
