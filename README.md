@@ -6,6 +6,3 @@
 
 This repository is maintained with Apache Maven.
 
-
-
-
