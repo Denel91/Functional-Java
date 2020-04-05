@@ -18,9 +18,14 @@ import Liste.IntSList;
  */
 
 public class TavolaRotonda {
-
+    // Rappresentazione interna della TavolaRotonda
     private final int[] cavalieri;
 
+    /**
+     * Constructor
+     *
+     * @param n la dimensione della TavolaRotonda
+     */
     public TavolaRotonda(int n) { // n > 0
         cavalieri = new int[n];
         for (int k = 1; k <= n; k++) {
@@ -28,18 +33,38 @@ public class TavolaRotonda {
         }
     }
 
+    /**
+     * Constructor
+     *
+     * @param cav un array di interi
+     */
     private TavolaRotonda(int[] cav) {
         this.cavalieri = cav;
     }
 
+    /**
+     * Calcola la dimensione della TavolaRotonda
+     *
+     * @return la lunghezza dell'array cavalieri
+     */
     public int numeroDiCavalieri() {
         return cavalieri.length;
     }
 
+    /**
+     * Calcola il cavaliere con la brocca
+     *
+     * @return un numero intero
+     */
     public int cavConLaBrocca() {
         return cavalieri[0];
     }
 
+    /**
+     * Calcola la nuova dimensione della TavolaRotonda dopo l'uscita di un cavaliere
+     *
+     * @return la nuova TavolaRotonda dopo l'uscita di un cavaliere
+     */
     public TavolaRotonda dopoUscitaCav() {
         int n = cavalieri.length - 1;
         int[] cav = new int[n];
