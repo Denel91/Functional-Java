@@ -7,8 +7,11 @@ public class StringSListClient {
     public static void main(String[] args) {
 
         StringSList li = new StringSList();
-        li = new StringSList("List", li);
-        li = li.cons("World");
+        li = new StringSList("build", li);
+        li = li.cons("power");
+        li = li.cons("string");
+        li = li.cons("list");
+        li = li.cons("world");
         li = li.cons("Hello");
 
         StringSList list = new StringSList();
