@@ -1,9 +1,6 @@
 # Functional Java 
 
-![Java CI with Maven](https://github.com/Denel91/Functional-Java/workflows/Java%20CI%20with%20Maven/badge.svg)
-
+![Java CI with Maven](https://github.com/Denel91/Functional-Java/workflows/Java%20CI%20with%20Maven/badge.svg) ![GitHub last commit (branch)](https://img.shields.io/github/last-commit/Denel91/Functional-Java/master) [![GitHub issues](https://img.shields.io/github/issues/Denel91/Functional-Java)](https://github.com/Denel91/Functional-Java/issues) [![GitHub forks](https://img.shields.io/github/forks/Denel91/Functional-Java)](https://github.com/Denel91/Functional-Java/network) [![GitHub license](https://img.shields.io/github/license/Denel91/Functional-Java)](https://github.com/Denel91/Functional-Java/blob/master/LICENSE.md) [![GitHub version](https://img.shields.io/badge/Java-v.13.0.2-blue)](https://img.shields.io/badge/Java-v.13.0.2-blue)
 ## Corso di Programmazione e laboratorio IoT Uniud
 
 This repository is maintained with Apache Maven.
-
-# <img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Maven_logo.svg" align="left" width="150">
