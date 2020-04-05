@@ -1,6 +1,9 @@
 package Java_Util_Function;
 
-import java.util.function.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
 /**
  * ATTENZIONE: Questa classe non fa parte delle lezioni.
@@ -44,5 +47,23 @@ public class Snippet {
         };
 
         System.out.println(mySupplier.get());
+
+        List<Integer> list = new ArrayList<Integer>();
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        list = map(list, x -> x * 2);
+
+        for (Integer val : list)
+            System.out.print(val + " ");
+    }
+
+    static <T> List<T> map(List<T> list, Function<T, T> function) {
+        List<T> mappedList = new ArrayList<T>(list);
+        for (int i = 0; i < mappedList.size(); i++) {
+            mappedList.set(i, function.apply(mappedList.get(i)));
+        }
+
+        return mappedList;
     }
 }
