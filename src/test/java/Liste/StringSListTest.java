@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 /**
  * Test class for StringSList
  *
- * @version 04/04/2020
+ * @version 05/04/2020
  */
 class StringSListTest {
 
@@ -174,14 +174,12 @@ class StringSListTest {
         String message_2 = list.toString();
         assertEquals("(dakota)", message_2);
 
-        /*
         singly = new StringSList("quattro", singly);
         singly = singly.cons("tre");
         singly = singly.cons("due");
         singly = singly.cons("uno");
         String message_3 = singly.toString();
         assertEquals("(uno, due, tre, quattro)", message_3);
-        */
     }
 
     @Parameter
