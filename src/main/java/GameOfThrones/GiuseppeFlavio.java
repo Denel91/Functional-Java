@@ -1,8 +1,15 @@
 package GameOfThrones;
 
+/**
+ * Classe ti test per la TavolaRotonda
+ */
 public class GiuseppeFlavio {
-
-    /*
+    /**
+     * Calcola l'ultimo cavaliere che rimane
+     *
+     * @param n il numero dei cavalieri iniziali della TavolaRotonda
+     * @return un numero intero
+     */
     public int ultimo(int n) {
         TavolaRotonda tr = new TavolaRotonda(n);
 
@@ -13,8 +20,13 @@ public class GiuseppeFlavio {
 
         return tr.cavConLaBrocca();
     }
-    */
 
+    /**
+     * Calcola l'ultimo cavaliere che rimane
+     *
+     * @param n il numero dei cavalieri iniziali della TavolaRotonda
+     * @return un numero intero
+     */
     public int ultimo2(int n) {
         TavolaRotonda2 tr = new TavolaRotonda2(n);
 
@@ -26,6 +38,13 @@ public class GiuseppeFlavio {
         return tr.cavConLaBrocca();
     }
 
+    /**
+     * Calcola l'ultimo cavaliere che rimane
+     *
+     * @param n       il numero dei cavalieri iniziali della TavolaRotonda
+     * @param repeats quante volte deve essere ripetuta la procedura ultimo(n)
+     * @return un numero intero
+     */
     public int test(int n, int repeats) {
         int j = 0;
         long t0 = System.currentTimeMillis(); // start cronometro
