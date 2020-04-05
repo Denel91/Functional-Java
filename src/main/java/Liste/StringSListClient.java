@@ -34,23 +34,23 @@ public class StringSListClient {
         System.out.println(li.car()); // Hello
         System.out.println(list.car()); // Hello
 
-        System.out.println(li.cdr()); // (World, List)
+        System.out.println(li.cdr()); // (world, list, string, power, build)
         System.out.println(list.cdr()); // (World, List)
 
-        System.out.println(li.length()); // 3
+        System.out.println(li.length()); // 6
         System.out.println(list.length()); // 3
 
         System.out.println(li.listRef(1)); // World
         System.out.println(list.listRef(1)); // // World
 
-        System.out.println(li.equals(list)); // true
-        System.out.println(list.equals(li)); // true
+        System.out.println(li.equals(list)); // false
+        System.out.println(list.equals(li)); // false
 
-        System.out.println(li.append(list));
-        //System.out.println(li.reverse());
-        System.out.println(li.toString());
+        System.out.println(li.append(list)); // (Hello, world, list, string, power, build, Hello, World, List)
+        System.out.println(li.reverse()); // (build, power, string, list, world, Hello)
+        System.out.println(li.toString()); // (Hello, world, list, string, power, build)
 
-        li.display(li); // (Hello, World, List)
+        li.display(li); // (Hello, world, list, string, power, build)
         list_1.display(list_1); // (Yes, I am, Display)
     }
 }
