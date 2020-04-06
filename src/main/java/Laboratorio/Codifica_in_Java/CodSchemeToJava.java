@@ -1,4 +1,4 @@
-package Laboratorio;
+package Laboratorio.Codifica_in_Java;
 
 public class CodSchemeToJava {
     public static void main(String[] args) {
