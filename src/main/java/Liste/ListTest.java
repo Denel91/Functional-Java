@@ -78,11 +78,11 @@ public class ListTest {
      * @param n the last element of the IntSList
      */
     public static void test2(int m, int n) {
-        IntSList sList = range(m, n);
+        //IntSList sList = range(m, n);
         IntSList il = iterativeRange(m, n);
         IntSList al = il.reverse();
 
-        System.out.println("sList -> " + sList.toString());
+        //System.out.println("sList -> " + sList.toString());
         System.out.println("il -> " + il.toString());
         System.out.println("al -> " + al.toString());
 
@@ -131,9 +131,9 @@ public class ListTest {
 
         //test();
 
-        //test2(1, 4);
+        test2(1, 4);
 
-        test3(1, 4, 5, 8);
+        //test3(1, 4, 5, 8);
 
         //System.out.println("\n" + between(4, 2, 8));
     }
