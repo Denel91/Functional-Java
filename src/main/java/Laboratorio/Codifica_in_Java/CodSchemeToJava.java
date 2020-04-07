@@ -1,11 +1,17 @@
 package Laboratorio.Codifica_in_Java;
 
+import Liste.StringSList;
+
 public class CodSchemeToJava {
     public static void main(String[] args) {
+
         System.out.println(ones_complement("1010")); // 0101
         System.out.println(bit_complement("1")); // 0
         System.out.println(bit_complement("0")); // 1
         System.out.println(btr("++")); // +--
+        StringSList list = STB("+-", 5);
+        System.out.println(list.toString()); // (+-, +., ++, +--, +-.)
+        System.out.println(btrSucc("+-")); // +.
     }
 
     /**
@@ -83,8 +89,10 @@ public class CodSchemeToJava {
         if (n == 1) {
             if (carattere == '+') {
                 return "+-";
-            } else {
+            } else if (carattere == '.') {
                 return "+";
+            } else {
+                return ".";
             }
         } else {
             if (carattere == '+') {
@@ -95,6 +103,51 @@ public class CodSchemeToJava {
                 } else {
                     return sub + '+';
                 }
+            }
+        }
+    }
+
+    /**
+     * Rappresentazione Ternaria Bilanciata Ricorsiva
+     *
+     * @param valore stringa di -/./+ -> valore = "-.+"
+     * @param n      dimensione della lista
+     * @return a new StringSList
+     */
+    public static StringSList STB(String valore, int n) {
+        if (n <= 0) {
+            return new StringSList();
+        } else {
+            return new StringSList(valore, STB(CodSchemeToJava.btr(valore), n - 1));
+        }
+    }
+
+    /**
+     * Rappresentazione Ternaria Bilanciata del btr successivo
+     *
+     * @param s stringa di -/./+ -> s = "-.+"
+     * @return a string with + . or -
+     */
+    public static String btrSucc(String s) {
+        int valore = s.length();
+
+        if (valore == 1) {
+            if (s.charAt(valore - 1) == '+') {
+                return "+-";
+            } else if (s.charAt(valore - 1) == '.') {
+                return "+";
+            } else {
+                return ".";
+            }
+
+        } else {
+
+            if (s.charAt(valore - 1) == '+') {
+                return btrSucc(s.substring(0, valore - 1)) + "-";
+            } else if (s.charAt(valore - 1) == '-') {
+                return s.substring(0, valore - 1) + ".";
+            } else {
+                return s.substring(0, valore - 1) + "+";
             }
         }
     }
