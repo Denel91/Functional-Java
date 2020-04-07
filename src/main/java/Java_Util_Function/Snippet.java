@@ -56,6 +56,14 @@ public class Snippet {
 
         for (Integer val : list)
             System.out.print(val + " ");
+
+        double positivo = 5.0;
+        double negativo = -5.0;
+        double zero = 0.0;
+
+        System.out.println("positive: " + Math.signum(positivo));
+        System.out.println("negative: " + Math.signum(negativo));
+        System.out.println("zero: " + Math.signum(zero));
     }
 
     static <T> List<T> map(List<T> list, Function<T, T> function) {
