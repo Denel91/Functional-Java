@@ -4,7 +4,6 @@ import Liste.StringSList;
 
 public class CodSchemeToJava {
     public static void main(String[] args) {
-
         System.out.println(ones_complement("1010")); // 0101
         System.out.println(bit_complement("1")); // 0
         System.out.println(bit_complement("0")); // 1
