@@ -2,6 +2,11 @@ package Laboratorio.Codifica_in_Java;
 
 import Liste.StringSList;
 
+/**
+ * Esercitazione sulla codifica in Java
+ *
+ * @version 07/04/2020
+ */
 public class CodSchemeToJava {
     public static void main(String[] args) {
         System.out.println(ones_complement("1010")); // 0101
