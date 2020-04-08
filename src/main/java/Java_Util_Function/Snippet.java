@@ -60,10 +60,12 @@ public class Snippet {
         double positivo = 5.0;
         double negativo = -5.0;
         double zero = 0.0;
+        double zeroNegative = -0.0;
 
-        System.out.println("positive: " + Math.signum(positivo));
-        System.out.println("negative: " + Math.signum(negativo));
-        System.out.println("zero: " + Math.signum(zero));
+        System.out.println("positive: " + Math.signum(positivo)); // 1.0
+        System.out.println("negative: " + Math.signum(negativo)); // -1.0
+        System.out.println("zero: " + Math.signum(zero)); // 0.0
+        System.out.println("zeroNegative: " + Math.signum(zeroNegative)); // -0.0
     }
 
     static <T> List<T> map(List<T> list, Function<T, T> function) {
