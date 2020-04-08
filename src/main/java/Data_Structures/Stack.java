@@ -111,7 +111,6 @@ public class Stack<E> {
      *
      * @return the object on top of the stack without taking it out
      * @throws EmptyStackException if isEmpty() is true
-     *                             PRE-CONDITION top >= 0
      */
     public E peek() throws EmptyStackException {
         if (isEmpty())
@@ -124,7 +123,6 @@ public class Stack<E> {
      *
      * @return the item at the top of the stack
      * @throws EmptyStackException if isEmpty() is true
-     *                             PRE-CONDITION top >= 0
      */
     public E pop() throws EmptyStackException {
         Objects.requireNonNull(this.elements);
@@ -140,7 +138,7 @@ public class Stack<E> {
      * Insert the item on top of the stack
      *
      * @param item the object to insert on top of the stack
-     *             PRE-CONDITION size < capacity
+     * PRE-CONDITION size < capacity
      */
     public void push(E item) {
         if (size() == capacity)
