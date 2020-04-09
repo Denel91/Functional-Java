@@ -130,7 +130,6 @@ public class Stack<E> {
         if (isEmpty())
             throw new EmptyStackException();
         item = elements.remove(top);
-        assert (top == elements.size() - 1);
         return item;
     }
 
@@ -154,7 +153,7 @@ public class Stack<E> {
      * @param item the element to verify
      * @return true if this list contains the specified element.
      */
-    public boolean contains​(E item) {
+    public boolean contains(E item) {
         return this.elements.contains(item);
     }
 
@@ -165,7 +164,7 @@ public class Stack<E> {
      * @return the index of the first occurrence of the specified element in this list, or -1 if this list does not
      * contain the element.
      */
-    public int search​(E item) {
+    public int search(E item) {
         return this.elements.indexOf(item);
     }
 
@@ -248,8 +247,8 @@ public class Stack<E> {
         System.out.println("First element: " + myStack.peek()); // 3
         System.out.println("Item removed: " + myStack.pop()); // 3
         System.out.println("Size after pop(): " + myStack.size()); // 5
-        System.out.println("Contains?: " + myStack.contains​(8)); // true
-        System.out.println("Search: " + myStack.search​(2)); // 3
+        System.out.println("Contains?: " + myStack.contains(8)); // true
+        System.out.println("Search: " + myStack.search(2)); // 3
         System.out.println(myStack.getElements()); // [1, 6, 8, 2, 4]
         System.out.println(myStack.getDefaultSize()); // 10
     }
