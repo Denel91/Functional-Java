@@ -31,7 +31,7 @@ import java.util.Iterator;
 public class StringSList implements Iterable<String> {
 
     // costante globale di classe (condivisa)
-    public static final StringSList NULL_INTLIST = new StringSList();
+    public static final StringSList NULL_STRINGLIST = new StringSList();
     // Rappresentazione interna di una lista di stringhe
     // variabili di istanza private immutabili
     private final boolean empty;
@@ -163,7 +163,7 @@ public class StringSList implements Iterable<String> {
      * @return the list with inverted elements
      */
     public StringSList reverse() {
-        return reverseRec(NULL_INTLIST);
+        return reverseRec(NULL_STRINGLIST);
     }
 
     /**
