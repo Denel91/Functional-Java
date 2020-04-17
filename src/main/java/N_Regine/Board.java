@@ -95,7 +95,7 @@ public class Board {
 
     @Override
     public String toString() {
-        return "Board: {" + "size = " + size + ", queens = " + queens + ", config = '" + config + '\'' + '}';
+        return "Board {" + "size = " + size + ", queens = " + queens + ", config = '" + config + '\'' + '}';
     }
 
     /**
