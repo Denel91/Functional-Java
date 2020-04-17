@@ -93,7 +93,7 @@ public class StringSList implements Iterable<String> {
      * Costruisce una lista a partire dall'elemento s in prima posizione
      *
      * @param s a String value. REQUIRE not null
-     * @return an StringSList starting from s in the first position
+     * @return a StringSList starting from s in the first position
      */
     public StringSList cons(String s) {
         return new StringSList(s, this);
