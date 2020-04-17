@@ -1,19 +1,42 @@
 package N_Regine;
 
+import Liste.StringSList;
+
 /**
  * Soluzione del rompicapo delle N regine
  *
- * @version 07/04/2020
+ * @version 17/04/2020
  */
-
-/*
 public class Queens {
 
-    public static int numeroDiSoluzioni(int n) {
-
-        return   numeroDiCompletamenti(new Board(n));
+    public static StringSList listaDiSoluzioni(int n) {
+        return listaDiCompletamenti(new Board(n));
     }
 
+    public static StringSList listaDiCompletamenti(Board b) {
+        int n = b.size();
+        int q = b.queensOn();
+
+        if (q == n) {
+            return StringSList.NULL_STRINGLIST.cons(b.arrangement());
+
+        } else { // q < n
+
+            int i = q + 1;
+            StringSList sl = StringSList.NULL_STRINGLIST;
+            for (int j = 1; j <= n; j++) {
+                if (!b.underAttack(i, j)) {
+                    sl = sl.append(listaDiCompletamenti(b.addQueen(i, j)));
+                }
+            }
+
+            return sl;
+        }
+    }
+
+    public static int numeroDiSoluzioni(int n) {
+        return numeroDiCompletamenti(new Board(n));
+    }
 
     private static int numeroDiCompletamenti(Board b) {
 
@@ -30,15 +53,22 @@ public class Queens {
             int count = 0;
             for (int j = 1; j <= n; j++) {
                 if (!b.underAttack(i, j)) {
-                    count += numeroDiCompletamenti(b.addQueen(i,j));
+                    count += numeroDiCompletamenti(b.addQueen(i, j));
                 }
             }
 
             return count;
         }
     }
-} // Queens
 
- */
+    public static void main(String[] args) {
+        System.out.println(Queens.numeroDiSoluzioni(4)); // 2
+        System.out.println(Queens.listaDiSoluzioni(4)); // ( b1  d2  a3  c4 ,  c1  a2  d3  b4 )
+        System.out.println(Queens.numeroDiCompletamenti(new Board(4))); // 2
+        System.out.println(Queens.listaDiCompletamenti(new Board(4))); // ( b1  d2  a3  c4 ,  c1  a2  d3  b4 )
+    }
+} // class Queens
+
+
 
 
