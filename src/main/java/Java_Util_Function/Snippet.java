@@ -80,6 +80,11 @@ public class Snippet {
         System.out.println("negative: " + Math.signum(negativo)); // -1.0
         System.out.println("zero: " + Math.signum(zero)); // 0.0
         System.out.println("zeroNegative: " + Math.signum(zeroNegative)); // -0.0
+
+
+        String ROWS = " 123456789ABCDEF";
+        String COLS = " abcdefghijklmno";
+        System.out.println(COLS.substring(1, 1 + 1) + ROWS.substring(1, 1 + 1));
     }
 
     static <T> List<T> map(List<T> list, Function<T, T> function) {
