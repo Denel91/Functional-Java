@@ -93,6 +93,11 @@ public class Board {
         return config;
     }
 
+    @Override
+    public String toString() {
+        return "Board: {" + "size = " + size + ", queens = " + queens + ", config = '" + config + '\'' + '}';
+    }
+
     /**
      * Add a queen on the Board
      *
