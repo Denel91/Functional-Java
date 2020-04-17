@@ -76,8 +76,7 @@ public class Queens {
         System.out.println(c.queensOn()); // 0
         System.out.println(Queens.numeroDiSoluzioni(4)); // 2
         System.out.println(Queens.listaDiSoluzioni(4)); // ( b1  d2  a3  c4 ,  c1  a2  d3  b4 )
-        System.out.println(Queens.numeroDiCompletamenti(new Board(4))); // 2
-        System.out.println(Queens.listaDiCompletamenti(new Board(4))); // ( b1  d2  a3  c4 ,  c1  a2  d3  b4 )
+        System.out.println(Queens.listaDiSoluzioni(4).car()); // b1  d2  a3  c4
     }
 } // class Queens
 
