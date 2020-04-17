@@ -37,7 +37,7 @@ public class BoardSList implements Iterable<Board> {
 
     /**
      * Costruttore di istanza (Default Constructor)
-     * <p>
+     *
      * Creazione di una lista di Board vuota
      */
     public BoardSList() {
