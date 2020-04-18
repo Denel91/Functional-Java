@@ -5,7 +5,7 @@ import Liste.StringSList;
 /**
  * Soluzione del rompicapo delle N regine
  *
- * @version 17/04/2020
+ * @version 18/04/2020
  */
 public class Queens {
 
@@ -94,21 +94,22 @@ public class Queens {
         list = new BoardSList(c, list);
         list = list.cons(t);
 
-        System.out.println(c.addQueen(3,2)); // Board {size = 4, queens = 1, config = ' b3 '}
-        System.out.println(c.addQueen(3,3)); // Board {size = 4, queens = 1, config = ' c3 '}
+        System.out.println(c.addQueen(3,2));        // Board {[ b3 ]}
+        System.out.println(c.addQueen(3,3));        // Board {[ c3 ]}
+        System.out.println(c.insertQueen(3,4));    // Board {[ d3 ]}
 
         // una lista vuota
         BoardSList sList = new BoardSList();
-        System.out.println(sList.toString()); // (---)
-        System.out.println(list.toString()); // (Board: {size = 5, queens = 0, config = ''}, Board: {size = 4, queens = 0, config = ''})
-        System.out.println(list.car()); // Board: {size = 5, queens = 0, config = ''}
-        System.out.println(list.cdr()); // (Board: {size = 4, queens = 0, config = ''})
-        System.out.println(list.length()); // 2
-        System.out.println(Queens.listaDiCompletamenti(c)); // ( b1  d2  a3  c4 ,  c1  a2  d3  b4 )
-        System.out.println(Queens.numeroDiSoluzioni(4)); // 2
-        System.out.println(Queens.listaDiSoluzioni(4)); // ( b1  d2  a3  c4 ,  c1  a2  d3  b4 )
-        System.out.println(Queens.listaSoluzioni(4)); // (Board {size = 4, queens = 4, config = ' b1  d2  a3  c4 '}, Board {size = 4, queens = 4, config = ' c1  a2  d3  b4 '})
-        System.out.println(Queens.listaSoluzioni(1)); // (Board {size = 1, queens = 1, config = ' a1 '})
+        System.out.println(sList.toString());       // (---)
+        System.out.println(list.toString());        // (Board {[]}, Board {[]})
+        System.out.println(list.car());             // Board {[]}
+        System.out.println(list.cdr());             // (Board {[]})
+        System.out.println(list.length());          // 2
+        System.out.println(Queens.listaDiCompletamenti(c));    // ( b1  d2  a3  c4 ,  c1  a2  d3  b4 )
+        System.out.println(Queens.numeroDiSoluzioni(4));    // 2
+        System.out.println(Queens.listaDiSoluzioni(4));     // ( b1  d2  a3  c4 ,  c1  a2  d3  b4 )
+        System.out.println(Queens.listaSoluzioni(4));       // (Board {[ b1  d2  a3  c4 ]}, Board {[ c1  a2  d3  b4 ]})
+        System.out.println(Queens.listaSoluzioni(1));       // (Board {[ a1 ]})
     }
 } // class Queens
 
