@@ -20,7 +20,7 @@ import java.util.function.BiPredicate;
  * b.arrangement() : String             descrizione "esterna" della configurazione (convenzioni scacchistiche)
  * b.addQueen(i, j) : Board             modifica della configurazione di b aggiungendo una nuova regina in posizione <i,j>
  *
- * @version 17/04/2020
+ * @version 18/04/2020
  */
 
 public class Board {
@@ -40,10 +40,10 @@ public class Board {
      * @param n the size of the Board
      */
     public Board(int n) {
-        size   = n;
-        queens = 0;
-        attack = (x, y) -> false; // lambda expression
-        config = "";
+        this.size   = n;
+        this.queens = 0;
+        this.attack = (x, y) -> false; // lambda expression
+        this.config = "";
     }
 
     /**
@@ -55,10 +55,24 @@ public class Board {
      * @param c string representation of the Board
      */
     private Board(int n, int q, BiPredicate<Integer, Integer> p, String c) {
-        size   = n;
-        queens = q;
-        attack = p; // lambda expression
-        config = c;
+        this.size   = n;
+        this.queens = q;
+        this.attack = p; // lambda expression
+        this.config = c;
+    }
+
+    /**
+     * Constructor
+     *
+     * @param b a Bord Object
+     * @param i the row index
+     * @param j the column index
+     */
+    private Board(Board b, int i, int j) {
+        this.size   = b.size;
+        this.queens = b.queensOn() + 1;
+        this.attack = (x, y) -> ((x == i) || (y == j) || (x - y == i - j) || (x + y == i + j) || (b.underAttack(x, y)));
+        this.config = b.arrangement() + " " + COLS.charAt(j) + ROWS.charAt(i) + " ";
     }
 
     /**
@@ -95,7 +109,7 @@ public class Board {
 
     @Override
     public String toString() {
-        return "Board {" + "size = " + size + ", queens = " + queens + ", config = '" + config + '\'' + '}';
+        return "Board {" + "[" + arrangement() + "]" + "}";
     }
 
     /**
@@ -109,6 +123,17 @@ public class Board {
         return new Board(size, queens + 1,
                          (x, y) -> (x == i) || (y == j) || (x - y == i - j) || (x + y == i + j) || attack.test(x, y),
                          config + " " + COLS.substring(j, j + 1) + ROWS.substring(i, i + 1) + " ");
+    }
+
+    /**
+     * Add a queen on the Board
+     *
+     * @param r the row index
+     * @param c the column index
+     * @return a new Board with an extra queen
+     */
+    protected Board insertQueen(int r, int c) {
+        return new Board(this, r, c);
     }
 } // class Board
 
