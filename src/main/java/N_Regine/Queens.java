@@ -94,6 +94,9 @@ public class Queens {
         list = new BoardSList(c, list);
         list = list.cons(t);
 
+        System.out.println(c.addQueen(3,2)); // Board {size = 4, queens = 1, config = ' b3 '}
+        System.out.println(c.addQueen(3,3)); // Board {size = 4, queens = 1, config = ' c3 '}
+
         // una lista vuota
         BoardSList sList = new BoardSList();
         System.out.println(sList.toString()); // (---)
