@@ -1,7 +1,5 @@
 package Java_Util_Function;
-
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.function.BiFunction;
@@ -15,6 +13,16 @@ import java.util.function.BiFunction;
  */
 public class Snippet {
     public static void main(String[] args) {
+
+        Set<Integer> intset = new HashSet<>();
+        intset.add(5);
+        intset.add(2);
+        intset.add(8);
+        intset.add(6);
+        intset.add(4);
+        intset.add(9);
+
+        System.out.println(intset);
 
         // Interface Function<T,​R>
         // Type Parameters:
