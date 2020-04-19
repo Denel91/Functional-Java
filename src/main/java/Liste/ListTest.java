@@ -121,6 +121,12 @@ public class ListTest {
         intSList = intSList.cons(8);
         intSList = intSList.cons(3);
 
+        IntSList s = new Liste.IntSList();
+        IntSList t = new Liste.IntSList();
+        s = s.cons(3);
+        System.out.println("Test -> " + s.cons(2).equals(t.cons(2)));
+        System.out.println(s.cdr());
+
         //intSList.display(intSList);
 
         //System.out.println(intSList.listRef(3));
