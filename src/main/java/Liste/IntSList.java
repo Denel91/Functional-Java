@@ -57,7 +57,7 @@ public class IntSList implements Iterable<Integer> {
 
     /**
      * Costruttore di istanza
-     * <p>
+     *
      * Creazione di una lista vuota
      */
     public IntSList() {
