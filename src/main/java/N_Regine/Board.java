@@ -8,7 +8,7 @@ import java.util.function.BiPredicate;
  * È stato dimostrato matematicamente che il problema è risolvibile per n = 1 o n ≥ 4,
  * mentre non lo è per n = 2 e n = 3.
  *
- * Realizzazione del dato astratto "scacchiera" la cui configurazione eveolve aggiungendo o rimuovendo regine.
+ * Realizzazione del dato astratto "scacchiera"
  *
  * Protocollo della classe "Board"
  *
@@ -134,6 +134,11 @@ public class Board {
      */
     protected Board insertQueen(int r, int c) {
         return new Board(this, r, c);
+    }
+
+    public static void main(String[] args) {
+        Board b = new Board(5);
+        System.out.println(b.underAttack(2, 4));
     }
 } // class Board
 
