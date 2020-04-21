@@ -42,7 +42,7 @@ import java.util.Iterator;
  * il = il.cons(4);
  * il --> (4 5)
  *
- * @version 26/03/2020
+ * @version 21/04/2020
  */
 
 public class IntSList implements Iterable<Integer> {
@@ -57,13 +57,13 @@ public class IntSList implements Iterable<Integer> {
 
     /**
      * Costruttore di istanza
-     *
+     * <p>
      * Creazione di una lista vuota
      */
     public IntSList() {
         this.empty = true;
         this.first = 0;
-        this.rest = null;
+        this.rest  = null;
     }
 
     /**
@@ -77,7 +77,7 @@ public class IntSList implements Iterable<Integer> {
     public IntSList(int f, IntSList r) {
         this.empty = false;
         this.first = f;
-        this.rest = r;
+        this.rest  = r;
     }
 
     /**
@@ -115,6 +115,22 @@ public class IntSList implements Iterable<Integer> {
      */
     public IntSList cons(int n) {
         return new IntSList(n, this);
+    }
+
+    /**
+     * Verifica se un elemento appartiene alla lista IntSList
+     *
+     * @param k the element to verify
+     * @return true if the element belong to the IntSList, false otherwise
+     */
+    public boolean belong(int k) {
+        if (this.isNull()) {
+            return false;
+        } else if (this.car() == k) {
+            return true;
+        } else {
+            return cdr().belong(k);
+        }
     }
 
     /**
