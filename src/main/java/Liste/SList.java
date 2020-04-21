@@ -1,11 +1,11 @@
-package N_Regine;
+package Liste;
 
 /**
  * Definizione di una classe per realizzare oggetti
  * assimilabili alle liste in Scheme, in versione Generics
- * <p>
+ *
  * Le liste create sono "immutabili".
- * <p>
+ *
  * Class overview:
  * * SList() : Default Constructor
  * * SList(T f, SList<T> r) : Constructor
@@ -33,7 +33,7 @@ public class SList<T> {
 
     /**
      * Costruttore di istanza
-     * <p>
+     *
      * Creazione di una lista vuota
      */
     public SList() {
