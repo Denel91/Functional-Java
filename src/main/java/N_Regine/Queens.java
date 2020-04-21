@@ -1,6 +1,8 @@
 package N_Regine;
 
 import Liste.StringSList;
+import Liste.SList;
+import Liste.BoardSList;
 
 /**
  * Soluzione del rompicapo delle N regine
@@ -196,7 +198,7 @@ public class Queens {
         System.out.println(c.insertQueen(3, 4));    // Board {[ d3 ]}
 
         // una lista vuota
-        BoardSList sList = new BoardSList();
+        Liste.BoardSList sList = new Liste.BoardSList();
         System.out.println(sList.toString());       // (---)
         System.out.println(list.toString());        // (Board {[]}, Board {[]})
         System.out.println(list.car());             // Board {[]}
