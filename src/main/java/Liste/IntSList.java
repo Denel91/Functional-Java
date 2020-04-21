@@ -58,7 +58,7 @@ public class IntSList implements Iterable<Integer> {
 
     /**
      * Costruttore di istanza
-     * <p>
+     *
      * Creazione di una lista vuota
      */
     public IntSList() {
@@ -72,8 +72,8 @@ public class IntSList implements Iterable<Integer> {
      *
      * Creazione di una lista non vuota
      *
-     * @param f the first element of the IntSList
-     * @param r the rest of the IntSList
+     * @param f the first element of IntSList
+     * @param r the rest elements of IntSList
      */
     public IntSList(int f, IntSList r) {
         this.empty = false;
@@ -82,7 +82,7 @@ public class IntSList implements Iterable<Integer> {
     }
 
     /**
-     * Verifica se una lista è vuota
+     * Verifica se la lista è vuota
      *
      * @return true if IntSList is empty, false otherwise
      */
@@ -93,7 +93,7 @@ public class IntSList implements Iterable<Integer> {
     /**
      * Ritorna il primo elemento della lista
      *
-     * @return the first element of the IntSList
+     * @return the first element of IntSList
      */
     public int car() {
         return first;
@@ -111,7 +111,7 @@ public class IntSList implements Iterable<Integer> {
     /**
      * Costruisce una lista a partire dall'elemento n in prima posizione
      *
-     * @param n an Integer value. REQUIRE not null
+     * @param n an Integer value.
      * @return an IntSList starting from n in the first position
      */
     public IntSList cons(int n) {
@@ -122,13 +122,15 @@ public class IntSList implements Iterable<Integer> {
      * Verifica se un elemento appartiene alla lista IntSList
      *
      * @param k the element to verify
-     * @return true if the element belong to the IntSList, false otherwise
+     * @return true if the element belong to IntSList, false otherwise
      */
     public boolean belong(int k) {
         if (this.isNull()) {
             return false;
+
         } else if (this.car() == k) {
             return true;
+
         } else {
             return cdr().belong(k);
         }
@@ -137,16 +139,13 @@ public class IntSList implements Iterable<Integer> {
     /**
      * Calcola la lunghezza di IntSList
      *
-     * @return the length of the List
+     * @return the length of IntSList
      */
     public int length() {
-
         if (this.isNull()) {
-
             return 0;
 
         } else {
-
             return this.cdr().length() + 1;
         }
     }
@@ -159,11 +158,9 @@ public class IntSList implements Iterable<Integer> {
      */
     public int listRef(int index) {
         if (index == 0) {
-
             return car();
 
         } else {
-
             return cdr().listRef(index - 1);
         }
     }
@@ -176,19 +173,15 @@ public class IntSList implements Iterable<Integer> {
      */
     public boolean equals(IntSList cl) {
         if (this.isNull()) {
-
             return cl.isNull();
 
         } else if (cl.isNull()) {
-
             return false;
 
         } else if (car() == cl.car()) {
-
             return cdr().equals(cl.cdr());
 
         } else {
-
             return false;
         }
     }
@@ -201,17 +194,15 @@ public class IntSList implements Iterable<Integer> {
      */
     public IntSList append(IntSList ql) {
         if (this.isNull()) {
-
             return ql;
 
         } else {
-
             return this.cdr().append(ql).cons(car());
         }
     }
 
     /**
-     * Restituisce la lista con gli elementi invertiti
+     * Inverte gli elementi della lista IntSList
      *
      * @return the list with inverted elements
      */
@@ -227,11 +218,9 @@ public class IntSList implements Iterable<Integer> {
      */
     private IntSList reverseRec(IntSList rl) {
         if (this.isNull()) {
-
             return rl;
 
         } else {
-
             return cdr().reverseRec(rl.cons(car()));
         }
     }
@@ -244,20 +233,16 @@ public class IntSList implements Iterable<Integer> {
     @Override
     public String toString() {
         if (this.empty) {
-
             return "(---)";
 
         } else if (rest.isNull()) {
-
             return "(" + this.first + ")";
 
         } else {
-
             String elements = "(" + this.first;
             IntSList restElements = this.rest;
 
             while (!restElements.isNull()) {
-
                 elements += ", " + restElements.car();
                 restElements = restElements.cdr();
             }
