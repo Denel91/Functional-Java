@@ -9,7 +9,7 @@ package Liste;
  * between(int i, int minValueInclusive, int maxValueInclusive) : boolean
  * test2(int m, int n) : void
  *
- * @version 26/03/2020
+ * @version 21/04/2020
  */
 public class ListTest {
 
@@ -126,6 +126,9 @@ public class ListTest {
         s = s.cons(3);
         System.out.println("Test -> " + s.cons(2).equals(t.cons(2)));
         System.out.println(s.cdr());
+
+        System.out.println("Belong: " + intSList.belong(7));
+        System.out.println("Belong: " + intSList.belong(8));
 
         //intSList.display(intSList);
 
