@@ -198,7 +198,8 @@ public class Queens {
         System.out.println(c.insertQueen(3, 4));    // Board {[ d3 ]}
 
         // una lista vuota
-        Liste.BoardSList sList = new Liste.BoardSList();
+        BoardSList sList = new BoardSList();
+
         System.out.println(sList.toString());       // (---)
         System.out.println(list.toString());        // (Board {[]}, Board {[]})
         System.out.println(list.car());             // Board {[]}
