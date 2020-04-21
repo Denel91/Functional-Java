@@ -2,6 +2,22 @@ package Laboratorio.Rompicapo_N_Regine;
 
 import Liste.IntSList;
 
+/**
+ * Definizione della classe Scacchiera
+ *
+ * Protocollo della classe "Board"
+ * Class overview:
+ * Board(int n) : Default Constructor
+ * Board(int n, int q, IntSList row, IntSList col, IntSList dg1, IntSList dg2, String c) : Constructor
+ * getSize() : int
+ * getQueens() : int
+ * underAttack(int i, int j) : boolean
+ * addQueen(int i, int j) : Board
+ * arrangement() : String
+ * toString() : String
+ *
+ * @version 21/042020
+ */
 public class Board {
     // Codifica secondo le convenzioni scacchistiche (massima dimensione: 15 x 15)
     private static final String ROWS = " 123456789ABCDEF";
