@@ -49,8 +49,8 @@ public class Board {
     /**
      * Constructor
      *
-     * @param n size of the Board
-     * @param q numbers of queens
+     * @param n the size of the Board
+     * @param q the number of queens
      * @param p predicate
      * @param c string representation of the Board
      */
