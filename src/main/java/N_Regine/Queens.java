@@ -5,9 +5,61 @@ import Liste.StringSList;
 /**
  * Soluzione del rompicapo delle N regine
  *
- * @version 18/04/2020
+ * Class overview:
+ * listOfSolutions(int n) : SList<Board>
+ * listOfCompletations(Board t) : SList<Board>
+ * numeroDiSoluzioni(int m, int n) : SList<Integer>
+ * listaDiSoluzioni(int n) : StringSList
+ * listaDiCompletamenti(Board b) : StringSList
+ * numeroDiSoluzioni(int n) : int
+ * numeroDiCompletamenti(Board b) : int
+ * listaSoluzioni(int n) : BoardSList
+ * listaSoluzioni(int n) : BoardSList
+ *
+ * @version 21/04/2020
  */
 public class Queens {
+
+    public static SList<Board> listOfSolutions(int n) {
+        return listOfCompletations(new Board(n));
+    }
+
+    public static SList<Board> listOfCompletations(Board t) {
+        int n = t.size();
+        int q = t.queensOn();
+
+        if (q == n) {
+            return new SList<Board>().cons(t);
+
+        } else { // q < n
+
+            int i = q + 1;
+            SList<Board> sl = new SList<>();
+            for (int j = 1; j <= n; j++) {
+                if (!t.underAttack(i, j)) {
+                    sl = sl.append(listOfCompletations(t.addQueen(i, j)));
+                }
+            }
+
+            return sl;
+        }
+    }
+
+    /**
+     * Numero di soluzioni
+     * Il numero di modi diversi in cui si possono disporre n regine in una scacchiera n x n
+     *
+     * @param m dimensione minima di Board
+     * @param n dimensione massima di Board
+     * @return a new SList<Integer>
+     */
+    public static SList<Integer> numeroDiSoluzioni(int m, int n) {
+        if (m > n) {
+            return new SList<>();
+        } else {
+            return numeroDiSoluzioni(m + 1, n).cons(numeroDiSoluzioni(m));
+        }
+    }
 
     public static StringSList listaDiSoluzioni(int n) {
         return listaDiCompletamenti(new Board(n));
@@ -34,7 +86,7 @@ public class Queens {
         }
     }
 
-    /*
+    /**
      * Numero di soluzioni:
      *
      * Il numero di modi diversi in cui si possono disporre n regine
@@ -44,12 +96,14 @@ public class Queens {
      * --> numberOfCompletions(new Board(n))
      *
      * a partire da una scacchiera n x n inizialmente vuota
+     *
+     * @param n the size of the Board
      */
     public static int numeroDiSoluzioni(int n) {
         return numeroDiCompletamenti(new Board(n));
     }
 
-    /*
+    /**
      * Il numero di modi in cui si può completare la disposizione
      * a partire da una scacchiera b parzialmente configurata
      *
@@ -61,7 +115,7 @@ public class Queens {
      * i modi possibili (nelle posizioni che non sono già minacciate)
      *
      * for ( int j = 1; j <= n; j = j+1 ) {
-     *   if (!b.underAttack(i,j)) {
+     *      if (!b.underAttack(i,j)) {
      *          ... b.addQueen(i,j) ...
      *      }
      * }
@@ -69,14 +123,17 @@ public class Queens {
      * calcolando ricorsivamente per ciascuna di queste il numero
      * di modi in cui si può completare la disposizione
      *
-     * numberOfCompletions(b.addQueen(i,j))
+     * --> numberOfCompletions(b.addQueen(i,j))
      *
      * e sommando i valori che ne risultano
-     * count = count + numberOfCompletions(...)
+     *
+     * --> count = count + numberOfCompletions(...)
      *
      * Se invece la scacchiera rappresenta una soluzione (q == n)
      * c'è un solo modo (banale) di completare la disposizione:
      * lasciare le cose come stanno!
+     *
+     * @param b a Board Object
      */
     private static int numeroDiCompletamenti(Board b) {
 
@@ -150,6 +207,8 @@ public class Queens {
         System.out.println(Queens.listaDiSoluzioni(4));     // ( b1  d2  a3  c4 ,  c1  a2  d3  b4 )
         System.out.println(Queens.listaSoluzioni(4));       // (Board {[ b1  d2  a3  c4 ]}, Board {[ c1  a2  d3  b4 ]})
         System.out.println(Queens.listaSoluzioni(1));       // (Board {[ a1 ]})
+        System.out.println(Queens.numeroDiSoluzioni(1, 4)); // (1, 0, 0, 2)
+        System.out.println(Queens.listOfSolutions(4)); // (Board {[ b1  d2  a3  c4 ]}, Board {[ c1  a2  d3  b4 ]})
     }
 } // class Queens
 
