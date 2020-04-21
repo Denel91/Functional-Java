@@ -14,6 +14,7 @@ import java.util.Iterator;
  * il.car() : int                                       // car
  * il.cdr() : IntSList                                  // cdr
  * il.cons(n) : IntSList                                // cons
+ * il.belong(int k) : boolean                           // belong
  * il.length() : int                                    // length
  * il.listRef(i) : int                                  // list-ref
  * il.equals(cl) : boolean                              // equal?
