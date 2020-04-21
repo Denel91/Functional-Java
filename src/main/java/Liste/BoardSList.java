@@ -1,5 +1,6 @@
-package N_Regine;
+package Liste;
 
+import N_Regine.Board;
 import java.util.Iterator;
 
 /**
@@ -60,7 +61,7 @@ public class BoardSList implements Iterable<Board> {
     }
 
     /**
-     * Verifica se una lista è vuota
+     * Verifica se la lista è vuota
      *
      * @return true if BoardSList is empty, false otherwise
      */
@@ -71,7 +72,7 @@ public class BoardSList implements Iterable<Board> {
     /**
      * Ritorna il primo elemento della lista
      *
-     * @return the first element of the BoardSList
+     * @return the first element of BoardSList
      */
     public Board car() {
         return firstElement;
@@ -237,7 +238,7 @@ public class BoardSList implements Iterable<Board> {
     public Iterator<Board> iterator() {
         BoardSList c = this;
 
-        return new Iterator<Board>() {
+        return new Iterator<>() {
             private BoardSList current = c;
 
             @Override
