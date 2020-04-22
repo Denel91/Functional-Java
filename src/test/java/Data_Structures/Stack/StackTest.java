@@ -1,4 +1,4 @@
-package Data_Structures;
+package Data_Structures.Stack;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -31,7 +31,7 @@ class StackTest {
         // Executed before each @Test
         @BeforeEach
         void newStack() {
-            stack = new Stack<Integer>();
+            stack = new Stack<>();
         }
 
         @Test
@@ -56,14 +56,14 @@ class StackTest {
         @ValueSource(ints = {6, 8, 12, 15})
         @DisplayName("setCapacity")
         void setCapacity(int capacity) {
-            myStack = new Stack<Integer>(capacity);
+            myStack = new Stack<>(capacity);
             assertEquals(capacity, myStack.getCapacity());
         }
 
         @Test
         @DisplayName("testEquals")
         void testEquals() {
-            myStack = new Stack<Integer>();
+            myStack = new Stack<>();
             assertTrue(myStack.equals(stack), () -> "Equals");
         }
 
@@ -155,7 +155,7 @@ class StackTest {
             @Test
             @DisplayName("equals")
             void testEqualsAfterPush() {
-                myStack = new Stack<Integer>();
+                myStack = new Stack<>();
                 myStack.push(number);
                 assertTrue(stack.equals(myStack), () -> "Equals");
             }
