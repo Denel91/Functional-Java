@@ -1,5 +1,10 @@
 package Dynamic;
 
+/**
+ * Definizione della classe ProgrammazioneDinamica
+ *
+ * @version 23/04/2020
+ */
 public class ProgrammazioneDinamica {
 
     /**
