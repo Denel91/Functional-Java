@@ -3,6 +3,8 @@ package Dynamic;
 /**
  * Definizione della classe Stirling per calcolare
  * il numero di Stirling di seconda specie.
+ *
+ * @version 23/04/2020
  */
 public class Stirling {
 
