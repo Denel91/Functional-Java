@@ -110,7 +110,7 @@ class StackTest {
                     assertFalse(stack.isEmpty(), () -> "Not Empty");
 
                     // Executed only if the previous assertion is valid.
-                    assertAll("first element ", () -> assertEquals(number, stack.peek()));
+                    assertAll("first element", () -> assertEquals(number, stack.peek()));
                 });
             }
 
