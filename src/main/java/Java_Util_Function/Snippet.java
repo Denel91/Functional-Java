@@ -13,6 +13,18 @@ import java.util.function.BiFunction;
  */
 public class Snippet {
     public static void main(String[] args) {
+        int max = 10;
+        int min = 5;
+        int cicli_errati = 4;
+
+        while ((max - min) >= cicli_errati) {
+            System.out.println("Sono dentro while");
+            cicli_errati++;
+        }
+
+        // OUTPUT:
+        //-> Sono dentro while
+        //-> Sono dentro while
 
         Set<Integer> intset = new HashSet<>();
         intset.add(5);
