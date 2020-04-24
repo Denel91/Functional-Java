@@ -1,8 +1,8 @@
 package N_Regine;
 
-import Liste.StringSList;
-import Liste.SList;
 import Liste.BoardSList;
+import Liste.SList;
+import Liste.StringSList;
 
 /**
  * Soluzione del rompicapo delle N regine
