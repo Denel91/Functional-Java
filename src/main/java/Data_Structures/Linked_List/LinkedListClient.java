@@ -3,7 +3,7 @@ package Data_Structures.Linked_List;
 /**
  * Classe di Test per LinkedList<E>
  *
- * @version 24/04/2020
+ * @version 25/04/2020
  */
 public class LinkedListClient {
     public static void main(String[] args) {
@@ -37,11 +37,13 @@ public class LinkedListClient {
         System.out.println(list.belong(3)); // true
         System.out.println(list.belong(12)); // true
         System.out.println(list.belong(15)); // false
+        list.display(list); // (10, 3, 5, 8, 9, 4, 12)
 
         LinkedList<String> listaStringhe = new LinkedList<>();
         listaStringhe.addFirst("Hello");
         listaStringhe.addLast("World");
         listaStringhe.addLast("LinkedList");
+        System.out.println();
         System.out.println(listaStringhe); // (Hello, World, LinkedList, null)
         System.out.println(listaStringhe.indexOf("LinkedList")); // 2
     }
