@@ -1,5 +1,7 @@
 package Data_Structures.Linked_List;
 
+import java.util.Iterator;
+
 /**
  * class LinkedList
  *
@@ -17,10 +19,12 @@ package Data_Structures.Linked_List;
  * addLast(E e) : void
  * changeLast(E e) : void
  * toString() : String
+ * display(LinkedList<E> list) : void
+ * iterator() : Iterator<E>
  *
- * @version 24/04/2020
+ * @version 25/04/2020
  */
-public class LinkedList<E> {
+public class LinkedList<E> implements Iterable<E> {
     // variabili di esemplare di LinkedList
     private Node<E> head;   // nodo iniziale della lista (o null se è vuota)
     private Node<E> tail;   // nodo finale della lista (o null se è vuota)
@@ -50,7 +54,7 @@ public class LinkedList<E> {
      * @return true if the list is empty, false otherwise
      */
     public boolean isEmpty() {
-        return this.getSize() == 0;
+        return this.size == 0;
     }
 
     /**
@@ -109,27 +113,7 @@ public class LinkedList<E> {
      * @return true se l'elemento appartiene alla lista, falso altrimenti.
      */
     public boolean belong(E e) {
-        if (isEmpty()) {
-            return false;
-
-        } else if (first().equals(e)) {
-            return true;
-
-        } else if (last().equals(e)) {
-            return true;
-
-        } else {
-            Node<E> tmpNode = head;
-            int index = 0;
-            while (index < size) {
-                if (tmpNode.element.equals(e)) {
-                    return true;
-                }
-                index++;
-                tmpNode = tmpNode.getNext();
-            }
-        }
-        return false;
+        return this.indexOf(e) != -1;
     }
 
     //------------ metodi di aggiornamento ------------
@@ -156,8 +140,8 @@ public class LinkedList<E> {
         if (isEmpty()) {
             throw new NullPointerException("La lista è vuota!");
         }
-        Node<E> node = new Node<>(e, null);
-        head.setElement(node.getElement());
+
+        head.setElement(e);
     }
 
     /**
@@ -203,13 +187,57 @@ public class LinkedList<E> {
         if (isEmpty()) {
             throw new NullPointerException("La lista è vuota!");
         }
-        Node<E> node = new Node<>(e, null);
-        tail.setElement(node.getElement());
+
+        tail.setElement(e);
     }
 
     @Override
     public String toString() {
         return "(" + head + ")";
+    }
+
+    public void display(LinkedList<E> list) {
+        String s = "(";
+        String t = ")";
+
+        System.out.print(s);
+
+        for (E value : list) {
+            if (head != null) {
+                System.out.print(value + ", ");
+
+            } else {
+                System.out.print(value);
+            }
+        }
+
+        System.out.print(t);
+    }
+
+    @Override
+    public Iterator<E> iterator() {
+        LinkedList<E> c = this;
+
+        return new Iterator<>() {
+            private final LinkedList<E> current = c;
+
+            @Override
+            public boolean hasNext() {
+                return current != null && head != null;
+            }
+
+            @Override
+            public E next() {
+                E i = current.first();
+                head = head.getNext();
+                return i;
+            }
+
+            @Override
+            public void remove() {
+                throw new UnsupportedOperationException();
+            }
+        };
     }
 
     //------------ classe annidata Node ------------
