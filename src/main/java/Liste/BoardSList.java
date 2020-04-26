@@ -33,7 +33,7 @@ public class BoardSList implements Iterable<Board> {
     // Rappresentazione interna di una lista di Board
     // variabili di istanza private immutabili
     private final boolean empty;
-    private final Board firstElement; // Referenzia il primo elemento della lista
+    private final Board firstElement;      // Referenzia il primo elemento della lista
     private final BoardSList restElements; // Contiene il resto della lista senza il primo elemento
 
     /**
@@ -105,6 +105,7 @@ public class BoardSList implements Iterable<Board> {
     public int length() {
         if (this.isEmpty()) {
             return 0;
+
         } else {
             return this.cdr().length() + 1;
         }
@@ -119,6 +120,7 @@ public class BoardSList implements Iterable<Board> {
     public Board listRef(int index) {
         if (index == 0) {
             return car();
+
         } else {
             return cdr().listRef(index - 1);
         }
@@ -133,10 +135,13 @@ public class BoardSList implements Iterable<Board> {
     public boolean equals(BoardSList sList) {
         if (this.isEmpty()) {
             return sList.isEmpty();
+
         } else if (sList.isEmpty()) {
             return false;
+
         } else if (car().equals(sList.car())) {
             return this.cdr().equals(sList.cdr());
+
         } else {
             return false;
         }
@@ -151,6 +156,7 @@ public class BoardSList implements Iterable<Board> {
     public BoardSList append(BoardSList list) {
         if (this.isEmpty()) {
             return list;
+
         } else {
             return this.cdr().append(list).cons(car());
         }
@@ -174,6 +180,7 @@ public class BoardSList implements Iterable<Board> {
     private BoardSList reverseRec(BoardSList rl) {
         if (this.isEmpty()) {
             return rl;
+
         } else {
             return cdr().reverseRec(rl.cons(car()));
         }
@@ -188,8 +195,10 @@ public class BoardSList implements Iterable<Board> {
     public String toString() {
         if (this.isEmpty()) {
             return "(---)";
+
         } else if (restElements.isEmpty()) {
             return "(" + this.firstElement + ")";
+
         } else {
             String elements = "(" + this.firstElement;
             BoardSList restEl = this.restElements;
@@ -215,13 +224,10 @@ public class BoardSList implements Iterable<Board> {
         System.out.print(s);
 
         for (Board el : sList) {
-
             if (el != listRef(length() - 1)) {
-
                 System.out.print(el + ", ");
 
             } else {
-
                 System.out.print(el);
             }
         }
