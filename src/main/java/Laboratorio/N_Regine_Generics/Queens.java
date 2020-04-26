@@ -1,7 +1,7 @@
 package Laboratorio.N_Regine_Generics;
 
 import Liste.SList;
-import  queens.ChessboardView;
+import queens.ChessboardView;
 
 /**
  * Soluzione del rompicapo delle N regine
@@ -15,16 +15,16 @@ public class Queens {
         ChessboardView gui = new ChessboardView(8);
         gui.setQueens(viewBoard(list));
 
-        System.out.println(Queens.numeroDiSoluzioni(1));
-        System.out.println(Queens.numeroDiSoluzioni(2));
-        System.out.println(Queens.numeroDiSoluzioni(3));
-        System.out.println(Queens.numeroDiSoluzioni(4));
-        System.out.println(Queens.numeroDiSoluzioni(5));
-        System.out.println(Queens.numeroDiSoluzioni(6));
-        System.out.println(Queens.numeroDiSoluzioni(7));
-        System.out.println(Queens.numeroDiSoluzioni(8));
-        System.out.println(Queens.numeroDiSoluzioni(9));
-        System.out.println(Queens.numeroDiSoluzioni(10));
+        System.out.println(Queens.numeroDiSoluzioni(1)); // 1
+        System.out.println(Queens.numeroDiSoluzioni(2)); // 0
+        System.out.println(Queens.numeroDiSoluzioni(3)); // 0
+        System.out.println(Queens.numeroDiSoluzioni(4)); // 2
+        System.out.println(Queens.numeroDiSoluzioni(5)); // 10
+        System.out.println(Queens.numeroDiSoluzioni(6)); // 4
+        System.out.println(Queens.numeroDiSoluzioni(7)); // 40
+        System.out.println(Queens.numeroDiSoluzioni(8)); // 92
+        System.out.println(Queens.numeroDiSoluzioni(9)); // 352
+        System.out.println(Queens.numeroDiSoluzioni(10)); // 724
     }
 
     public static String viewBoard(SList<Board> lista) {
