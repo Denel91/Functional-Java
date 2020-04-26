@@ -117,12 +117,6 @@ public class Board {
     public String toString() {
         return "Board <" + "size = " + size + ", queens = " + queens + ", queensAttackingRow = " + queensAttackingRow + ", " + "queensAttackingCol = " + queensAttackingCol + ", queensAttackingDg1 = " + queensAttackingDg1 + ", " + "queensAttackingDg2 = " + queensAttackingDg2 + ", config = '" + config + '\'' + '>';
     }
-
-    public static void main(String[] args) {
-        Board t = new Board(5);
-        System.out.println(t.addQueen(3, 3));
-        System.out.println(t.addQueen(1, 4));
-    }
 }
 
 
