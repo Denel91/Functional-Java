@@ -1,4 +1,4 @@
-package Laboratorio.N_Regine_Generics;
+package Laboratorio.Queens_Gui;
 
 import Liste.SList;
 import queens.ChessboardView;
