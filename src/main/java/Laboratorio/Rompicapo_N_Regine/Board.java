@@ -16,7 +16,7 @@ import Liste.IntSList;
  * arrangement() : String
  * toString() : String
  *
- * @version 21/042020
+ * @version 21/04/2020
  */
 public class Board {
     // Codifica secondo le convenzioni scacchistiche (massima dimensione: 15 x 15)
