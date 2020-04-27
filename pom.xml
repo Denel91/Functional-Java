@@ -31,8 +31,17 @@
     <repositories>
         <repository>
             <id>ProjectRepo</id>
-            <name>Library</name>
-            <url>${pom.basedir}\src\lib</url>
+            <name>Code Library</name>
+            <url>${pom.basedir}\src\lib\1339_sourcecode</url>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </releases>
+        </repository>
+        <repository>
+            <id>Repo</id>
+            <name>Queens Library</name>
+            <url>${pom.basedir}\src\lib\queens</url>
             <releases>
                 <enabled>true</enabled>
                 <updatePolicy>always</updatePolicy>
