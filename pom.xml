@@ -30,6 +30,11 @@
     </properties>
     <dependencies>
         <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-jar-plugin</artifactId>
+            <version>2.4</version>
+        </dependency>
+        <dependency>
             <groupId>queens</groupId>
             <artifactId>queens</artifactId>
             <scope>system</scope>
