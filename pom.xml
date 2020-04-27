@@ -30,9 +30,9 @@
     </properties>
     <repositories>
         <repository>
-            <id>rep</id>
-            <name>Repository</name>
-            <url>https://github.com/Denel91/Functional-Java/tree/master/src/lib</url>
+            <id>ProjectRepo</id>
+            <name>Library</name>
+            <url>${pom.basedir}\src\lib</url>
             <releases>
                 <enabled>true</enabled>
                 <updatePolicy>always</updatePolicy>
