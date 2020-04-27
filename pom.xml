@@ -28,6 +28,17 @@
         <junit.vintage.version>5.6.1</junit.vintage.version>
         <cucumber.version>5.5.0</cucumber.version>
     </properties>
+    <repositories>
+        <repository>
+            <id>rep</id>
+            <name>Repository</name>
+            <url>https://github.com/Denel91/Functional-Java/tree/master/src/lib</url>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </releases>
+        </repository>
+    </repositories>
     <dependencies>
         <dependency>
             <groupId>org.apache.maven.plugins</groupId>
