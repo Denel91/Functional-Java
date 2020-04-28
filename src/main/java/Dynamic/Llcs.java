@@ -52,6 +52,13 @@ public class Llcs {
         return llcsRec(u, v, h);
     }
 
+    /**
+     * Procedura di supporto
+     * @param u una stringa
+     * @param v una stringa
+     * @param h un array dove memorizzare i valori
+     * @return la lunghezza della sottosequenza comune più lunga
+     */
     private static int llcsRec(String u, String v, int[][] h) {
         int m = u.length();
         int n = v.length();
@@ -131,7 +138,11 @@ public class Llcs {
     }
 
     /**
-     * Procedura privata di supporto
+     * Procedura di supporto
+     * @param u una stringa
+     * @param v una stringa
+     * @param llcsDb un array dove memorizzare i valori
+     * @return sottosequenza comune più lunga
      */
     private static String lcsRec(String u, String v, String[][] llcsDb) {
         int i = u.length();
