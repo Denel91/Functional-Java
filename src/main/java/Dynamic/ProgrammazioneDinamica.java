@@ -3,7 +3,7 @@ package Dynamic;
 /**
  * Definizione della classe ProgrammazioneDinamica
  *
- * @version 23/04/2020
+ * @version 28/04/2020
  */
 public class ProgrammazioneDinamica {
 
@@ -119,21 +119,69 @@ public class ProgrammazioneDinamica {
     }
 
     /**
-     * R(n) = 1 + R(n-2) + R(n-1) per n >= 2
+     * "Percorsi di Manhattan"
+     * Bottom-Up --> Programmazione Dinamica
      *
-     * R(n) >= (1.5)^(n-1) > 425000000 di ricorsioni per n = 50
-     *
-     * R(n) >= (1.5)^(n-1) > 2.7 * 10^7 di ricorsioni per n = 100
-     * --> 2.7 * 10^8 secondi > 8 anni
-     *
-     * 1 = R(0) >= (1.5)^-1
-     * 1 = R(1) >= (1.5)^0
-     * R(n) = 1 + R(n-2) + R(n-1) > (1.5)^n-3 + (1.5)^n-2
-     * R(n) >= ((1.5)^-1 + 1) * (1.5)^n-2 > 1.5 (1.5)^n-2
+     * @param i indice di riga
+     * @param j indice di colonna
+     * @return il numero possibile di percorsi
      */
+    public static long manhDP(int i, int j) { // i, j >= 0
+        long[][] h = new long[i + 1][i + j];
+        for (int y = 0; y <= j; y++) {
+            h[0][y] = 1;
+        }
+
+        for (int x = 1; x <= i; x++) {
+            h[x][0] = 1;
+        }
+
+        for (int x = 1; x <= i; x++) {
+            for (int y = 1; y <= j; y++) {
+                h[x][y] = h[x - 1][y] + h[x][y - 1];
+            }
+        }
+
+        return h[i][j];
+    }
+
+    // Versione alternativa
+
+    /**
+     * "Percorsi di Manhattan"
+     * Bottom-Up --> Programmazione Dinamica
+     *
+     * @param i indice di riga
+     * @param j indice di colonna
+     * @return il numero possibile di percorsi
+     */
+    public static long manhDp(int i, int j) {
+        long[][] h = new long[i + 1][i + j];
+        for (int y = 0; y <= j; y++) {
+            h[0][y] = 1;
+        }
+
+        for (int x = 1; x <= i; x++) {
+            h[x][0] = 1;
+        }
+
+        for (int x = 0; x <= i; x++) {
+            for (int y = 0; y <= j; y++) {
+                if (x == 0 || y == 0) {
+                    h[x][y] = 1;
+                } else {
+                    h[x][y] = h[x - 1][y] + h[x][y - 1];
+                }
+            }
+        }
+
+        return h[i][j];
+    }
 
     public static void main(String[] args) {
         System.out.println(fibMem(90));
         System.out.println(manhMem(25, 25));
+        System.out.println(manhDP(4, 5));
+        System.out.println(manhDp(4, 5));
     }
 }
