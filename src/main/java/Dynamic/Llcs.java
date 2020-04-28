@@ -2,6 +2,8 @@ package Dynamic;
 
 /**
  * class Llcs
+ *
+ * @version 28/04/2020
  */
 public class Llcs {
     // Variabile di classe
