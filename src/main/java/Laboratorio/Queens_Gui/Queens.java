@@ -6,14 +6,13 @@ import queens.ChessboardView;
 /**
  * Soluzione del rompicapo delle N regine
  *
- * @version 26/04/2020
+ * @version 28/04/2020
  */
 public class Queens {
     public static void main(String[] args) {
 
-        SList<Board> list = Queens.listOfSolutions(8);
-        ChessboardView gui = new ChessboardView(8);
-        gui.setQueens(viewBoard(list));
+        SList<Board> list = Queens.listOfSolutions(6);
+        viewBoard(list);
 
         System.out.println(Queens.numeroDiSoluzioni(1)); // 1
         System.out.println(Queens.numeroDiSoluzioni(2)); // 0
@@ -27,8 +26,14 @@ public class Queens {
         System.out.println(Queens.numeroDiSoluzioni(10)); // 724
     }
 
-    public static String viewBoard(SList<Board> lista) {
-        return lista.toString();
+    public static void viewBoard(SList<Board> lista) {
+        Board s;
+        ChessboardView gui = new ChessboardView(6);
+        while (!lista.isEmpty()) {
+            s = lista.car();
+            gui.setQueens(s.arrangement());
+            lista = lista.cdr();
+        }
     }
 
     public static SList<Board> listOfSolutions(int n) {
