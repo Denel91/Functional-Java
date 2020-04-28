@@ -54,6 +54,7 @@ public class Llcs {
 
     /**
      * Procedura di supporto
+     *
      * @param u una stringa
      * @param v una stringa
      * @param h un array dove memorizzare i valori
@@ -100,6 +101,7 @@ public class Llcs {
 
     /**
      * Procedura di supporto
+     *
      * @param u una stringa
      * @param v una stringa
      * @return la stringa più lunga tra u e v
@@ -139,8 +141,9 @@ public class Llcs {
 
     /**
      * Procedura di supporto
-     * @param u una stringa
-     * @param v una stringa
+     *
+     * @param u      una stringa
+     * @param v      una stringa
      * @param llcsDb un array dove memorizzare i valori
      * @return sottosequenza comune più lunga
      */
