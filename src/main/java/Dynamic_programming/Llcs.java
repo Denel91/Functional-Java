@@ -1,4 +1,4 @@
-package Dynamic;
+package Dynamic_programming;
 
 /**
  * class Llcs
