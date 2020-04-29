@@ -3,7 +3,7 @@ package Dynamic_programming;
 /**
  * class Llcs
  *
- * @version 28/04/2020
+ * @version 30/04/2020
  */
 public class Llcs {
     // Variabile di classe
@@ -13,6 +13,9 @@ public class Llcs {
         System.out.println(llcsMem("to", "to"));
         System.out.println(lcs("sio", "trio"));
         System.out.println(lcsMem("atrio", "arto"));
+        System.out.println(lcsBottomUp("arto", "atrio"));
+        System.out.println(llcsBottomUp("aromatico", "aromatizzato"));
+        System.out.println(llcsMem("aromatico", "aromatizzato"));
     }
 
     //--------- Lunghezza della sottosequenza comune più lunga (LLCS) ---------//
@@ -80,6 +83,32 @@ public class Llcs {
         return h[m][n];
     }
 
+    /**
+     * Length of longest common subsequence
+     * Versione Bottom-Up dynamic programming
+     *
+     * @param s una stringa
+     * @param r una stringa
+     * @return la lunghezza della sottosequenza comune più lunga
+     */
+    public static int llcsBottomUp(String s, String r) {
+        // Compute length of LCS for all sub-problems
+        int sl = s.length(), rl = r.length();
+        int[][] opt = new int[sl + 1][rl + 1];
+
+        for (int i = sl - 1; i >= 0; i--) {
+            for (int j = rl - 1; j >= 0; j--) {
+                if (s.charAt(i) == r.charAt(j)) {
+                    opt[i][j] = opt[i + 1][j + 1] + 1;
+                } else {
+                    opt[i][j] = Math.max(opt[i + 1][j], opt[i][j + 1]);
+                }
+            }
+        }
+
+        return opt[0][0];
+    }
+
     //--------- Sottosequenza comune più lunga (LCS) --------- //
 
     /**
@@ -142,8 +171,8 @@ public class Llcs {
     /**
      * Procedura di supporto
      *
-     * @param u      una stringa
-     * @param v      una stringa
+     * @param u una stringa
+     * @param v una stringa
      * @param llcsDb un array dove memorizzare i valori
      * @return sottosequenza comune più lunga
      */
@@ -165,5 +194,47 @@ public class Llcs {
         }
 
         return llcsDb[i][j];
+    }
+
+    /**
+     * Longest common subsequence recurrence
+     * Versione Bottom-Up dynamic programming
+     *
+     * @param s una stringa
+     * @param t una stringa
+     * @return sottosequenza comune più lunga
+     */
+    public static String lcsBottomUp(String s, String t) {
+        // Compute length of LCS for all sub-problems
+        int m = s.length(), n = t.length();
+        int[][] opt = new int[m + 1][n + 1];
+
+        for (int i = m - 1; i >= 0; i--) {
+            for (int j = n - 1; j >= 0; j--) {
+                if (s.charAt(i) == t.charAt(j)) {
+                    opt[i][j] = opt[i + 1][j + 1] + 1;
+                } else {
+                    opt[i][j] = Math.max(opt[i + 1][j], opt[i][j + 1]);
+                }
+            }
+        }
+
+        String lcs = "";
+        int i = 0, j = 0;
+        while (i < m && j < n) {
+            if (s.charAt(i) == t.charAt(j)) {
+                lcs += s.charAt(i);
+                i++;
+                j++;
+
+            } else if (opt[i + 1][j] >= opt[i][j + 1]) {
+                i++;
+
+            } else {
+                j++;
+            }
+        }
+
+        return lcs;
     }
 } // class Llcs
