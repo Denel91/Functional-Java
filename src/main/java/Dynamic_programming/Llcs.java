@@ -10,17 +10,17 @@ public class Llcs {
     private static final int UNKNOWN = 0;
 
     public static void main(String[] args) {
-        System.out.println(llcsMem("to", "to"));
-        System.out.println(lcs("sio", "trio"));
-        System.out.println(lcsMem("atrio", "arto"));
         System.out.println(lcsBottomUp("arto", "atrio"));
-        System.out.println(llcsBottomUp("aromatico", "aromatizzato"));
-        System.out.println(llcsMem("aromatico", "aromatizzato"));
+        System.out.println(llcsBottomUp("arto", "atrio"));
+        System.out.println(lcsDP("arto", "atrio"));
+        System.out.println(llcsDP("arto", "atrio"));
     }
 
     //--------- Lunghezza della sottosequenza comune più lunga (LLCS) ---------//
 
     /**
+     * Lunghezza della sottosequenza comune più lunga
+     *
      * @param u una stringa
      * @param v una stringa
      * @return la lunghezza della sottosequenza comune più lunga
@@ -40,7 +40,13 @@ public class Llcs {
         }
     }
 
-    // Versione che applica la tecnica di memoization:
+    /**
+     * Versione che applica la tecnica di memoization
+     *
+     * @param u una stringa
+     * @param v una stringa
+     * @return la lunghezza della sottosequenza comune più lunga
+     */
     public static int llcsMem(String u, String v) {
         int m = u.length();
         int n = v.length();
@@ -85,7 +91,7 @@ public class Llcs {
 
     /**
      * Length of longest common subsequence
-     * Versione Bottom-Up dynamic programming
+     * Versione Bottom-Up dynamic programming (Prima Versione)
      *
      * @param s una stringa
      * @param r una stringa
@@ -98,8 +104,12 @@ public class Llcs {
 
         for (int i = sl - 1; i >= 0; i--) {
             for (int j = rl - 1; j >= 0; j--) {
-                if (s.charAt(i) == r.charAt(j)) {
+                if ((i == sl) || (j == rl)) {
+                    opt[i][j] = 0;
+
+                } else if (s.charAt(i) == r.charAt(j)) {
                     opt[i][j] = opt[i + 1][j + 1] + 1;
+
                 } else {
                     opt[i][j] = Math.max(opt[i + 1][j], opt[i][j + 1]);
                 }
@@ -109,9 +119,37 @@ public class Llcs {
         return opt[0][0];
     }
 
+    /**
+     * Versione Bottom-Up dynamic programming (Seconda Versione)
+     *
+     * @param u una stringa
+     * @param v una stringa
+     * @return la lunghezza della sottosequenza comune più lunga
+     */
+    public static int llcsDP(String u, String v) {
+        int m = u.length(), n = v.length();
+        int[][] h = new int[m + 1][n + 1];
+
+        for (int x = 0; x <= m; x++) {
+            for (int y = 0; y <= n; y++) {
+                if ((x == 0) || (y == 0)) {
+                    h[x][y] = 0;
+                } else if (u.charAt(m - x) == v.charAt(n - y)) {
+                    h[x][y] = 1 + h[x - 1][y - 1];
+                } else {
+                    h[x][y] = Math.max(h[x - 1][y], h[x][y - 1]);
+                }
+            }
+        }
+
+        return h[m][n];
+    }
+
     //--------- Sottosequenza comune più lunga (LCS) --------- //
 
     /**
+     * Sottosequenza comune più lunga
+     *
      * @param u una stringa
      * @param v una stringa
      * @return sottosequenza comune più lunga
@@ -153,7 +191,13 @@ public class Llcs {
         }
     }
 
-    // Versione che applica la tecnica di memoization:
+    /**
+     * Versione che applica la tecnica di memoization
+     *
+     * @param u una stringa
+     * @param v una stringa
+     * @return sottosequenza comune più lunga
+     */
     public static String lcsMem(String u, String v) {
         int m = u.length();
         int n = v.length();
@@ -171,8 +215,8 @@ public class Llcs {
     /**
      * Procedura di supporto
      *
-     * @param u una stringa
-     * @param v una stringa
+     * @param u      una stringa
+     * @param v      una stringa
      * @param llcsDb un array dove memorizzare i valori
      * @return sottosequenza comune più lunga
      */
@@ -198,7 +242,7 @@ public class Llcs {
 
     /**
      * Longest common subsequence recurrence
-     * Versione Bottom-Up dynamic programming
+     * Versione Bottom-Up dynamic programming (Prima Versione)
      *
      * @param s una stringa
      * @param t una stringa
@@ -211,8 +255,12 @@ public class Llcs {
 
         for (int i = m - 1; i >= 0; i--) {
             for (int j = n - 1; j >= 0; j--) {
-                if (s.charAt(i) == t.charAt(j)) {
+                if (i == m || j == n) {
+                    opt[i][j] = 0;
+
+                } else if (s.charAt(i) == t.charAt(j)) {
                     opt[i][j] = opt[i + 1][j + 1] + 1;
+
                 } else {
                     opt[i][j] = Math.max(opt[i + 1][j], opt[i][j + 1]);
                 }
@@ -227,11 +275,68 @@ public class Llcs {
                 i++;
                 j++;
 
-            } else if (opt[i + 1][j] >= opt[i][j + 1]) {
+            } else if (opt[i + 1][j] > opt[i][j + 1]) {
                 i++;
 
-            } else {
+            } else if (opt[i + 1][j] < opt[i][j + 1]) {
                 j++;
+
+            } else if (Math.random() < 0.5) {
+                j++;
+
+            } else {
+                i++;
+            }
+        }
+
+        return lcs;
+    }
+
+    /**
+     * Versione Bottom-Up dynamic programming (Seconda Versione)
+     *
+     * @param u una stringa
+     * @param v una stringa
+     * @return sottosequenza comune più lunga
+     */
+    public static String lcsDP(String u, String v) {
+        int m = u.length(), n = v.length();
+        int[][] h = new int[m + 1][n + 1];
+
+        for (int x = 0; x <= m; x++) {
+            for (int y = 0; y <= n; y++) {
+                if ((x == 0) || (y == 0)) {
+                    h[x][y] = 0;
+
+                } else if (u.charAt(m - x) == v.charAt(n - y)) {
+                    h[x][y] = 1 + h[x - 1][y - 1];
+
+                } else {
+                    h[x][y] = Math.max(h[x - 1][y], h[x][y - 1]);
+                }
+            }
+        }
+
+        String lcs = "";
+        int i = m;
+        int j = n;
+        while (i > 0 && j > 0) {
+            if (u.charAt(m - i) == v.charAt(n - j)) {
+                lcs += u.charAt(m - i);
+                i--;
+                j--;
+
+            } else if (h[i - 1][j] > h[i][j - 1]) {
+                i--;
+
+            } else if (h[i - 1][j] < h[i][j - 1]) {
+                j--;
+
+            } else if (Math.random() < 0.5) {
+                j--;
+
+            } else {
+                i--;
             }
         }
 
