@@ -10,11 +10,19 @@ public class Llcs {
     private static final int UNKNOWN = 0;
 
     public static void main(String[] args) {
-        System.out.println(lcsBottomUp("arto", "atrio"));
-        System.out.println(llcsBottomUp("arto", "atrio"));
-        System.out.println(lcsDP("arto", "atrio"));
-        System.out.println(llcsDP("arto", "atrio"));
-        System.out.println(llcsBotUp("arto", "atrio", "astio"));
+        System.out.println(llcsBottomUp("arto", "atrio")); // 3
+        System.out.println(lcsBottomUp("atrio", "arto")); // aro
+
+        System.out.println(llcsDP("arto", "atrio")); // 3
+        System.out.println(lcsDP("arto", "atrio")); // aro
+
+        // Calcola la lunghezza della sottosequenza comune più lunga fra tre stringhe
+        System.out.println(llcsBotUp("CCGG", "CCGDDEE", "CCGCG")); // 3
+        // Calcola sottosequenza comune più lunga fra tre stringhe
+        System.out.println(lcsBotUp("CCGG", "CCGDDEE", "CCGCG")); // CCG
+
+        System.out.println(llcsBotUp("DDEECCGG", "DDEECG", "DEEEE")); // 3
+        System.out.println(lcsBotUp("DDEECCGG", "DDEECG", "DEEEE")); // DEE
     }
 
     //--------- Lunghezza della sottosequenza comune più lunga (LLCS) ---------//
@@ -370,6 +378,63 @@ public class Llcs {
 
             } else {
                 i--;
+            }
+        }
+
+        return lcs;
+    }
+
+    /**
+     * Longest common subsequence recurrence of three strings
+     * Versione Bottom-Up dynamic programming
+     *
+     * @param u una stringa
+     * @param v una stringa
+     * @param z una stringa
+     * @return sottosequenza comune più lunga
+     */
+    public static String lcsBotUp(String u, String v, String z) {
+        int m = u.length(), n = v.length(), l = z.length();
+        int[][][] btup = new int[m + 1][n + 1][l + 1];
+
+        for (int i = m - 1; i >= 0; i--) {
+            for (int j = n - 1; j >= 0; j--) {
+                for (int k = l - 1; k >= 0; k--) {
+                    if (i == m || j == n || k == l) {
+                        btup[i][j][k] = 0;
+
+                    } else if (u.charAt(i) == v.charAt(j) && v.charAt(j) == z.charAt(k)) {
+                        btup[i][j][k] = btup[i + 1][j + 1][k + 1] + 1;
+
+                    } else {
+                        btup[i][j][k] = Math.max(Math.max(btup[i + 1][j][k], btup[i][j + 1][k]), btup[i][j][k + 1]);
+                    }
+                }
+            }
+        }
+
+        String lcs = "";
+        int i = 0, j = 0, k = 0;
+        while (i < m && j < n && k < l) {
+            if (u.charAt(i) == v.charAt(j) && v.charAt(j) == z.charAt(k)) {
+                lcs += u.charAt(i);
+                i++;
+                j++;
+                k++;
+
+            } else if (btup[i + 1][j][k] > btup[i][j + 1][k] && btup[i + 1][j][k] > btup[i][j][k + 1]) {
+                i++;
+
+            } else if (btup[i + 1][j][k] < btup[i][j + 1][k] && btup[i + 1][j][k] < btup[i][j][k + 1]) {
+                j++;
+                k++;
+
+            } else if (Math.random() < 0.5) {
+                j++;
+                k++;
+
+            } else {
+                i++;
             }
         }
 
