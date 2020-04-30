@@ -14,6 +14,7 @@ public class Llcs {
         System.out.println(llcsBottomUp("arto", "atrio"));
         System.out.println(lcsDP("arto", "atrio"));
         System.out.println(llcsDP("arto", "atrio"));
+        System.out.println(llcsBotUp("arto", "atrio", "astio"));
     }
 
     //--------- Lunghezza della sottosequenza comune più lunga (LLCS) ---------//
@@ -143,6 +144,38 @@ public class Llcs {
         }
 
         return h[m][n];
+    }
+
+    /**
+     * Length of longest common subsequence of three strings
+     * Versione Bottom-Up dynamic programming
+     *
+     * @param u una stringa
+     * @param v una stringa
+     * @param z una stringa
+     * @return la lunghezza della sottosequenza comune più lunga tra le tre stringhe
+     */
+    public static int llcsBotUp(String u, String v, String z) {
+        int m = u.length(), n = v.length(), l = z.length();
+        int[][][] btup = new int[m + 1][n + 1][l + 1];
+
+        for (int i = m - 1; i >= 0; i--) {
+            for (int j = n - 1; j >= 0; j--) {
+                for (int k = l - 1; k >= 0; k--) {
+                    if (i == m || j == n || k == l) {
+                        btup[i][j][k] = 0;
+
+                    } else if (u.charAt(i) == v.charAt(j) && v.charAt(j) == z.charAt(k)) {
+                        btup[i][j][k] = btup[i + 1][j + 1][k + 1] + 1;
+
+                    } else {
+                        btup[i][j][k] = Math.max(Math.max(btup[i + 1][j][k], btup[i][j + 1][k]), btup[i][j][k + 1]);
+                    }
+                }
+            }
+        }
+
+        return btup[0][0][0];
     }
 
     //--------- Sottosequenza comune più lunga (LCS) --------- //
