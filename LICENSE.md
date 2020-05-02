@@ -1,5 +1,3 @@
-
-
 The MIT License (MIT)
 
 Copyright (c) 2011-2019 Twitter, Inc. Copyright (c) 2011-2019 The Bootstrap Authors
