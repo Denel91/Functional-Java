@@ -20,9 +20,9 @@
 *.zip
 *.tar.gz
 *.rar
-.idea/
-out/
-target/
+/.idea
+/out
+/target
 *.iml
 *.xml
 *.html
