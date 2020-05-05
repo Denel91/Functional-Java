@@ -1,6 +1,7 @@
 package Laboratorio.Length_longest_increasing_subsequence;
 
 import Liste.IntSList;
+
 import java.util.Arrays;
 
 /**
@@ -38,7 +39,13 @@ public class Llis {
         System.out.println(llisMemoization(new int[]{10, 22, 9, 33, 21, 50, 41, 60, 80})); // 6
 
         // Visualizza la lista della più lunga sottosequenza di s strettamente crescente
+        System.out.println("List of longest increasing subsequence: ");
+        System.out.println(lis(new int[]{5, 4, 3, 2, 1})); // (5)
+        System.out.println(lis(new int[]{5, 4, 8})); // (5, 8)
         System.out.println(lis(new int[]{3, 10, 2, 1, 20})); // (3, 10, 20)
+        System.out.println(lis(new int[]{27, 90, 7, 29, 49, 8, 53, 1, 28, 6})); // (7, 29, 49, 53)
+        System.out.println(lis(new int[]{9, 46, 54, 71, 60, 47, 0, 32, 25, 61})); // (9, 46, 54, 60, 61)
+        System.out.println(lis(new int[]{10, 22, 9, 33, 21, 50, 41, 60, 80})); // (10, 22, 33, 50, 60, 80)
     }
 
     /**
