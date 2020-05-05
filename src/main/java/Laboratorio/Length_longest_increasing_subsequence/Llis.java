@@ -2,6 +2,8 @@ package Laboratorio.Length_longest_increasing_subsequence;
 
 import Liste.IntSList;
 
+import java.util.Arrays;
+
 /**
  * class length of the longest increasing subsequence
  *
@@ -82,6 +84,7 @@ public class Llis {
     public static int llisMemoization(int[] s) {
         final int n = s.length;
         final int[][] h = new int[n + 1][n + 1];
+        int[] b = Arrays.copyOf(s, n + 1); // b: {3, 10, 2, 1, 20, 0} -> ultima posizione 0
 
         for (int x = 0; x <= n; x++) {
             for (int y = 0; y <= n; y++) {
@@ -89,7 +92,7 @@ public class Llis {
             }
         }
 
-        return llisMem(s, 0, 0, h);
+        return llisMem(b, 0, 0, h);
     }
 
     /**
@@ -102,21 +105,19 @@ public class Llis {
      * @param h an array to store the values
      * @return la lunghezza della più lunga sottosequenza di s strettamente crescente
      */
-    private static int llisMem(int[] s, int i, int j, int[][] h) {
-        final int n = s.length; // s: {3, 10, 2, 1, 20}
-        // sequenza estesa con un elemento in più di posizione n e valore 0
-        int[] p = new int[n + 1]; // p: {0, 0, 0, 0, 0, 0}
+    private static int llisMem(int[] s, int i, int j, int[][] h) { // s: {3, 10, 2, 1, 20, 0}
+        final int n = s.length; // 6
 
-        int t = p[j]; //-> ArrayIndexOutOfBoundsException
+        int t = s[j];
 
         if (i == n) {
             h[i][j] = 0;
 
         } else if (s[i] <= t) {
-            h[i][j] = llisMem(s, i + 1, t, h);
+            h[i][j] = llisMem(s, i + 1, s[j], h);
 
         } else {
-            h[i][j] = Math.max(1 + llisMem(s, i + 1, s[i], h), llisMem(s, i + 1, t, h));
+            h[i][j] = Math.max(1 + llisMem(s, i + 1, i, h), llisMem(s, i + 1, j, h));
 
         }
 
