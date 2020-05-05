@@ -1,13 +1,12 @@
 package Laboratorio.Length_longest_increasing_subsequence;
 
 import Liste.IntSList;
-
 import java.util.Arrays;
 
 /**
  * class length of the longest increasing subsequence
  *
- * @version 05/05/2020
+ * @version 05/05/2020 - Correct Version
  */
 public class Llis {
 
@@ -15,6 +14,7 @@ public class Llis {
     private static final int UNKNOWN = 0;
 
     public static void main(String[] args) {
+
         // Calcola la lunghezza della più lunga sottosequenza di s strettamente crescente (Versione Ricorsiva)
         System.out.println("Versione ricorsiva: ");
         System.out.println(llis(new int[]{5, 4, 3, 2, 1})); // 1
@@ -27,8 +27,6 @@ public class Llis {
         // Calcola la lunghezza della più lunga sottosequenza di s strettamente crescente (Versione Memoization)
         System.out.println("Versione memoization: ");
         System.out.println(llisMemoization(new int[]{3, 10, 2, 1, 20})); // 3
-
-        /*
         System.out.println(llisMemoization(new int[]{5, 4, 3, 2, 1})); // 1
         System.out.println(llisMemoization(new int[]{47, 38, 39, 25, 44})); // 3
         System.out.println(llisMemoization(new int[]{27, 90, 7, 29, 49, 8, 53, 1, 28, 6})); // 4
@@ -38,7 +36,9 @@ public class Llis {
         System.out.println(llisMemoization(new int[]{5, 4, 8})); // 2
         System.out.println(llisMemoization(new int[]{50, 3, 10, 7, 40, 80})); // 4
         System.out.println(llisMemoization(new int[]{10, 22, 9, 33, 21, 50, 41, 60, 80})); // 6
-         */
+
+        // Visualizza la lista della più lunga sottosequenza di s strettamente crescente
+        System.out.println(lis(new int[]{3, 10, 2, 1, 20})); // (3, 10, 20)
     }
 
     /**
@@ -84,7 +84,7 @@ public class Llis {
     public static int llisMemoization(int[] s) {
         final int n = s.length;
         final int[][] h = new int[n + 1][n + 1];
-        int[] b = Arrays.copyOf(s, n + 1); // b: {3, 10, 2, 1, 20, 0} -> ultima posizione 0
+        int[] b = Arrays.copyOf(s, n + 1); // b: {3, 10, 2, 1, 20, 0} -> 0 in ultima posizione
 
         for (int x = 0; x <= n; x++) {
             for (int y = 0; y <= n; y++) {
@@ -92,7 +92,7 @@ public class Llis {
             }
         }
 
-        return llisMem(b, 0, 0, h);
+        return llisMem(b, 0, n, h);
     }
 
     /**
@@ -105,8 +105,8 @@ public class Llis {
      * @param h an array to store the values
      * @return la lunghezza della più lunga sottosequenza di s strettamente crescente
      */
-    private static int llisMem(int[] s, int i, int j, int[][] h) { // s: {3, 10, 2, 1, 20, 0}
-        final int n = s.length; // 6
+    private static int llisMem(int[] s, int i, int j, int[][] h) {
+        final int n = s.length - 1; // 5
 
         int t = s[j];
 
@@ -114,7 +114,7 @@ public class Llis {
             h[i][j] = 0;
 
         } else if (s[i] <= t) {
-            h[i][j] = llisMem(s, i + 1, s[j], h);
+            h[i][j] = llisMem(s, i + 1, j, h);
 
         } else {
             h[i][j] = Math.max(1 + llisMem(s, i + 1, i, h), llisMem(s, i + 1, j, h));
@@ -128,12 +128,13 @@ public class Llis {
      * Longest increasing subsequence
      * Versione memoization
      *
-     * @param s
-     * @return
+     * @param s an array of Integers
+     * @return la lista con la più lunga sottosequenza di s strettamente crescente
      */
     public static IntSList lis(int[] s) {
         final int n = s.length;
         final IntSList[][] h = new IntSList[n + 1][n + 1];
+        int[] b = Arrays.copyOf(s, n + 1); // b: {3, 10, 2, 1, 20, 0} -> 0 in ultima posizione
 
         for (int x = 0; x <= n; x++) {
             for (int y = 0; y <= n; y++) {
@@ -141,40 +142,45 @@ public class Llis {
             }
         }
 
-        return lisMem(s, 0, 0, h);
+        return lisMem(b, 0, n, h);
     }
 
     /**
      * Procedura di supporto per longest increasing subsequence
      * Versione memoization
      *
-     * @param s
-     * @param i
-     * @param j
-     * @param h
-     * @return
+     * @param s an array of Integers
+     * @param i an index
+     * @param j an index
+     * @param h una lista per memorizzare i valori ottenuti
+     * @return la lista con la più lunga sottosequenza di s strettamente crescente
      */
     private static IntSList lisMem(int[] s, int i, int j, IntSList[][] h) {
-        // s: {3, 10, 2, 1, 20} i: 0 t: 0 list: (-)
-        final int n = s.length; // n = 5
-        int[] p = new int[n + 1];
+        final int n = s.length - 1; // 5
 
-        int t = p[j];
+        int t = s[j];
 
         if (i == n) {
             h[i][j] = IntSList.NULL_INTLIST;
 
         } else if (s[i] <= t) {
-            h[i][j] = lisMem(s, i + 1, t, h);
+            h[i][j] = lisMem(s, i + 1, j, h);
 
         } else {
-            h[i][j] = longer(lisMem(s, i + 1, s[i], h).cons(s[i]), lisMem(s, i + 1, t, h));
+            h[i][j] = longer(lisMem(s, i + 1, i, h).cons(s[i]), lisMem(s, i + 1, j, h));
 
         }
 
         return h[i][j];
     }
 
+    /**
+     * Procedura di supporto per calcolare lista più lunga tra IntSList a e IntSList b
+     *
+     * @param a una lista di Integers
+     * @param b una lista di Integers
+     * @return la lista di lunghezza maggiore tra a e b
+     */
     private static IntSList longer(IntSList a, IntSList b) {
         int m = a.length();
         int n = b.length();
