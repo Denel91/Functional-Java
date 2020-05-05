@@ -60,7 +60,7 @@ public class Stirling {
             if (k == 1 || k == n) {
                 h[n][k] = 1;
             } else {
-                h[n][k] = stirling(n - 1, k - 1) + (k * stirling(n - 1, k));
+                h[n][k] = stirlingMem(n - 1, k - 1, h) + (k * stirlingMem(n - 1, k, h));
             }
         }
 
