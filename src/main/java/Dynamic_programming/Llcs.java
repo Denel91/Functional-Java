@@ -13,7 +13,7 @@ public class Llcs {
         System.out.println(llcsMem("arto", "atrio")); // 3
         System.out.println(llcsBottomUp("arto", "atrio")); // 3
         System.out.println(lcsBottomUp("atrio", "arto")); // aro
-
+        System.out.println(lcsMem("arto", "atrio")); // ato
         System.out.println(llcsDP("arto", "atrio")); // 3
         System.out.println(lcsDP("arto", "atrio")); // aro
 
