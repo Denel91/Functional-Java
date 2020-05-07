@@ -20,9 +20,13 @@ public class IOFile {
         OutputTextFile out = new OutputTextFile(dst);
         int count = 0;
 
-        while (in.textAvailable()) {
-            String line = in.readTextLine();
-            out.writeTextLine(line);
+        while (in.bitsAvailable()) {
+            //String line = in.readTextLine();
+            //out.writeTextLine(line);
+            //char c = in.readChar();
+            //out.writeChar(c);
+            int bit = in.readBit();
+            out.writeBit(bit);
             count += 1;
         }
 
