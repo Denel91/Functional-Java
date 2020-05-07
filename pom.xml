@@ -53,6 +53,15 @@
             <systemPath>${pom.basedir}/src/lib/1339_sourcecode/1339_sourcecode.jar</systemPath>
         </dependency>
         <dependency>
+            <groupId>huffman_toolkit</groupId>
+            <artifactId>huffman_toolkit</artifactId>
+            <scope>system</scope>
+            <version>1.0-SNAPSHOT</version>
+            <type>jar</type>
+            <optional>true</optional>
+            <systemPath>${pom.basedir}/src/lib/huffman_toolkit/huffman_toolkit.jar</systemPath>
+        </dependency>
+        <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-junit</artifactId>
             <version>5.5.0</version>
