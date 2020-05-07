@@ -18,8 +18,8 @@ public class IOFile {
     public static int copyFile(String src, String dst) {
         InputTextFile in = new InputTextFile(src);
         OutputTextFile out = new OutputTextFile(dst);
-        int count = 0;
 
+        int count = 0;
         while (in.bitsAvailable()) {
             //String line = in.readTextLine();
             //out.writeTextLine(line);
