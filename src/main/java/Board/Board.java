@@ -5,6 +5,7 @@ package Board;
  *
  * Versione "stato che evolve"
  *
+ * Class overview:
  * new Board(n): Constructor            crea una scacchiera n x n vuota
  * b.size() : int                       dimensione della scacchiera b
  * b.queensOn() : int                   numero di regine collocate nella scacchiera b
@@ -109,7 +110,7 @@ public class Board {
         colAttack[j - 1] = colAttack[j - 1] + 1;
         dg1Attack[i - j + size - 1] = dg1Attack[i - j + size - 1] + 1;
         dg2Attack[i + j - 2] = dg2Attack[i + j - 2] + 1;
-        config = config + " " + COLS.substring(j, j + 1) + ROWS.substring(i, i + 1) + " ";
+        config += " " + COLS.substring(j, j + 1) + ROWS.substring(i, i + 1) + " ";
     }
 
     /**
@@ -120,12 +121,12 @@ public class Board {
      * @return the Board without a queen
      */
     public void removeQueen(int i, int j) {
-        queens = queens + 1;
+        queens = queens - 1;
         rowAttack[i - 1] = rowAttack[i - 1] - 1;
         colAttack[j - 1] = colAttack[j - 1] - 1;
         dg1Attack[i - j + size - 1] = dg1Attack[i - j + size - 1] - 1;
         dg2Attack[i + j - 2] = dg2Attack[i + j - 2] - 1;
-        String pos = config + " " + COLS.substring(j, j + 1) + ROWS.substring(i, i + 1) + " ";
+        String pos = " " + COLS.substring(j, j + 1) + ROWS.substring(i, i + 1) + " ";
         int k = config.indexOf(pos);
         config = config.substring(0, k) + config.substring(k + 4);
     }
