@@ -37,6 +37,7 @@ public class Llis {
         System.out.println(llisMemoization(new int[]{5, 4, 8})); // 2
         System.out.println(llisMemoization(new int[]{50, 3, 10, 7, 40, 80})); // 4
         System.out.println(llisMemoization(new int[]{10, 22, 9, 33, 21, 50, 41, 60, 80})); // 6
+        System.out.println(llisMemoization(new int[]{3, 5, 2, 1, 7, 4, 8, 3, 9})); // (3, 5, 7, 8, 9)
 
         // Visualizza la lista della più lunga sottosequenza di s strettamente crescente
         System.out.println("List of longest increasing subsequence: ");
@@ -46,6 +47,7 @@ public class Llis {
         System.out.println(lis(new int[]{27, 90, 7, 29, 49, 8, 53, 1, 28, 6})); // (7, 29, 49, 53)
         System.out.println(lis(new int[]{9, 46, 54, 71, 60, 47, 0, 32, 25, 61})); // (9, 46, 54, 60, 61)
         System.out.println(lis(new int[]{10, 22, 9, 33, 21, 50, 41, 60, 80})); // (10, 22, 33, 50, 60, 80)
+        System.out.println(lis(new int[]{3, 5, 2, 1, 7, 4, 8, 3, 9}));
     }
 
     /**
