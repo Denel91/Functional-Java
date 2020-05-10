@@ -1,14 +1,12 @@
 package Complex_numbers;
 
 /**
- * Data type for complex numbers.
+ * Data type for Complex numbers.
  *
- * The data type is "immutable" so once you create and initialize
- * a Complex object, you cannot change it.
+ * The data type is "immutable" so once you create and initialize a Complex object, you cannot change it.
  *
  * * Class overview:
- * Complex(double real, double imag) : Constructor with two parameters -> inizializza il numero complesso al valore
- * re + i*im
+ * Complex(double real, double imag) : Constructor with two parameters -> inizializza il numero complesso al valore re + im * i
  * Complex(double real) : Constructor with one parameter -> inizializza il numero complesso al valore re + i0
  * Complex() : Default Constructor -> inizializza il numero complesso al valore 0 + i0
  * getRe() : double
