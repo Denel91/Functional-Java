@@ -21,14 +21,15 @@ package Complex_numbers;
  * inv() : Complex
  * conj() : Complex
  * mod() : double
+ * equals(Complex z) : boolean
  * toString() : String
  *
  * @version 10/05/2020
  */
 public class Complex {
     // Private instance variables
-    private final double re;    // the real part
-    private final double im;    // the imaginary part
+    private final double re;        // the real part
+    private final double im;        // the imaginary part
 
     /**
      * Initializes a complex number from the specified real and imaginary parts.
@@ -44,7 +45,7 @@ public class Complex {
     /**
      * Initializes a complex number from the specified real part
      *
-     * @param real
+     * @param real the real part
      */
     public Complex(double real) {
         this(real, 0);
@@ -156,6 +157,22 @@ public class Complex {
 
     private double powMod() {
         return re * re + im * im;
+    }
+
+    /**
+     * Verify if two complex numbers are equals
+     *
+     * @param obj the other complex number
+     * @return true if this and z are equals, false otherwise
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Complex) {
+            Complex z = (Complex) obj;
+            return (this.re == z.re) && (this.im == z.im);
+        }
+
+        return false;
     }
 
     /**
