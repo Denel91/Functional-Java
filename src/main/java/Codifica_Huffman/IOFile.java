@@ -10,6 +10,7 @@ public class IOFile {
 
     /**
      * Copia il contenuto del file src nel file dst
+     * Il file di destinazione viene creato automaticamente
      *
      * @param src file sorgente
      * @param dst file destinazione

@@ -2,7 +2,7 @@ package Codifica_Huffman;
 
 public class IOTest {
     public static void main(String[] args) {
-      int value = IOFile.copyFile("LICENSE.md", "OutputFile.txt");
+      int value = IOFile.copyFile("InputFile.txt", "Out.txt");
       System.out.println(value);
     }
 }
