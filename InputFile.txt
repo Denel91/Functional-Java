@@ -1,0 +1,20 @@
+public static int copyFile(String src, String dst) {
+        InputTextFile in = new InputTextFile(src);
+        OutputTextFile out = new OutputTextFile(dst);
+
+        int count = 0;
+        while (in.bitsAvailable()) {
+            String line = in.readTextLine();
+            out.writeTextLine(line);
+            char c = in.readChar();
+            out.writeChar(c);
+            int bit = in.readBit();
+            out.writeBit(bit);
+            count += 1;
+        }
+
+        in.close();
+        out.close();
+
+        return count;
+    }
