@@ -1,5 +1,6 @@
 package Laboratorio.Rompicapo_del_15;
 
+import puzzleboard.PuzzleBoard;
 import java.util.Random;
 
 // ---------- PARTE I ----------
@@ -17,7 +18,7 @@ import java.util.Random;
  * shuffle() : void
  * viewBoard() : String
  *
- * @version 12/05/2020
+ * @version 16/05/2020
  */
 public class Board {
     private final int size;               // dimensione della tavoletta generalizzata al caso n x n
@@ -43,7 +44,7 @@ public class Board {
         // Disposizione ordinata di tutti i tasselli da 1 a 15
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                t  = (t + 1) % cells; // numerati da 1 a 15 con la lacuna in ultima posizione
+                t = (t + 1) % cells; // numerati da 1 a 15 con la lacuna in ultima posizione
                 board[i][j] = t;
                 u[t] = i;
                 v[t] = j;
@@ -79,8 +80,9 @@ public class Board {
     public boolean isSorted() {
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                if (board[i][j] > board[i][j + 1])
+                if (board[i][j] > board[i][j + 1]) {
                     return false;
+                }
             }
         }
 
@@ -166,10 +168,26 @@ public class Board {
         return conf;
     }
 
+    // ---------- PARTE II ----------
+
+    public PuzzleBoard view() {
+        PuzzleBoard view = new PuzzleBoard(size);
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                if (board[i][j] != HOLE) {
+                    view.setNumber(i + 1, j + 1, board[i][j]);
+                }
+            }
+        }
+
+        return view;
+    }
+
     public static void main(String[] args) {
         Board b = new Board(4);
         System.out.println(b.viewBoard());
         System.out.println(b.isSorted());
         System.out.println(b.isFree(7));
+        b.view();
     }
 }
