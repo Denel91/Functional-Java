@@ -97,8 +97,8 @@ public class Board {
      */
     public boolean isFree(int dowel) {
         if ((dowel > 0) && (dowel < cells)) {
-            int dx = Math.abs(u[dowel] - u[HOLE]); // calcolo la distanza nella riga
-            int dy = Math.abs(v[dowel] - v[HOLE]); // calcolo la distanza nella colonna
+            int dx = Math.abs(u[dowel] - u[HOLE]); // calcolo la distanza tra le righe
+            int dy = Math.abs(v[dowel] - v[HOLE]); // calcolo la distanza tra le colonne
 
             return (dx + dy == 1);
         }
@@ -123,7 +123,7 @@ public class Board {
             u[HOLE] = i1;
             v[HOLE] = j1;
             u[dowel] = i2;
-            u[dowel] = j2;
+            v[dowel] = j2;
         }
     }
 
@@ -170,6 +170,11 @@ public class Board {
 
     // ---------- PARTE II ----------
 
+    /**
+     * Visualizzazione della Tavoletta
+     *
+     * @return the view of PuzzleBoard
+     */
     public PuzzleBoard view() {
         PuzzleBoard view = new PuzzleBoard(size);
         for (int i = 0; i < size; i++) {
@@ -183,11 +188,53 @@ public class Board {
         return view;
     }
 
+    /**
+     * Sposta un pezzo all'interno della tavoletta
+     *
+     * @param t il pezzo da spostare
+     * @param view la tavoletta in forma grafica
+     */
+    public void slide(int t, PuzzleBoard view) {
+
+        int i = u[t];       // registro in i la coordinata di riga del pezzo
+        int j = v[t];       // registro in j la coordinata di colonna del pezzo
+        int i2 = u[HOLE];   // registro in i2 la coordinata di riga della lacuna
+        int j2 = v[HOLE];   // registro in j2 la coordinata di colonna della lacuna
+
+        if (Math.abs(i - i2) + Math.abs(j - j2) == 1) { // se la loro distanza è 1 allora la lacuna e il tassello sono adiacenti
+
+            board[i2][j2] = t;      // sposto il pezzo nella casella della lacuna
+            board[i][j] = HOLE;     // sposto la lacuna nella casella del pezzo
+            u[t] = i2;              // nuova coordinata di riga del pezzo
+            v[t] = j2;              // nuova coordinata di colonna del pezzo
+            u[HOLE] = i;            // nuova coordinata di riga della lacuna
+            v[HOLE] = j;            // nuova coordinata di colonna della lacuna
+
+            if (view != null) {
+                view.clear(i, j);   // cancello il tassello in posizione <i,j> che ho spostato
+                view.setNumber(i2, j2, board[i2][j2]);
+            }
+        }
+    }
+
     public static void main(String[] args) {
         Board b = new Board(4);
         System.out.println(b.viewBoard());
         System.out.println(b.isSorted());
         System.out.println(b.isFree(7));
-        b.view();
+
+        // ---------- PARTE II ----------
+
+        PuzzleBoard v = b.view();
+        v.display();
+        int h = Board.HOLE;
+        int pieces = v.get();
+
+        while (pieces != h) {
+            b.slide(pieces, v);
+            v.display();
+            h = Board.HOLE;
+            pieces = v.get();
+        }
     }
 }
