@@ -78,10 +78,12 @@ public class Board {
      * @return true if the Board is sorted, false otherwise
      */
     public boolean isSorted() {
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
+        for (int i = 0; i < size - 1; i++) {
+            for (int j = 0; j < size - 1; j++) {
                 if (board[i][j] > board[i][j + 1]) {
-                    return false;
+                    if (board[i][j] > board[i + 1][j]) {
+                        return false;
+                    }
                 }
             }
         }
@@ -138,6 +140,8 @@ public class Board {
                 int temp = board[i][j];
                 board[i][j] = board[randomPosition][randomPosition];
                 board[randomPosition][randomPosition] = temp;
+                u[board[i][j]] = i;
+                v[board[i][j]] = j;
             }
         }
     }
@@ -201,7 +205,8 @@ public class Board {
         int i2 = u[HOLE];   // registro in i2 la coordinata di riga della lacuna
         int j2 = v[HOLE];   // registro in j2 la coordinata di colonna della lacuna
 
-        if (Math.abs(i - i2) + Math.abs(j - j2) == 1) { // se la loro distanza è 1 allora la lacuna e il tassello sono adiacenti
+        if (Math.abs(i - i2) + Math.abs(j - j2) == 1) { // se la loro distanza è 1 allora la lacuna e il tassello
+            // sono adiacenti
 
             board[i2][j2] = t;      // sposto il pezzo nella casella della lacuna
             board[i][j] = HOLE;     // sposto la lacuna nella casella del pezzo
@@ -211,8 +216,8 @@ public class Board {
             v[HOLE] = j;            // nuova coordinata di colonna della lacuna
 
             if (view != null) {
-                view.clear(i, j);   // cancello il tassello in posizione <i,j> che ho spostato
-                view.setNumber(i2, j2, board[i2][j2]);
+                view.clear(i + 1, j + 1);   // cancello il tassello in posizione <i,j> che ho spostato
+                view.setNumber(i2 + 1, j2 + 1, board[i2][j2]);
             }
         }
     }
@@ -227,14 +232,13 @@ public class Board {
 
         PuzzleBoard v = b.view();
         v.display();
-        int h = Board.HOLE;
-        int pieces = v.get();
-
-        while (pieces != h) {
-            b.slide(pieces, v);
+        while (!b.isSorted()) {
+            int p = v.get();
+            System.out.printf("%d\n", p);
+            b.slide(p, v);
             v.display();
-            h = Board.HOLE;
-            pieces = v.get();
         }
+
+        System.out.println("Done!");
     }
 }
