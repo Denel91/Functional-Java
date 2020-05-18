@@ -1,7 +1,6 @@
 package Laboratorio.Rompicapo_del_15;
 
 import puzzleboard.PuzzleBoard;
-import java.util.Random;
 
 // ---------- PARTE I ----------
 
@@ -132,19 +131,14 @@ public class Board {
     }
 
     /**
-     * Generate a random matrix in the range from 1 to 15
+     * Generate a random configuration of the Board in the range 0 - 16 estremo superiore escluso
      */
     public void shuffle() {
-        Random rgen = new Random();  // Random number generator
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
-                int randomPosition = rgen.nextInt(size - 1);
-                int temp = board[i][j];
-                board[i][j] = board[randomPosition][randomPosition];
-                board[randomPosition][randomPosition] = temp;
-                u[board[i][j]] = i;
-                v[board[i][j]] = j;
-            }
+        int sposta = 100 * cells;
+        for (int k = 0; k < sposta; k++) {
+            int piece = (int)(Math.random() * cells);
+            if (isFree(piece))
+                slide(piece);
         }
     }
 
@@ -201,14 +195,17 @@ public class Board {
      * @param view la tavoletta in forma grafica
      */
     public void slide(int t, PuzzleBoard view) {
-
         int i = u[t];       // registro in i la coordinata di riga del pezzo
         int j = v[t];       // registro in j la coordinata di colonna del pezzo
         int i2 = u[HOLE];   // registro in i2 la coordinata di riga della lacuna
         int j2 = v[HOLE];   // registro in j2 la coordinata di colonna della lacuna
 
-        if ((Math.abs(i - i2) + Math.abs(j - j2)) == 1) { // se la loro distanza è 1 allora la lacuna e il tassello
-            // sono adiacenti
+        System.out.printf("%d\n", i);
+        System.out.printf("%d\n", j);
+        System.out.printf("%d\n", i2);
+        System.out.printf("%d\n", j2);
+
+        if ((Math.abs(i - i2) + Math.abs(j - j2)) == 1) { // se la loro distanza è 1 allora la lacuna e il tassello sono adiacenti
 
             board[i2][j2] = t;      // sposto il pezzo nella casella della lacuna
             board[i][j] = HOLE;     // sposto la lacuna nella casella del pezzo
@@ -242,7 +239,6 @@ public class Board {
         while (!b.isSorted()) {
             int p = v.get();
             System.out.printf("%d\n", p);
-            System.out.println(b.isFree(p));
             b.slide(p, v);
             v.display();
         }
