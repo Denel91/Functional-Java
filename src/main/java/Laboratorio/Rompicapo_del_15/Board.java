@@ -225,8 +225,13 @@ public class Board {
     public static void main(String[] args) {
         Board b = new Board(4);
         System.out.println(b.viewBoard());
-        System.out.println(b.isSorted());
-        System.out.println(b.isFree(7));
+        System.out.println("Sorted: " + b.isSorted());
+        b.slide(12);
+        System.out.println(b.viewBoard());
+        System.out.println("Sorted: " + b.isSorted());
+        b.slide(11);
+        System.out.println(b.viewBoard());
+        System.out.println("Sorted: " + b.isSorted());
 
         // ---------- PARTE II ----------
 
@@ -235,6 +240,7 @@ public class Board {
         while (!b.isSorted()) {
             int p = v.get();
             System.out.printf("%d\n", p);
+            System.out.println(b.isFree(p));
             b.slide(p, v);
             v.display();
         }
