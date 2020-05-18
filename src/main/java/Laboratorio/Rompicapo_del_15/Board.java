@@ -17,6 +17,8 @@ import java.util.Random;
  * slide(int dowel) : void
  * shuffle() : void
  * viewBoard() : String
+ * view() : PuzzleBoard
+ * slide(int t, PuzzleBoard view) : void
  *
  * @version 16/05/2020
  */
@@ -205,7 +207,7 @@ public class Board {
         int i2 = u[HOLE];   // registro in i2 la coordinata di riga della lacuna
         int j2 = v[HOLE];   // registro in j2 la coordinata di colonna della lacuna
 
-        if (Math.abs(i - i2) + Math.abs(j - j2) == 1) { // se la loro distanza è 1 allora la lacuna e il tassello
+        if ((Math.abs(i - i2) + Math.abs(j - j2)) == 1) { // se la loro distanza è 1 allora la lacuna e il tassello
             // sono adiacenti
 
             board[i2][j2] = t;      // sposto il pezzo nella casella della lacuna
