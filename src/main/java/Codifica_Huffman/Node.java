@@ -13,6 +13,8 @@ package Codifica_Huffman;
  * right() : Node
  * compareTo(Node n) : int
  * toString() : String
+ *
+ * @version 19/05/2020
  */
 public class Node implements Comparable<Node> {
     // variabili di istanza

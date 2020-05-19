@@ -6,6 +6,19 @@ import java.util.Arrays;
 import java.util.PriorityQueue;
 import java.util.Stack;
 
+/**
+ * * Class overview:
+ * freqHistogram(String src) : int[]
+ * huffmanTree(int[] freq) : Node
+ * codeTable(Node root) : String[]
+ * flattenTree(Node n) : String
+ * compresso(String src, String dst) : void
+ * restoreTree(InputTextFile in) : Node
+ * decompress(String src, String dst) : void
+ * restoreChar(Node n, InputTextFile in) : char
+ *
+ * @version 19/05/2020
+ */
 public class Huffman {
     // costante di classe immutabile
     private static final int CHARS = InputTextFile.CHARS;
