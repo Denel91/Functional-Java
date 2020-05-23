@@ -191,9 +191,24 @@ public class LinkedList<E> implements Iterable<E> {
         tail.setElement(e);
     }
 
+    /**
+     * Produce una rappresentazione in formato stringa del contenuto della lista
+     *
+     * @return la rappresentazione testuale della lista
+     */
     @Override
     public String toString() {
-        return "(" + head + ")";
+        StringBuilder sb = new StringBuilder("(");
+        Node<E> walk = head;
+        while (walk != null) {
+            sb.append(walk.getElement());
+            if (walk != tail) {
+                sb.append(", ");
+            }
+            walk = walk.getNext();
+        }
+        sb.append(")");
+        return sb.toString();
     }
 
     public void display(LinkedList<E> list) {
@@ -264,11 +279,6 @@ public class LinkedList<E> implements Iterable<E> {
 
         public void setNext(Node<E> n) {
             this.next = n;
-        }
-
-        @Override
-        public String toString() {
-            return element + ", " + next;
         }
     }
 }
