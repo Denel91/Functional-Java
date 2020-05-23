@@ -18,16 +18,16 @@ public class LinkedListClient {
         list.addLast(4);
         list.addLast(7);
 
-        System.out.println(list); // (2, 6, 3, 5, 8, 9, 4, 7, null)
+        System.out.println(list); // (2, 6, 3, 5, 8, 9, 4, 7)
         System.out.println(list.first()); // 2
         System.out.println(list.last()); // 7
         System.out.println(list.getSize()); // 8
         System.out.println(list.isEmpty()); // false
         System.out.println(list.removeFirst()); // 2
-        System.out.println(list); // (6, 3, 5, 8, 9, 4, 7, null)
+        System.out.println(list); // (6, 3, 5, 8, 9, 4, 7)
         list.changeFirst(10);
         list.changeLast(12);
-        System.out.println(list); // (10, 3, 5, 8, 9, 4, 12, null)
+        System.out.println(list); // (10, 3, 5, 8, 9, 4, 12)
         System.out.println(list.indexOf(12)); // 6
         System.out.println(list.indexOf(5)); // 2
         System.out.println(list.indexOf(4)); // 5
@@ -44,7 +44,7 @@ public class LinkedListClient {
         listaStringhe.addLast("World");
         listaStringhe.addLast("LinkedList");
         System.out.println();
-        System.out.println(listaStringhe); // (Hello, World, LinkedList, null)
+        System.out.println(listaStringhe); // (Hello, World, LinkedList)
         System.out.println(listaStringhe.indexOf("LinkedList")); // 2
     }
 }
