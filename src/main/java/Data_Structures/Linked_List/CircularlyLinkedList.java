@@ -182,10 +182,5 @@ public class CircularlyLinkedList<E> {
         public void setNext(Node<E> n) {
             this.next = n;
         }
-
-        @Override
-        public String toString() {
-            return "" + element + "";
-        }
     }
 }
