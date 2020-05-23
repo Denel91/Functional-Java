@@ -6,8 +6,8 @@ package Data_Structures.Linked_List;
 public class CircularlyLinkedListClient {
     public static void main(String[] args) {
         CircularlyLinkedList<Integer> list = new CircularlyLinkedList<>();
-        System.out.println(list.isEmpty());
-        System.out.println(list.getSize());
+        System.out.println(list.isEmpty()); // true
+        System.out.println(list.getSize()); // 0
 
         list.addFirst(1);
         list.addLast(2);
@@ -16,8 +16,8 @@ public class CircularlyLinkedListClient {
         list.addLast(5);
         list.addLast(6);
 
-        System.out.println(list.toString());
-        System.out.println(list.first());
-        System.out.println(list.last());
+        System.out.println(list.toString()); // (1, 2, 3, 4, 5, 6)
+        System.out.println(list.first()); // 1
+        System.out.println(list.last()); // 6
     }
 }
