@@ -23,6 +23,7 @@ public class Huffman {
     // costante di classe immutabile
     private static final int CHARS = InputTextFile.CHARS;
 
+    // Istogramma delle frequenze dei caratteri
     public static int[] freqHistogram(String src) {
         int[] frequenze = new int[CHARS];
 
@@ -102,6 +103,8 @@ public class Huffman {
         int[] freq = freqHistogram(src);
         Node root = huffmanTree(freq);
         String[] codes = codeTable(root);
+
+        System.out.println(Arrays.toString(codes));
 
         // Intestazione:
         int size = root.weight();       // dimensione
