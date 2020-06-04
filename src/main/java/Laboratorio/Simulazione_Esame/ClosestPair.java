@@ -19,6 +19,11 @@ public class ClosestPair {
     public static int[] closestNumbers(int[] arr) {
         int[] lowestArray = new int[arr.length];
         int n = 0;
+        int length = arr.length;
+
+        if (length <= 2) {
+            return arr;
+        }
 
         // Sort array elements
         Arrays.sort(arr);
