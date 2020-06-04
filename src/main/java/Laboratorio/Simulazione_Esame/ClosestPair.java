@@ -9,6 +9,8 @@ import java.util.Arrays;
  *
  * closestNumbers has the following parameter(s):
  * * arr: an array of integers
+ *
+ * @version 04/06/2020
  */
 public class ClosestPair {
 
