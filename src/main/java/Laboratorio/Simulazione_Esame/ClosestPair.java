@@ -18,25 +18,25 @@ public class ClosestPair {
 
     public static int[] closestNumbers(int[] arr) {
         int[] lowestArray = new int[arr.length];
+        int n = 0;
 
         // Sort array elements
         Arrays.sort(arr);
 
         // distanza tra il primo e il secondo elemento dell'array
-        int minDiff = (arr[1] - arr[0]);
+        int minDiff = Math.abs(arr[1] - arr[0]);
 
-        for (int i = 0; i < arr.length; i++) {
-            for (int j = i + 1; j < arr.length; j++) {
-                int currentMin = Math.abs(arr[j] - arr[i]);
-                if (currentMin < minDiff) {
-                    minDiff = currentMin;
-                }
+        for (int i = 1; i < arr.length; i++) {
+            int currentMin = Math.abs(arr[i] - arr[i - 1]);
+            if (currentMin < minDiff) {
+                minDiff = currentMin;
             }
         }
 
-        for (int i = 1; i < arr.length; i++) {
-            if (Math.abs(arr[i] - arr[i - 1]) == minDiff) {
-                lowestArray[i - 1] = arr[i - 1];
+        for (int i = 0; i < arr.length - 1; i++) {
+            if (Math.abs(arr[i + 1] - arr[i]) == minDiff) {
+                lowestArray[n] = arr[i];
+                n++;
             }
         }
 
@@ -51,6 +51,6 @@ public class ClosestPair {
 
     public static void main(String[] args) {
         // display(closestNumbers(new int[]{5, 4, 3, 2, 1}));
-        System.out.println(Arrays.toString(closestNumbers(new int[]{5, 4, 3, 2, 1})));
+        System.out.println(Arrays.toString(closestNumbers(new int[]{6, 5, 4, 2, 0})));
     }
 }
