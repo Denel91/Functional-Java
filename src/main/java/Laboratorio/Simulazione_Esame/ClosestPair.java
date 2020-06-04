@@ -50,7 +50,6 @@ public class ClosestPair {
         for (int i = arr.length - 2; i < arr.length - 1; i++) {
             if (Math.abs(arr[i + 1] - arr[i]) == minDiff) {
                 lowestArray[n] = arr[i + 1];
-                n++;
             }
         }
 
@@ -69,5 +68,6 @@ public class ClosestPair {
         display(closestNumbers(new int[]{6, 5, 4, 2, 0}));
         System.out.println();
         System.out.println(Arrays.toString(closestNumbers(new int[]{6, 5, 4, 2, 0})));
+        System.out.println(Arrays.toString(closestNumbers(new int[]{5, 4, 3, 2, 1})));
     }
 }
