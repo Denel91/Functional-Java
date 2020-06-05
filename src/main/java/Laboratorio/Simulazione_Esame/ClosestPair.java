@@ -12,7 +12,7 @@ import java.util.Arrays;
  *
  * closestPair(new double[] {0.3, 0.1, 0.6, 0.8, 0.5, 1.1}) -> {0.5, 0.6}
  *
- * @version 04/06/2020
+ * @version 05/06/2020
  */
 public class ClosestPair {
 
@@ -94,6 +94,7 @@ public class ClosestPair {
         return lowestArray;
     }
 
+    // To Do -> Da rivedere nel caso degli Integer
     public static void display(int[] v) {
         for (int i = 1; i < v.length; i++) {
             System.out.print("(" + v[i - 1] + ", " + v[i] + ")");
@@ -101,18 +102,20 @@ public class ClosestPair {
     }
 
     public static void display(double[] v) {
-        for (int i = 1; i < v.length; i++) {
+        for (int i = 0; i < v.length; i = i + 2) {
             if (v[i] != 0.0) {
-                System.out.print("(" + v[i - 1] + ", " + v[i] + ")");
+                System.out.print("(" + v[i] + ", " + v[i + 1] + ")");
             }
         }
     }
 
     public static void main(String[] args) {
-        display(closestPair(new double[]{0.2, 0.1, 0.4, 0.3, 0.5, 0.6}));
-        System.out.println();
         display(closestPair(new double[]{0.3, 0.1, 0.6, 0.8, 0.5, 1.1}));
         System.out.println();
+
+        display(closestPair(new double[]{0.2, 0.1, 0.4, 0.3, 0.5, 0.6}));
+        System.out.println();
+
         System.out.println(Arrays.toString(closestPair(new double[]{0.2, 0.1, 0.4, 0.3, 0.5, 0.6})));
     }
 }
