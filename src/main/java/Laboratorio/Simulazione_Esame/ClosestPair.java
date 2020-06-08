@@ -94,10 +94,11 @@ public class ClosestPair {
         return lowestArray;
     }
 
-    // To Do -> Da rivedere nel caso degli Integer
     public static void display(int[] v) {
-        for (int i = 1; i < v.length; i++) {
-            System.out.print("(" + v[i - 1] + ", " + v[i] + ")");
+        for (int i = 0; i < v.length; i = i + 2) {
+            if (v[i] != 0.0) {
+                System.out.print("(" + v[i] + ", " + v[i + 1] + ")");
+            }
         }
     }
 
@@ -114,6 +115,9 @@ public class ClosestPair {
         System.out.println();
 
         display(closestPair(new double[]{0.2, 0.1, 0.4, 0.3, 0.5, 0.6}));
+        System.out.println();
+
+        display(closestNumbers(new int[] {3, 1, 7, 8, 5, 9}));
         System.out.println();
 
         System.out.println(Arrays.toString(closestPair(new double[]{0.2, 0.1, 0.4, 0.3, 0.5, 0.6})));
