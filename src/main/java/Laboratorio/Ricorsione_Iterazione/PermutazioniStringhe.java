@@ -41,6 +41,9 @@ public class PermutazioniStringhe {
             } else {
 
 
+
+
+
             }
 
         } while (!s.isEmpty());
@@ -50,6 +53,6 @@ public class PermutazioniStringhe {
 
     public static void main(String[] args) {
         Vector<String> v = perm("ci");
-        System.out.println(v.toString());
+        System.out.println(v.toString()); // [ci, ic]
     }
 }
