@@ -34,16 +34,19 @@ public class PermutazioniStringhe {
 
         do {
             k = t.pop();
+            u = s.pop();
 
             if (k == n - 1) {
                 p.add(u);
 
             } else {
-
-
-
-
-
+                s.push(u);
+                t.push(k + 1);
+                for (int i = k + 1; i < n; i = i + 1) {
+                    String v = u.substring(0, k) + u.substring(i, i + 1) + u.substring(k + 1, i) + u.substring(k, k + 1) + u.substring(i + 1, n);
+                    s.push(v);
+                    t.push(k + 1);
+                }
             }
 
         } while (!s.isEmpty());
@@ -52,7 +55,7 @@ public class PermutazioniStringhe {
     }
 
     public static void main(String[] args) {
-        Vector<String> v = perm("ci");
+        Vector<String> v = permIter("ci");
         System.out.println(v.toString()); // [ci, ic]
     }
 }
