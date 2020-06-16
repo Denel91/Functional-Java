@@ -1,4 +1,4 @@
-package CorrectLoop;
+package Laboratorio.Verifica_Correttezza;
 
 import java.util.Arrays;
 
