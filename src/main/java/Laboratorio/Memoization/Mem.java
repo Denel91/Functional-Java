@@ -46,9 +46,9 @@ public class Mem {
         if ((i == n) || (j == n)) {
             h[i][j] = 0;
         } else if (s[i] == t[j]) {
-            h[i][j] = 1 + qRec(s, t, n, i + 1, j + 1);
+            h[i][j] = 1 + qMem(s, t, n, i + 1, j + 1, h);
         } else {
-            h[i][j] = Math.max(qRec(s, t, n, i + 1, j), qRec(s, t, n, i, j + 1));
+            h[i][j] = Math.max(qMem(s, t, n, i + 1, j, h), qMem(s, t, n, i, j + 1, h));
         }
 
         return h[i][j];
