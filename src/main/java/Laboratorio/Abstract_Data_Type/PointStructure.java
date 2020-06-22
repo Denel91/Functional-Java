@@ -32,5 +32,43 @@ public class PointStructure {
         collezione.add(y);
     }
 
-  //  public double removeClosestTo(double x, double y) { }
+    @Override
+    public String toString() {
+        return collezione.toString();
+    }
+
+    public double removeClosestTo(double x, double y) {
+        double pointX = collezione.get(0);
+        double pointY = collezione.get(1);
+        int n = collezione.size();
+        int k = 0;
+        int j = 0;
+
+        for (int i = 2; i < n; i++) {
+            double pointZ = collezione.get(i);
+            double pointW = collezione.get(i++);
+
+            if (Math.abs(pointZ - x) < Math.abs(pointX - x) && Math.abs(pointW - y) < Math.abs(pointY - y)) {
+                pointX = pointZ;
+                pointY = pointW;
+                k = i;
+                j = i + 1;
+            }
+        }
+
+        collezione.removeElementAt(k);
+        collezione.removeElementAt(j);
+
+        return Math.abs(pointX - x) + Math.abs(pointY - y);
+    }
+
+    public static void main(String[] args) {
+        PointStructure pointStructure = new PointStructure();
+        pointStructure.add(2.0, 4.0);
+        pointStructure.add(1.0, 2.0);
+        pointStructure.add(5.0, 6.0);
+        System.out.println(pointStructure.removeClosestTo(2.0, 2.0));
+        System.out.println(pointStructure);
+        System.out.println(pointStructure.size());
+    }
 }
