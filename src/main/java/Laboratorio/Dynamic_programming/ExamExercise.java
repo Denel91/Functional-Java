@@ -1,6 +1,6 @@
-package Dynamic_programming;
+package Laboratorio.Dynamic_programming;
 
-import static Dynamic_programming.Llcs.llcs;
+import static Laboratorio.Dynamic_programming.Llcs.llcs;
 
 public class ExamExercise {
     public static String migliore(String w, String[] ws) {

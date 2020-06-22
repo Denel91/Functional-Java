@@ -1,4 +1,4 @@
-package Dynamic_programming;
+package Laboratorio.Dynamic_programming;
 
 /**
  * class Llcs
