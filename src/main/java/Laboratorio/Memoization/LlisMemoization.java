@@ -31,9 +31,9 @@ public class LlisMemoization {
         if (i == 0) {
             h[i][j] = 0;
         } else if ((j < n) && (s[i - 1] >= s[j])) {
-            h[i][j] = llisRec(s, n, i - 1, j);
+            h[i][j] = llisMem(s, n, i - 1, j, h);
         } else {
-            h[i][j] = Math.max(1 + llisRec(s, n, i - 1, i - 1), llisRec(s, n, i - 1, j));
+            h[i][j] = Math.max(1 + llisMem(s, n, i - 1, i - 1, h), llisMem(s, n, i - 1, j, h));
         }
 
         return h[i][j];
