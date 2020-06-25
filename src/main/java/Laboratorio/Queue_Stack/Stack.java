@@ -116,6 +116,27 @@ public class Stack<E> {
         return poppedData;
     }
 
+    /**
+     * Produce una rappresentazione in formato stringa del contenuto dello Stack.
+     *
+     * @return rappresentazione testuale dello Stack
+     */
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder("(");
+        Node<E> walk = head;
+        while (walk != null) {
+            sb.append(walk.getElement());
+            if (walk.next != null) {
+                sb.append(", ");
+            }
+            walk = walk.getNext();
+        }
+
+        sb.append(")");
+        return sb.toString();
+    }
+
     public static void main(String[] args) {
         Stack<Integer> stack = new Stack<>();
         System.out.println(stack.isEmpty()); // true
@@ -123,6 +144,7 @@ public class Stack<E> {
         stack.push(4);
         stack.push(6);
         stack.push(8);
+        System.out.println(stack.toString()); // (8, 6, 4, 2)
         System.out.println(stack.peek()); // 8
         System.out.println(stack.pop()); // 8
         System.out.println(stack.getSize()); // 3
