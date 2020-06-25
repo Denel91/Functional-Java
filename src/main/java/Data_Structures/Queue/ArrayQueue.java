@@ -45,7 +45,7 @@ public class ArrayQueue<E> implements Queue<E> {
     /**
      * Inserisce un elemento in fondo alla coda.
      *
-     * @param e
+     * @param e l'elemento da inserire nella coda
      */
     @Override
     public void enqueue(E e) throws IllegalStateException {
