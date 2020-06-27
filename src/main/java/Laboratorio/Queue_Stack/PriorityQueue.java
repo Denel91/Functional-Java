@@ -19,6 +19,8 @@ import java.util.ArrayList;
  * poll() : Node
  * peek() : Node
  * toString() : String
+ *
+ * @version 27/06/2020
  */
 public class PriorityQueue {
     // variabili di istanza
