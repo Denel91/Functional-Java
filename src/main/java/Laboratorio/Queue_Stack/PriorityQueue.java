@@ -149,11 +149,19 @@ public class PriorityQueue {
     public Node peek() {
         if (isEmpty())
             return null;
+        return findMin();
+    }
+
+    /**
+     * Procedura di supporto che restituisce il nodo con “peso minore” senza rimuoverlo dalla coda.
+     *
+     * @return il nodo con "peso minore" senza rimuoverlo dalla coda.
+     */
+    private Node findMin() {
         Node small = queue.get(0);
         for (int i = 1; i < queue.size(); i++) {
-            if (queue.get(i).weight < small.weight) {
+            if (queue.get(i).weight < small.weight)
                 small = queue.get(i);
-            }
         }
         return small;
     }
