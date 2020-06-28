@@ -12,7 +12,7 @@ public class StringSListClient {
         li = li.cons("string");
         li = li.cons("list");
         li = li.cons("world");
-        li = li.cons("Hello");
+        li = li.cons("Waw");
 
         StringSList list = new StringSList();
         list = new StringSList("List", list);
