@@ -9,6 +9,7 @@ public class BottomUp {
      */
 
     //------------ Versione ricorsiva ------------//
+
     public static long s(int n, int k) { // 1 ≤ k ≤ n
         if (k == n) {
             return 1;
