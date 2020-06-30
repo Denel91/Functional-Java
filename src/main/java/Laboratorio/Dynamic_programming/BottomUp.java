@@ -9,7 +9,6 @@ public class BottomUp {
      */
 
     //------------ Versione ricorsiva ------------//
-
     public static long s(int n, int k) { // 1 ≤ k ≤ n
         if (k == n) {
             return 1;
@@ -101,7 +100,7 @@ public class BottomUp {
         }
     }
 
-    //------------ Versione Bottom-Up ------------//
+    //------------ Prima Versione Bottom-Up ------------//
 
     public static long qDP(int i, int j, boolean b) {
         long[][][] h = new long[i + 1][j + 1][2];
@@ -124,6 +123,26 @@ public class BottomUp {
         } else {
             return h[i][j][0];
         }
+    }
+
+    //------------ Seconda Versione Bottom-Up ------------//
+
+    public static long qBottomUp(int i, int j, boolean b) {
+        long[][][] h = new long[i + 1][j + 1][2];
+
+        for (int u = 0; u <= i; u++) {
+            for (int v = 0; v <= j; v++) {
+                if (u * v == 0) {
+                    h[u][v][0] = 1;
+                    h[u][v][1] = u + v + 1;
+                } else {
+                    h[u][v][0] = h[u - 1][v][0] + h[u][v - 1][0];
+                    h[u][v][1] = h[u - 1][v][1] + h[u][v - 1][1] + h[u][v][0];
+                }
+            }
+        }
+
+        return h[i][j][b ? 1 : 0];
     }
 
     //------------ Memoization ------------//
@@ -165,6 +184,7 @@ public class BottomUp {
 
         System.out.println(q(3, 5, true)); // 504
         System.out.println(qDP(3, 5, true)); // 504
+        System.out.println(qBottomUp(3, 5, true)); // 504
 
         System.out.println(q(6, 7, false)); // 1716
         System.out.println(qDP(6, 7, false)); // 1716
