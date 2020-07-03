@@ -2,9 +2,11 @@ package Laboratorio.Abstract_Data_Type;
 
 import java.util.ArrayList;
 import java.util.EmptyStackException;
+import java.util.Stack;
 
 /**
  * Una istanza della classe NodeIntStack consente di istanziare uno stack in cui possono essere inserite coppie <nodo, intero>.
+ *
  * Class overview:
  * NodeIntStack() : Default Constructor
  * NodeIntStack(int capacity) : Constructor (Creator).
@@ -195,5 +197,32 @@ public class NodeIntStack {
         System.out.println(stack.isEmpty()); // false
         System.out.println(stack.topNode()); // (7,D)
         System.out.println(stack.topInt()); // 3
+        System.out.println(averageCodeLength(d));
+    }
+
+    public static double averageCodeLength(Node root) {
+        int ws = 0;
+        Stack<Node> stack = new Stack<>();
+        Stack<Integer> depth = new Stack<>();
+        stack.push(root);
+        depth.push(0);
+
+        do {
+            Node n = stack.pop();
+            int d = depth.pop();
+
+            if (n.isLeaf()) {
+                ws = ws + d * n.getWeight();
+
+            } else {
+                stack.push(n.right());
+                depth.push(d + 1);
+                stack.push(n.left());
+                depth.push(d + 1);
+            }
+
+        } while (!stack.isEmpty());
+
+        return ((double) ws) / root.getWeight();
     }
 }
