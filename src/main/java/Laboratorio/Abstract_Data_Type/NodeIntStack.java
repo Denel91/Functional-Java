@@ -3,30 +3,69 @@ package Laboratorio.Abstract_Data_Type;
 import java.util.ArrayList;
 import java.util.EmptyStackException;
 
+/**
+ * Una istanza della classe NodeIntStack consente di istanziare uno stack in cui possono essere inserite coppie <nodo, intero>.
+ * Class overview:
+ * NodeIntStack() : Default Constructor
+ * NodeIntStack(int capacity) : Constructor (Creator).
+ * isEmpty() : boolean
+ * size() : int
+ * push(Node n, int d) : void
+ * pop() : void
+ * topNode() : Node
+ * topInt() : int
+ * toString() : String
+ *
+ * @version 03/07/2020
+ */
 public class NodeIntStack {
     private ArrayList<Node> stack;                  // the items of the stack
     private int capacity;                           // specifies the maximum capacity of the stack
     private int top;                                // the index of the item at the top of the stack
     private static final int DEFAULT_SIZE = 100;    // default stack size
 
+    /**
+     * Default Constructor
+     */
     public NodeIntStack() {
         this(DEFAULT_SIZE);
     }
 
+    /**
+     * Constructor (Creator).
+     *
+     * @param capacity the size of the stack. REQUIRE >= 0
+     */
     public NodeIntStack(int capacity) {
         this.capacity = capacity == 0 ? DEFAULT_SIZE : capacity;
         this.top = -1; // Stack inizialmente vuoto
         this.stack = new ArrayList<>(capacity);
     }
 
+    /**
+     * Verify if the stack is empty
+     *
+     * @return true if this stack contains no elements.
+     */
     public boolean isEmpty() {
         return (this.stack.size() == 0);
     }
 
+    /**
+     * Calculate the stack size
+     *
+     * @return the size of the stack
+     */
     public int size() {
         return this.stack.size();
     }
 
+    /**
+     * Insert the item on top of the stack
+     *
+     * @param n the item to insert in the stack
+     * @param d the index where insert the item
+     */
     public void push(Node n, int d) {
         if (size() == capacity)
             throw new IllegalStateException("Stack is full");
@@ -34,18 +73,32 @@ public class NodeIntStack {
         top++;
     }
 
+    /**
+     * Delete the item located at the top of the stack
+     */
     public void pop() {
         if (isEmpty())
             throw new EmptyStackException();
         stack.remove(top);
     }
 
+    /**
+     * Fetch the first element of the Stack or the element
+     * present at the top of the Stack.
+     *
+     * @return the object on top of the stack without taking it out
+     */
     public Node topNode() {
         if (isEmpty())
             throw new EmptyStackException();
         return stack.get(top);
     }
 
+    /**
+     * Fetch the index of the element at the top of the Stack.
+     *
+     * @return the index at the top of the Stack.
+     */
     public int topInt() {
         if (isEmpty())
             throw new EmptyStackException();
