@@ -198,6 +198,7 @@ public class NodeIntStack {
         System.out.println(stack.topNode()); // (7,D)
         System.out.println(stack.topInt()); // 3
         System.out.println(averageCodeLength(d));
+        System.out.println(shortestCodeLength(d));
     }
 
     public static double averageCodeLength(Node root) {
@@ -224,5 +225,24 @@ public class NodeIntStack {
         } while (!stack.isEmpty());
 
         return ((double) ws) / root.getWeight();
+    }
+
+    public static int shortestCodeLength(Node root) {
+        int sc = 8;
+        NodeIntStack stack = new NodeIntStack();
+        stack.push(root, 0);
+        do {
+            Node n = stack.topNode();
+            int d = stack.topInt();
+            stack.pop();
+            if (n.isLeaf()) {
+                sc = Math.min(sc, d);
+            } else if (d + 1 < sc) {
+                stack.push(n.right, d + 1);
+                stack.push(n.left, d + 1);
+            }
+        } while (!stack.isEmpty());
+
+        return sc;
     }
 }
