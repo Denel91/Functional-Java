@@ -39,43 +39,43 @@ public class DynamicBottomUp {
 
     //------------ Versione Bottom-Up ------------//
 
-    // Non va...da rivedere!
-    public static long qBottomUp(int i, int j, String x) {
-        int u = x.length();
+    // Non va...da rivedere! //
+    public static long qBottomUp(int i, int j, String t) {
+        int u = t.length();
         long[][][] h = new long[i + 1][j + 1][u + 1];
 
-        for (int v = 0; v <= j; v++) {
-            h[0][v][0] = 1;
+        for (int x = 0; x <= i; x++) {
+            for (int y = 0; y <= j; y++) {
+                for (int z = 0; z <= u; z++) {
+                    if (x + y < u - z) {
+                        h[x][y][z] = 0;
+                    } else if (x + y == 0) {
+                        h[x][y][z] = 1;
+                    }
+                }
+            }
         }
 
-        for (int y = 1; y <= i; y++) {
-            h[y][0][0] = 1;
-        }
-
-        for (int m = 1; m <= i; m++) {
-            for (int n = 1; n <= j; n++) {
-                if (m + n < u) {
-                    h[m][n][u] = 0;
-                } else if (m + n == 0) {
-                    h[m][n][u] = 1;
-                } else {
+        for (int x = 1; x <= i; x++) {
+            for (int y = 1; y <= j; y++) {
+                for (int z = u; z >= 0; z--) {
                     long k = 0;
-                    if (m > 0) {
-                        if ((u > 0) && (x.charAt(0) == '0')) {
-                            k = k + h[m - 1][n][u - 1];
+                    if (x > 0) {
+                        if ((u - z > 0) && (t.charAt(z) == '0')) {
+                            k = k + h[x - 1][y][z + 1];
                         } else {
-                            k = k + h[m - 1][n][u];
+                            k = k + h[x - 1][y][z];
                         }
                     }
-                    if (n > 0) {
-                        if ((u > 0) && (x.charAt(0) == '1')) {
-                            k = k + h[m][n - 1][u - 1];
+                    if (y > 0) {
+                        if ((u - z > 0) && (t.charAt(z) == '1')) {
+                            k = k + h[x][y - 1][z + 1];
                         } else {
-                            k = k + h[m][n - 1][u];
+                            k = k + h[x][y - 1][z];
                         }
                     }
 
-                    h[m][n][u] = k;
+                    h[x][y][z] = k;
                 }
             }
         }
