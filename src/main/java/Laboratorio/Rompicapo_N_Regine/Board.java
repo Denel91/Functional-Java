@@ -38,13 +38,13 @@ public class Board {
      * @param n the size of the Board
      */
     public Board(int n) {
-        this.size               = n;
-        this.queens             = 0;
+        this.size = n;
+        this.queens = 0;
         this.queensAttackingRow = IntSList.NULL_INTLIST;
         this.queensAttackingCol = IntSList.NULL_INTLIST;
         this.queensAttackingDg1 = IntSList.NULL_INTLIST;
         this.queensAttackingDg2 = IntSList.NULL_INTLIST;
-        this.config             = "";
+        this.config = "";
     }
 
     /**
@@ -59,13 +59,13 @@ public class Board {
      * @param c   string representation of the Board
      */
     private Board(int n, int q, IntSList row, IntSList col, IntSList dg1, IntSList dg2, String c) {
-        this.size               = n;
-        this.queens             = q;
+        this.size = n;
+        this.queens = q;
         this.queensAttackingRow = row;
         this.queensAttackingCol = col;
         this.queensAttackingDg1 = dg1;
         this.queensAttackingDg2 = dg2;
-        this.config             = c;
+        this.config = c;
     }
 
     /**
