@@ -79,12 +79,10 @@ public class Snippet {
 
         System.out.println(list);
 
-        /*
         list = map(list, x -> x * 2);
         System.out.print("Map: ");
         for (Integer val : list)
             System.out.print(val + " ");
-        */
 
         list = filter(list, x -> x >= 0);
         System.out.print("Filter: ");
@@ -121,14 +119,6 @@ public class Snippet {
         return mappedList;
     }
 
-    /**
-     *
-     * @param list
-     * @param function
-     * @param <T>
-     * @param <R>
-     * @return
-     */
     static <T, R> List<T> filter(List<T> list, Function<T, R> function) {
         List<T> filteredList = new ArrayList<T>();
         for (T element : list) {
