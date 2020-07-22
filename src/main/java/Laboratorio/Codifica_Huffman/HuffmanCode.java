@@ -25,11 +25,11 @@ public class HuffmanCode {
 
         out.writeTextLine("CODICE ASCII" + "\t" + "CARATTERE" + "\t" + "OCCORRENZE" + "\t" + "CODICE HUFFMANN" + "\t" + "LUNGHEZZA CODICE");
 
-        for (int i = 0; i < CHARS; i++) {
-            if (freq[i] > 0) {
+        for (int i = 0; i < CHARS; i++) { // scorro l'array
+            if (freq[i] > 0) { // identifico i valori significativi dell'array
                 String codice = codes[i];
                 int lunghezza = codice.length();
-                out.writeTextLine("\t" + i + "\t\t\t" + ((char) i) + "\t\t\t\t" + freq[i] + "\t\t\t\t" + codes[i] + "\t\t\t\t" + lunghezza);
+                out.writeTextLine("\t" + i + "\t\t\t" + ((char) i) + "\t\t\t\t" + freq[i] + "\t\t\t\t" + codice + "\t\t\t\t" + lunghezza);
             }
         }
 
