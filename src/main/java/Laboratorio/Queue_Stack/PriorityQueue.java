@@ -25,7 +25,7 @@ import java.util.ArrayList;
 public class PriorityQueue {
     // variabili di istanza
     private ArrayList<Node> queue;                  // rappresentazione interna della PriorityQueue
-    private static final int DEFAULT_SIZE = 100;    // default PriorityQueue size
+    private static final int DEFAULT_SIZE = 256;    // default PriorityQueue size
     private final int capacity;                     // specifica la capacità massima della PriorityQueue
     private int size;                               // numero di elementi nella PriorityQueue
 
