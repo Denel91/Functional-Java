@@ -1,10 +1,10 @@
 package Laboratorio.Dynamic_programming;
 
 /**
- * Applica la tecnica Top-Down di programmazione dinamica alla seguente procedura
+ * Applica la tecnica Top-Down e Bottom-Up di programmazione dinamica alla seguente procedura
  * ricorsiva, al fine di trasformarla in un programma iterativo più efficiente.
  */
-public class DynamicTopDown {
+public class DPBottomUP {
     // Variabile di classe
     private static final int UNKNOWN = 0;
 
@@ -35,6 +35,51 @@ public class DynamicTopDown {
 
             return k;
         }
+    }
+
+    //------------ Versione Bottom-Up ------------//
+
+    public static long qBottomUp(int i, int j, String t) {
+        int u = t.length();
+        long[][][] h = new long[i + 1][j + 1][u + 1];
+
+        for (int z = 0; z <= u; z++) {
+            for (int x = 0; x <= i; x++) {
+                for (int y = 0; y <= j; y++) {
+                    if (x + y < z) {
+                        h[x][y][z] = 0;
+                    } else if (x + y == 0) {
+                        h[x][y][z] = 1;
+                    }
+                }
+            }
+        }
+
+        for (int z = 0; z <= u; z++) {
+            for (int x = 0; x <= i; x++) {
+                for (int y = 0; y <= j; y++) {
+                    if ((x + y >= z) && (x + y != 0)) {
+                        long k = 0;
+                        if (x > 0) {
+                            if ((z > 0) && (t.charAt(u - z) == '0')) {
+                                k = k + h[x - 1][y][z - 1];
+                            } else {
+                                k = k + h[x - 1][y][z];
+                            }
+                        }
+                        if (y > 0) {
+                            if ((z > 0) && (t.charAt(u - z) == '1')) {
+                                k = k + h[x][y - 1][z - 1];
+                            } else {
+                                k = k + h[x][y - 1][z];
+                            }
+                        }
+                        h[x][y][z] = k;
+                    }
+                }
+            }
+        }
+        return h[i][j][u];
     }
 
     //------------ Memoization ------------//
@@ -89,5 +134,6 @@ public class DynamicTopDown {
     public static void main(String[] args) {
         System.out.println(q(4, 4, "1010")); // 53
         System.out.println(qMemoization(4, 4, "1010")); // 53
+        System.out.println(qBottomUp(4,4,"1010")); // 53
     }
 }
